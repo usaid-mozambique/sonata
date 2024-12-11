@@ -55,7 +55,7 @@ calc_tx_new <- function(con, opendate, enddate, filter_by_location = FALSE, loca
     ) |>
     dplyr::arrange(patient_uuid, art_start_date) |>
     dplyr::group_by(patient_uuid) |>
-    slice_head(n = 1) |>
+    dplyr::slice_head(n = 1) |>
     dplyr::ungroup() |>
     dplyr::filter(art_start_date > opendate & art_start_date < enddate) |>
     dplyr::mutate(dplyr::across(c(value_datetime, art_start_date, observation_date), ~ lubridate::as_date(lubridate::ymd_hms(.))))
