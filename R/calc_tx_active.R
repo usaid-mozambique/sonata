@@ -1,4 +1,4 @@
-#' Calculate line-level listing for patients active on ART
+#' Calculate anonymous line list for Active on ART
 #'
 #' @param con MozART 2.0 database connection
 #' @param enddate Period close date (input as 'YYYY-MM-DD')

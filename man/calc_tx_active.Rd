@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_tx_active.R
 \name{calc_tx_active}
 \alias{calc_tx_active}
-\title{Calculate line-level listing for patients active on ART}
+\title{Calculate anonymous line list for Active on ART}
 \usage{
 calc_tx_active(
   con,
@@ -27,7 +27,7 @@ calc_tx_active(
 A data frame containing line-level listing of patients active on ART
 }
 \description{
-Calculate line-level listing for patients active on ART
+Calculate anonymous line list for Active on ART
 }
 \examples{
 \dontrun{

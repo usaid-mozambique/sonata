@@ -1,4 +1,4 @@
-#' Calculate line-level listing for patients newly initiated on ART
+#' Calculate anonymous line list for Newly initiated on ART
 #'
 #' @param con MozART 2.0 database connection
 #' @param opendate Period open date (input as 'YYYY-MM-DD')
@@ -12,7 +12,12 @@
 #' @examples
 #' \dontrun{
 #'
-#'  df <- calc_tx_new()}
+#'  df <- calc_tx_new(
+#'           con,
+#'           opendate = "2024-06-21",
+#'           enddate = "2024-09-20",
+#'           filter_by_location = TRUE,
+#'           location_uuid = location_meripo)}
 
 calc_tx_new <- function(con, opendate, enddate, filter_by_location = FALSE, location_uuid = '4be5f1a9-832c-4717-be41-ef4b6311c0ef') {
 
