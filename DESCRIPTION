@@ -5,7 +5,7 @@ Authors@R: c(
     person("Joe", "Lara", email = "jlara@usaid.gov", role = c("aut", "cre")),
     person("Karishma", "Srikanth", email = "ksrikanth@usaid.gov", role = c("aut")),
     person("Baboyma", "Kagniniwa", email = "bkagniniwa@usaid.gov", role = ("aut")),
-    person("Timothy", "Essam", email = "tessam@usaid.gov", role = ("aut"))
+    person("Timothy", "Essam", email = "tessam@usaid.gov", role = ("aut")))
 Description: Provides a set of utilities and functions for connecting, querying, and analyzing data from the
     Mozambique MozART 2.0 database.
 License: MIT + file LICENSE

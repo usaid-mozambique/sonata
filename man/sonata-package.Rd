@@ -6,10 +6,17 @@
 \alias{sonata-package}
 \title{sonata: What the Package Does (One Line, Title Case)}
 \description{
-What the package does (one paragraph).
+Provides a set of utilities and functions for connecting, querying, and analyzing data from the Mozambique MozART 2.0 database.
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com}
+\strong{Maintainer}: Joe Lara \email{jlara@usaid.gov}
+
+Authors:
+\itemize{
+  \item Karishma Srikanth \email{ksrikanth@usaid.gov}
+  \item Baboyma Kagniniwa \email{bkagniniwa@usaid.gov}
+  \item Timothy Essam \email{tessam@usaid.gov}
+}
 
 }
 \keyword{internal}
