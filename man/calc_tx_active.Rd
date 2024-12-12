@@ -32,5 +32,10 @@ Calculate line-level listing for patients active on ART
 \examples{
 \dontrun{
 
- df <- calc_tx_active()}
+ df <- calc_tx_active(
+          con,
+          enddate = '2024-09-20',
+          defaulter_tolerance = 28,
+          filter_by_location = TRUE,
+          location_uuid = location_meripo)}
 }

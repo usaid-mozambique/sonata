@@ -12,7 +12,12 @@
 #' @examples
 #' \dontrun{
 #'
-#'  df <- calc_tx_active()}
+#'  df <- calc_tx_active(
+#'           con,
+#'           enddate = '2024-09-20',
+#'           defaulter_tolerance = 28,
+#'           filter_by_location = TRUE,
+#'           location_uuid = location_meripo)}
 
 calc_tx_active <- function(con, enddate, defaulter_tolerance = 28, filter_by_location = FALSE, location_uuid = '4be5f1a9-832c-4717-be41-ef4b6311c0ef') {
 
