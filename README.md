@@ -23,7 +23,7 @@ MozART 2.0 Support Package
       library(sonata)
       
     ## LIST PACKAGE FUNCTIONS
-      ls("package:sonata")
+      ls("package::sonata")
     
 ```
 
