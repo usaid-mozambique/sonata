@@ -1,7 +1,7 @@
 #' Calculate line-level listing for patients active on ART
 #'
 #' @param con MozART 2.0 database connection
-#' @param enddate Period close date (input as'YYYY-MM-DD')
+#' @param enddate Period close date (input as 'YYYY-MM-DD')
 #' @param defaulter_tolerance Number of tolerance days before defaulters are considered inactive
 #' @param filter_by_location Logical. If `TRUE`, filters query to a specific location.  If `FALSE` queries for all locations.
 #' @param location_uuid Health facility location_uuid to filter by when filter_by_location is `TRUE`

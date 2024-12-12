@@ -15,9 +15,9 @@ calc_tx_new(
 \arguments{
 \item{con}{MozART 2.0 database connection}
 
-\item{opendate}{Period open date (input as'YYYY-MM-DD')}
+\item{opendate}{Period open date (input as 'YYYY-MM-DD')}
 
-\item{enddate}{Period close date (input as'YYYY-MM-DD')}
+\item{enddate}{Period close date (input as 'YYYY-MM-DD')}
 
 \item{filter_by_location}{Logical. If \code{TRUE}, filters query to a specific location.  If \code{FALSE} queries for all locations.}
 

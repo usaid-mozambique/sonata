@@ -15,7 +15,7 @@ calc_tx_active(
 \arguments{
 \item{con}{MozART 2.0 database connection}
 
-\item{enddate}{Period close date (input as'YYYY-MM-DD')}
+\item{enddate}{Period close date (input as 'YYYY-MM-DD')}
 
 \item{defaulter_tolerance}{Number of tolerance days before defaulters are considered inactive}
 

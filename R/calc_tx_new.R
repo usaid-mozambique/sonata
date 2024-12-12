@@ -1,8 +1,8 @@
 #' Calculate line-level listing for patients newly initiated on ART
 #'
 #' @param con MozART 2.0 database connection
-#' @param opendate Period open date (input as'YYYY-MM-DD')
-#' @param enddate Period close date (input as'YYYY-MM-DD')
+#' @param opendate Period open date (input as 'YYYY-MM-DD')
+#' @param enddate Period close date (input as 'YYYY-MM-DD')
 #' @param filter_by_location Logical. If `TRUE`, filters query to a specific location.  If `FALSE` queries for all locations.
 #' @param location_uuid Health facility location_uuid to filter by when filter_by_location is `TRUE`
 #'
