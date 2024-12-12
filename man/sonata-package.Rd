@@ -8,6 +8,13 @@
 \description{
 Provides a set of utilities and functions for connecting, querying, and analyzing data from the Mozambique MozART 2.0 database.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://usaid-mozambique.github.io/sonata/}
+}
+
+}
 \author{
 \strong{Maintainer}: Joe Lara \email{jlara@usaid.gov}
 
