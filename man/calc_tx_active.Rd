@@ -15,13 +15,13 @@ calc_tx_active(
 \arguments{
 \item{con}{MozART 2.0 database connection}
 
-\item{enddate}{Close date for the reporting period for which active on ART is calculated}
+\item{enddate}{Period close date (input as'YYYY-MM-DD')}
 
-\item{defaulter_tolerance}{Number of days of tolerance before a defaulting patient is considered inactive}
+\item{defaulter_tolerance}{Number of tolerance days before defaulters are considered inactive}
 
-\item{filter_by_location}{Logical indicating whether to filter query to a specific location (health facility) or not}
+\item{filter_by_location}{Logical. If \code{TRUE}, filters query to a specific location.  If \code{FALSE} queries for all locations.}
 
-\item{location_uuid}{Location_uuid of the health facility to filter by when filter_by_location is TRUE}
+\item{location_uuid}{Health facility location_uuid to filter by when filter_by_location is \code{TRUE}}
 }
 \value{
 A data frame containing line-level listing of patients active on ART
