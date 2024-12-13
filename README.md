@@ -1,5 +1,6 @@
-# sonata <a href="https://usaid-mozambique.github.io/sonata/">
-MozART 2.0 Support Package t
+# sonata <a href="https://usaid-mozambique.github.io/sonata/"><a href="https://usaid-mozambique.github.io/sonata/"><img src="man/figures/logo.png" align="right" height="120" alt="sonata website" /></a>
+
+MozART 2.0 Support Package
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
