@@ -1,4 +1,4 @@
-#' Calculate anonymous line list for Newly initiated on ART
+#' Query anonymous statistics for Newly initiated on ART
 #'
 #' @param con MozART 2.0 database connection
 #' @param opendate Period open date (input as 'YYYY-MM-DD')
