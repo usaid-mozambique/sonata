@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_tx_new.R
 \name{calc_tx_new}
 \alias{calc_tx_new}
-\title{Calculate anonymous line list for Newly initiated on ART}
+\title{Query anonymous statistics for Newly initiated on ART}
 \usage{
 calc_tx_new(
   con,
@@ -27,7 +27,7 @@ calc_tx_new(
 A data frame containing line-level listing of patients newly initiated on ART
 }
 \description{
-Calculate anonymous line list for Newly initiated on ART
+Query anonymous statistics for Newly initiated on ART
 }
 \examples{
 \dontrun{

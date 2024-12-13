@@ -19,3 +19,6 @@ Imports:
     DBI,
     lifecycle
 URL: https://usaid-mozambique.github.io/sonata/
+Depends: 
+    R (>= 3.5)
+LazyData: true
