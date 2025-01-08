@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_tx_active.R
 \name{calc_tx_active}
 \alias{calc_tx_active}
-\title{Query anonymous statistics for Active on ART}
+\title{Query estatísticas anónimas para pacientes activos em TARV}
 \usage{
 calc_tx_active(
   con,
@@ -13,21 +13,21 @@ calc_tx_active(
 )
 }
 \arguments{
-\item{con}{MozART 2.0 database connection}
+\item{con}{Ligação à base de dados MozART 2.0}
 
-\item{enddate}{Period close date (input as 'YYYY-MM-DD')}
+\item{enddate}{Data de fecho do período (introduzir como “AAAA-MM-DD”)}
 
-\item{defaulter_tolerance}{Number of tolerance days before defaulters are considered inactive}
+\item{defaulter_tolerance}{Número de dias de tolerância antes dos faltosos serem considerados inactivos (abandonos)}
 
-\item{filter_by_location}{Logical. If \code{TRUE}, filters query to a specific location.  If \code{FALSE} queries for all locations.}
+\item{filter_by_location}{Lógico. Se \code{TRUE}, o query corre sobre uma unidade sanitária específica.  Se \code{FALSE},  o query corre sobre todas as unidade sanitária contidas na base de dados}
 
-\item{location_uuid}{Health facility location_uuid to filter by when filter_by_location is \code{TRUE}}
+\item{location_uuid}{location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como \code{TRUE}}
 }
 \value{
-A data frame containing line-level listing of patients active on ART
+Um quadro de dados contendo uma listagem individual dos pacientes activos em TARV
 }
 \description{
-Query anonymous statistics for Active on ART
+Query estatísticas anónimas para pacientes activos em TARV
 }
 \examples{
 \dontrun{

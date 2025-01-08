@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_tx_new.R
 \name{calc_tx_new}
 \alias{calc_tx_new}
-\title{Query anonymous statistics for Newly initiated on ART}
+\title{Query estatísticas anónimas para pacientes iniciados em TARV}
 \usage{
 calc_tx_new(
   con,
@@ -13,21 +13,21 @@ calc_tx_new(
 )
 }
 \arguments{
-\item{con}{MozART 2.0 database connection}
+\item{con}{Ligação à base de dados MozART 2.0}
 
-\item{opendate}{Period open date (input as 'YYYY-MM-DD')}
+\item{opendate}{Data de abertura do período (introduzir como “AAAA-MM-DD”)}
 
-\item{enddate}{Period close date (input as 'YYYY-MM-DD')}
+\item{enddate}{Data de fecho do período (introduzir como “AAAA-MM-DD”)}
 
-\item{filter_by_location}{Logical. If \code{TRUE}, filters query to a specific location.  If \code{FALSE} queries for all locations.}
+\item{filter_by_location}{Lógico. Se \code{TRUE}, o query corre sobre uma unidade sanitária específica.  Se \code{FALSE},  o query corre sobre todas as unidade sanitária contidas na base de dados}
 
-\item{location_uuid}{Health facility location_uuid to filter by when filter_by_location is \code{TRUE}}
+\item{location_uuid}{location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como \code{TRUE}}
 }
 \value{
-A data frame containing line-level listing of patients newly initiated on ART
+Um quadro de dados contendo uma listagem individual dos pacientes iniciados em TARV
 }
 \description{
-Query anonymous statistics for Newly initiated on ART
+Query estatísticas anónimas para pacientes iniciados em TARV
 }
 \examples{
 \dontrun{
