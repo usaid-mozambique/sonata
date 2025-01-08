@@ -1,12 +1,12 @@
-#' Query anonymous statistics for Newly initiated on ART
+#' Query estatísticas anónimas para pacientes iniciados em TARV
 #'
-#' @param con MozART 2.0 database connection
-#' @param opendate Period open date (input as 'YYYY-MM-DD')
-#' @param enddate Period close date (input as 'YYYY-MM-DD')
-#' @param filter_by_location Logical. If `TRUE`, filters query to a specific location.  If `FALSE` queries for all locations.
-#' @param location_uuid Health facility location_uuid to filter by when filter_by_location is `TRUE`
+#' @param con Ligação à base de dados MozART 2.0
+#' @param opendate Data de abertura do período (introduzir como “AAAA-MM-DD”)
+#' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)
+#' @param filter_by_location Lógico. Se `TRUE`, o query corre sobre uma unidade sanitária específica.  Se `FALSE`,  o query corre sobre todas as unidade sanitária contidas na base de dados
+#' @param location_uuid location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como `TRUE`
 #'
-#' @return A data frame containing line-level listing of patients newly initiated on ART
+#' @return Um quadro de dados contendo uma listagem individual dos pacientes iniciados em TARV
 #' @export
 #'
 #' @examples

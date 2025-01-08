@@ -1,12 +1,12 @@
-#' Query anonymous statistics for Active on ART
+#' Query estatísticas anónimas para pacientes activos em TARV
 #'
-#' @param con MozART 2.0 database connection
-#' @param enddate Period close date (input as 'YYYY-MM-DD')
-#' @param defaulter_tolerance Number of tolerance days before defaulters are considered inactive
-#' @param filter_by_location Logical. If `TRUE`, filters query to a specific location.  If `FALSE` queries for all locations.
-#' @param location_uuid Health facility location_uuid to filter by when filter_by_location is `TRUE`
+#' @param con Ligação à base de dados MozART 2.0
+#' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)
+#' @param defaulter_tolerance Número de dias de tolerância antes dos faltosos serem considerados inactivos (abandonos)
+#' @param filter_by_location Lógico. Se `TRUE`, o query corre sobre uma unidade sanitária específica.  Se `FALSE`,  o query corre sobre todas as unidade sanitária contidas na base de dados
+#' @param location_uuid location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como `TRUE`
 #'
-#' @return A data frame containing line-level listing of patients active on ART
+#' @return Um quadro de dados contendo uma listagem individual dos pacientes activos em TARV
 #' @export
 #'
 #' @examples
