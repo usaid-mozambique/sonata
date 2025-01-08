@@ -1,6 +1,6 @@
 # sonata <a href="https://usaid-mozambique.github.io/sonata/"><a href="https://usaid-mozambique.github.io/sonata/"><img src="man/figures/logo.png" align="right" height="120" alt="sonata website" /></a>
 
-MozART 2.0 Support Package
+Extrair e interagir com dados do MozART 2.0
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -9,21 +9,21 @@ MozART 2.0 Support Package
 [![sonata status badge](https://usaid-mozambique.r-universe.dev/badges/sonata)](https://usaid-mozambique.r-universe.dev/sonata)
 <!-- badges: end -->
 
-## Installation
+## Instalação
 
-`sonata` is not on CRAN, so you will have to install it directly from rOpenSci using the code below.
+`sonata` não está no CRAN, então você terá que instalá-lo diretamente do rOpenSci usando o código abaixo.
 
 ``` r
 
-    ## SETUP
+    ## CONFIGURAR
 
-    # install via rOpenSci
+    # instalar via rOpenSci
       install.packages("sonata", repos = c('https://usaid-mozambique.r-universe.dev', 'https://cloud.r-project.org'))
     
-    # ATTACH PACKAGE
+    # ANEXAR PACOTE
       library(sonata)
       
-    ## LIST PACKAGE FUNCTIONS
+    ## LISTAR FUNÇÕES DO PACOTE
       ls("package::sonata")
     
 ```
