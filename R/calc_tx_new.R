@@ -31,25 +31,23 @@ calc_tx_new <- function(con, opendate, enddate, filter_by_location = FALSE, loca
   # define query
   sql_query <- paste(
     "SELECT
-    encounter_uuid,
-    encounter_date,
-    form_id,
-    encounter_type,
-    patient_uuid,
-    encounter_created_date,
-    location_uuid,
-    concept_id,
-    observation_date,
-    value_datetime,
-    obs_uuid,
-    source_database",
-    "FROM observation o",
+    o.location_uuid,
+    o.encounter_uuid,
+    o.patient_uuid,
+    p.birthdate,
+    p.gender,
+    o.form_id,
+    o.encounter_date,
+    o.observation_date,
+    o.value_datetime
+
+  FROM observation o",
+    "JOIN patient p ON o.patient_uuid = p.patient_uuid",  # Join with the patient table
     "WHERE",
-    location_condition,  # dynamic location condition
-    "concept_id = 1190 AND observation_date >= '2018-01-01'"
+    location_condition,  # Dynamic location condition
+    "o.concept_id = 1190 AND o.observation_date >= '2018-01-01'"
   )
 
-  # execute sql query, munge, and return result
   df <- DBI::dbGetQuery(con, sql_query) |>
     dplyr::mutate(
       art_start_date = dplyr::case_when(
@@ -63,7 +61,12 @@ calc_tx_new <- function(con, opendate, enddate, filter_by_location = FALSE, loca
     dplyr::slice_head(n = 1) |>
     dplyr::ungroup() |>
     dplyr::filter(art_start_date > opendate & art_start_date < enddate) |>
-    dplyr::mutate(dplyr::across(c(value_datetime, art_start_date, observation_date), ~ lubridate::as_date(lubridate::ymd_hms(.))))
+    dplyr::mutate(
+      across(c(observation_date, value_datetime, art_start_date), ~lubridate::as_date(lubridate::ymd_hms(.))),
+      age = calculate_age(birth_date = birthdate, ref_date = enddate)
+    ) |>
+    dplyr::relocate(age, .after = birthdate) |>
+    dplyr::select(!c(encounter_date, observation_date, value_datetime))
 
   return(df)
 
