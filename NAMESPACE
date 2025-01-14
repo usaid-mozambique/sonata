@@ -2,5 +2,6 @@
 
 export(calc_tx_active)
 export(calc_tx_new)
+export(calculate_age)
 export(mysql_connection)
 importFrom(lifecycle,deprecated)
