@@ -1,4 +1,4 @@
-#' Query estatísticas anónimas para pacientes activos em TARV
+#' Query estatísticas anónimas para clientes activos em TARV
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)
@@ -73,7 +73,7 @@ calc_tx_active <- function(con, enddate, defaulter_tolerance = 28, filter_by_loc
       enddate = lubridate::as_date(lubridate::ymd(enddate)),
       dplyr::across(c(medication_pickup_date, next_pickup_date), ~ lubridate::as_date(lubridate::ymd_hms(.))),
       dplyr::across(c(birthdate, enddate), ~ lubridate::as_date(lubridate::ymd(.))),
-      age = calculate_age(birth_date = birthdate, ref_date = enddate)
+      age = calc_client_age(birth_date = birthdate, ref_date = enddate)
     ) |>
     dplyr::select(!row_num) |>
     dplyr::relocate(age, .after = birthdate)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_tx_new.R
 \name{calc_tx_new}
 \alias{calc_tx_new}
-\title{Query estatísticas anónimas para pacientes iniciados em TARV}
+\title{Query estatísticas anónimas para clientes iniciados em TARV}
 \usage{
 calc_tx_new(
   con,
@@ -27,7 +27,7 @@ calc_tx_new(
 Um quadro de dados contendo uma listagem individual dos pacientes iniciados em TARV
 }
 \description{
-Query estatísticas anónimas para pacientes iniciados em TARV
+Query estatísticas anónimas para clientes iniciados em TARV
 }
 \examples{
 \dontrun{
