@@ -17,7 +17,13 @@ Imports:
     lubridate,
     RMySQL,
     DBI,
-    lifecycle
+    lifecycle,
+    duckdb,
+    glue,
+    readr,
+    stringr,
+    tibble,
+    usethis
 URL: https://usaid-mozambique.github.io/sonata/
 Depends: 
     R (>= 3.5)
