@@ -1,3 +1,7 @@
+# sonata 1.0.0
+* adição de funções de pesquisa para consultas clinicas
+* adição de funções de recodificação de variáveis
+
 # sonata 0.2.0
 * tradução do conteúdo da embalagem para português
 

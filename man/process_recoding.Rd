@@ -25,3 +25,12 @@ process_recoding(
 \description{
 Recodificar múltiplas variáveis definidas pelo utilizador
 }
+\examples{
+\dontrun{
+
+ df <- process_recoding(
+          df = tx_active,
+          columns_to_recode = c("mode_dispensation_id",
+                                "regimen_id",
+                                "location_uuid"))}
+}

@@ -265,6 +265,13 @@ recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#'
+#'  df <- process_recoding(
+#'           df = tx_active,
+#'           columns_to_recode = c("mode_dispensation_id",
+#'                                 "regimen_id",
+#'                                 "location_uuid"))}
 
 process_recoding <- function(df,
                              columns_to_recode,
