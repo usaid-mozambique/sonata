@@ -23,7 +23,9 @@ Imports:
     readr,
     stringr,
     tibble,
-    usethis
+    usethis,
+    testthat,
+    tidyselect
 URL: https://usaid-mozambique.github.io/sonata/
 Depends: 
     R (>= 3.5)
