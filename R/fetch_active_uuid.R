@@ -6,7 +6,7 @@
 #' @param filter_by_location Lógico. Se `TRUE`, o query corre sobre uma unidade sanitária específica.  Se `FALSE`,  o query corre sobre todas as unidade sanitária contidas na base de dados
 #' @param location_uuid location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como `TRUE`
 #'
-#' @return Um vector contendo os patient_uuid unicos dos pacientes activos em TARV
+#' @return `fetch_active_uuid` devolve um vector contendo os patient_uuid unicos dos pacientes activos em TARV
 #' @export
 #'
 #' @examples

@@ -24,7 +24,7 @@ fetch_active_uuid(
 \item{location_uuid}{location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como \code{TRUE}}
 }
 \value{
-Um vector contendo os patient_uuid unicos dos pacientes activos em TARV
+\code{fetch_active_uuid} devolve um vector contendo os patient_uuid unicos dos pacientes activos em TARV
 }
 \description{
 Query um vector de patient_uuid deduplicado para pacientes activos no TARV
