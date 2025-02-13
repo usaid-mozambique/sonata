@@ -1,6 +1,6 @@
 Package: sonata
 Title: What the Package Does (One Line, Title Case)
-Version: 0.2.0
+Version: 1.0.0
 Authors@R: c(
     person("Joe", "Lara", email = "jlara@usaid.gov", role = c("aut", "cre")),
     person("Karishma", "Srikanth", email = "ksrikanth@usaid.gov", role = c("aut")),
@@ -17,7 +17,15 @@ Imports:
     lubridate,
     RMySQL,
     DBI,
-    lifecycle
+    lifecycle,
+    duckdb,
+    glue,
+    readr,
+    stringr,
+    tibble,
+    usethis,
+    testthat,
+    tidyselect
 URL: https://usaid-mozambique.github.io/sonata/
 Depends: 
     R (>= 3.5)

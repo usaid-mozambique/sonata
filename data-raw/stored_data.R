@@ -13091,5 +13091,5 @@ data_observation_lookup <-
 usethis::use_data(data_location_lookup,
                   data_observation_lookup,
                   data_type_id_lookup,
-                  internal = TRUE,
+                  internal = FALSE,
                   overwrite = TRUE)
