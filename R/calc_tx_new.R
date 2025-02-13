@@ -1,4 +1,4 @@
-#' Query estatísticas anónimas para pacientes iniciados em TARV
+#' Query estatísticas anónimas para clientes iniciados em TARV
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param opendate Data de abertura do período (introduzir como “AAAA-MM-DD”)
@@ -62,8 +62,8 @@ calc_tx_new <- function(con, opendate, enddate, filter_by_location = FALSE, loca
     dplyr::ungroup() |>
     dplyr::filter(art_start_date > opendate & art_start_date < enddate) |>
     dplyr::mutate(
-      dplyr::across(c(observation_date, value_datetime, art_start_date), ~lubridate::as_date(lubridate::ymd_hms(.))),
-      age = calculate_age(birth_date = birthdate, ref_date = enddate)
+      across(c(observation_date, value_datetime, art_start_date), ~lubridate::as_date(lubridate::ymd_hms(.))),
+      age = calc_client_age(birth_date = birthdate, ref_date = enddate)
     ) |>
     dplyr::relocate(age, .after = birthdate) |>
     dplyr::select(!c(encounter_date, observation_date, value_datetime))

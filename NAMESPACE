@@ -3,9 +3,11 @@
 export(calc_active_consults)
 export(calc_tx_active)
 export(calc_tx_new)
-export(calculate_age)
 export(fetch_active_uuid)
-export(mysql_connection)
+export(calc_client_age) #
+export(calc_tx_active) #
+export(calc_tx_new) #
+export(mysql_connection) #
 export(process_recoding)
 export(recode_age)
 export(recode_disp_mode)
@@ -13,4 +15,4 @@ export(recode_form)
 export(recode_location)
 export(recode_regimen)
 export(recode_sex)
-importFrom(lifecycle,deprecated)
+importFrom(lifecycle,deprecated) #
