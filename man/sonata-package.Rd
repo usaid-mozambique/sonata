@@ -4,7 +4,7 @@
 \name{sonata-package}
 \alias{sonata}
 \alias{sonata-package}
-\title{sonata: What the Package Does (One Line, Title Case)}
+\title{sonata: Extrair e Interagir com Dados do MozART 2.0}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 

@@ -1,0 +1,68 @@
+---
+title: "Definir Credenciais MozART 2.0"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{definir-credenciais}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+O pacote `sonata` foi desenvolvido para facilitar a extração e a interação com dados do MozART 2.0 por analistas com credenciais de acesso válidas. Para além das funções utilizadas para fazer chamadas de dados específicas ao MozART 2.0, `sonata` fornece funções utilitárias que podem ser usadas para armazenar e recuperar as suas credenciais de forma segura. A utilização de tais ferramentas ajuda a automatizar o fluxo de trabalho dos analistas e evita a circulação não intencional de credenciais privadas através de plataformas de partilha de código como o GitHub ou GitLab.  O artigo abaixo fornece uma explicação passo-a-passo sobre como um analista MozART pode utilizar o `sonata` para guardar credenciais encriptadas no armazenamento de credenciais do sistema operativo.
+
+## Carregar dependências de pacotes
+
+Vamos começar nosso trabalho anexando os pacotes necessários que nosso fluxo de trabalho exigirá.  Estes incluem o pacote utilitário `glamr` da USAID OHA, e o pacote `sonata`.
+
+```{r setup, warning = FALSE, message = FALSE}
+library(glamr)
+library(sonata)
+```
+
+## Definir credenciais no sistema operativo local
+
+No bloco de código abaixo, criaremos um valor de usuário (definido como “acct_dev”) e, em seguida, passaremos esse valor de usuário para a segunda linha de código que iniciará as ferramentas internas do RStudio para armazenar credenciais no sistema operacional da máquina do usuário. Ao executar a função `set_account`, o usuário será solicitado a definir o host MozART 2.0, porta, nome de usuário, senha e dbname.  Uma vez definidas, essas credenciais podem ser carregadas na sessão do RStudio sem serem visíveis no código do projeto.  Isto evita a partilha não intencional.
+
+```{r, eval = FALSE}
+# Definir um valor de usuário
+acct_dev <- "mysql-example-user"
+
+# Definir credenciais no sistema operativo local
+set_account(name = acct_dev, 
+            keys = c("host", "port", "username", "password", "dbname"), 
+            update = TRUE)
+
+# Carregar credenciais
+acct <- get_account(name = acct_dev)
+```
+
+## Carregar credenciais e criar uma ligação MozART 2.0
+
+Tendo as nossas credenciais encriptadas armazenadas na nossa máquina local, podemos chamá-las de forma segura para o nosso ambiente R usando a função `get_account`.  Podemos então usá-las para estabelecer a nossa ligação MozART 2.0.
+
+```{r, eval = FALSE}
+
+# Definir valor do usuário
+acct_dev <- "mysql-example-user"
+
+# Carregar credenciais
+acct_db <- get_account(name = acct_dev)
+
+# Criar uma ligação MozART 2.0
+con <- mysql_connection(
+  db_name = acct_db$dbname, 
+  db_user = acct_db$username,
+  db_pass = acct_db$password, 
+  db_host = acct_db$host, 
+  db_port = acct_db$port
+  )
+
+```
+
