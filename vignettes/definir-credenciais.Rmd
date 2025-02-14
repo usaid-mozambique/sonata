@@ -21,9 +21,9 @@ O pacote `sonata` foi desenvolvido para facilitar a extração e a interação c
 
 Vamos começar nosso trabalho anexando os pacotes necessários que nosso fluxo de trabalho exigirá.  Estes incluem o pacote utilitário `glamr` da USAID OHA, e o pacote `sonata`.
 
-```{r setup, warning = FALSE, message = FALSE}
-library(glamr)
+```{r setup, eval = FALSE, warning = FALSE, message = FALSE}
 library(sonata)
+library(glamr)
 ```
 
 ## Definir credenciais no sistema operativo local
