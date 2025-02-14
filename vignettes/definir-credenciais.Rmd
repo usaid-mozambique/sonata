@@ -47,7 +47,6 @@ acct <- get_account(name = acct_dev)
 Tendo as nossas credenciais encriptadas armazenadas na nossa máquina local, podemos chamá-las de forma segura para o nosso ambiente R usando a função `get_account`.  Podemos então usá-las para estabelecer a nossa ligação MozART 2.0.
 
 ```{r, eval = FALSE}
-
 # Definir valor do usuário
 acct_dev <- "mysql-example-user"
 
@@ -62,6 +61,5 @@ con <- mysql_connection(
   db_host = acct_db$host, 
   db_port = acct_db$port
   )
-
 ```
 

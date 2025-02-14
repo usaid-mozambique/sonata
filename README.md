@@ -14,11 +14,13 @@ Extrair e interagir com dados do MozART 2.0
 `sonata` não está no CRAN, então você terá que instalá-lo diretamente do rOpenSci usando o código abaixo.
 
 ``` r
-
     ## CONFIGURAR
 
     # instalar via rOpenSci
-      install.packages("sonata", repos = c('https://usaid-mozambique.r-universe.dev', 'https://cloud.r-project.org'))
+      install.packages("sonata", 
+                        repos = 
+                        c('https://usaid-mozambique.r-universe.dev', 
+                        https://cloud.r-project.org'))
     
     # ANEXAR PACOTE
       library(sonata)
