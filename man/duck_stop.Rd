@@ -7,7 +7,7 @@
 duck_stop(dbfile = ":memory:")
 }
 \arguments{
-\item{dbfile}{}
+\item{dbfile}{database connection}
 }
 \description{
 shutdown duckdb connection

@@ -1,7 +1,7 @@
 #' @title Initiate duckdb connection
 #'
-#' @param dbfile
-#' @param ...
+#' @param dbfile database file
+#' @param ... test fix
 #'
 duck_connection <- function(dbfile = ":memory:", ...) {
   # Connection
@@ -33,7 +33,7 @@ duck_connection <- function(dbfile = ":memory:", ...) {
 
 #' @title shutdown duckdb connection
 #'
-#' @param dbfile
+#' @param dbfile database connection
 #'
 duck_stop <- function(dbfile = ":memory:") {
   tryCatch(
@@ -46,7 +46,7 @@ duck_stop <- function(dbfile = ":memory:") {
 
 #' @title List Duck DB Tables
 #'
-#' @param conn
+#' @param conn database connection
 #'
 duck_tables <- function(conn) {
   DBI::dbExecute(

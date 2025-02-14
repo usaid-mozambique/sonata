@@ -7,7 +7,7 @@
 duck_tables(conn)
 }
 \arguments{
-\item{conn}{}
+\item{conn}{database connection}
 }
 \description{
 List Duck DB Tables

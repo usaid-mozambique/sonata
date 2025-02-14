@@ -7,7 +7,9 @@
 duck_connection(dbfile = ":memory:", ...)
 }
 \arguments{
-\item{...}{}
+\item{dbfile}{database file}
+
+\item{...}{test fix}
 }
 \description{
 Initiate duckdb connection
