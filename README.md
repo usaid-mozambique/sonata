@@ -19,10 +19,10 @@ Extrair e interagir com dados do MozART 2.0
                         repos = c('https://usaid-mozambique.r-universe.dev', 
                         https://cloud.r-project.org'))
     
-    # ANEXAR PACOTE
+    # Anexar pacote
       library(sonata)
       
-    ## LISTAR FUNÇÕES DO PACOTE
+    # Listar funções do pacote
       ls("package::sonata")
     
 ```
