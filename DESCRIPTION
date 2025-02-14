@@ -1,5 +1,5 @@
 Package: sonata
-Title: What the Package Does (One Line, Title Case)
+Title: Extrair e Interagir com Dados do MozART 2.0
 Version: 1.0.0
 Authors@R: c(
     person("Joe", "Lara", email = "jlara@usaid.gov", role = c("aut", "cre")),
@@ -30,3 +30,7 @@ URL: https://usaid-mozambique.github.io/sonata/
 Depends: 
     R (>= 3.5)
 LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
