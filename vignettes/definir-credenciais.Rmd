@@ -23,6 +23,7 @@ Vamos começar nosso trabalho anexando os pacotes necessários que nosso fluxo d
 
 ```{r setup, eval = FALSE, warning = FALSE, message = FALSE}
 library(sonata)
+library(glamr)
 ```
 
 ## Definir credenciais no sistema operativo local
