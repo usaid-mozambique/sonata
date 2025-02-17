@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   definir-credenciais: definir-credenciais.html
-last_built: 2025-02-14T12:54Z
+last_built: 2025-02-17T07:32Z
 urls:
   reference: https://usaid-mozambique.github.io/sonata/reference
   article: https://usaid-mozambique.github.io/sonata/articles
