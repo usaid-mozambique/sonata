@@ -1,5 +1,5 @@
 ---
-title: "Definir Credenciais MozART 2.0"
+title: "Uso Seguro de Credenciais MozART 2.0"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{definir-credenciais}
