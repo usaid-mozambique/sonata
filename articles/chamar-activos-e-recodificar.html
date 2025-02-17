@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Uso Seguro de Credenciais MozART 2.0 • sonata</title>
+<title>Cálculo dos Activos em TARV • sonata</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Uso Seguro de Credenciais MozART 2.0">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Cálculo dos Activos em TARV">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -55,72 +55,37 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Uso Seguro de Credenciais MozART 2.0</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Cálculo dos Activos em TARV</h1>
             
       
 
-      <div class="d-none name"><code>definir-credenciais.Rmd</code></div>
+      <div class="d-none name"><code>chamar-activos-e-recodificar.Rmd</code></div>
     </div>
 
     
     
-<p>O pacote <code>sonata</code> foi desenvolvido para facilitar a
-extração e a interação com dados do MozART 2.0 por analistas com
-credenciais de acesso válidas. Para além das funções utilizadas para
-chamar dados específicos ao MozART 2.0, <code>sonata</code> fornece
-funções utilitárias para guardar e recuperar credenciais de forma
-segura. A utilização de tais ferramentas ajuda a automatizar o fluxo de
-trabalho analítico e evita a circulação não intencional de credenciais
-privadas através de plataformas como o GitHub e GitLab. O artigo abaixo
-fornece uma explicação passo-a-passo sobre como utilizar o
-<code>sonata</code> para guardar credenciais encriptadas no sistema
-operativo e usa-los para estabelecer uma conexão segura com o MozART
-2.0.</p>
 <div class="section level2">
-<h2 id="carregar-dependências-de-pacotes">Carregar dependências de pacotes<a class="anchor" aria-label="anchor" href="#carregar-depend%C3%AAncias-de-pacotes"></a>
+<h2 id="anexar-pacotes-necessários">Anexar pacotes necessários<a class="anchor" aria-label="anchor" href="#anexar-pacotes-necess%C3%A1rios"></a>
 </h2>
-<p>Começaremos o trabalho anexando os pacotes necessários que o fluxo de
-trabalho exigirá. Estes incluem o pacote <code>sonata</code> e o pacote
-utilitário <code>glamr</code> da USAID.</p>
+<p>Primeiro, anexaremos os pacotes requiridos para a chamada e
+manipulação dos dados de MozART 2.0.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://usaid-mozambique.github.io/sonata/">sonata</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">glamr</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Se necessário, instale o `glamr` a partir do código abaixo</span></span>
 <span><span class="co"># install.packages('glamr', repos = c('https://usaid-oha-si.r-universe.dev', 'https://cloud.r-project.org'))</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="definir-credenciais-no-sistema-operativo-local">Definir credenciais no sistema operativo local<a class="anchor" aria-label="anchor" href="#definir-credenciais-no-sistema-operativo-local"></a>
+<h2 id="estabelecer-conexão-com-o-mozart-2-0">Estabelecer conexão com o MozART 2.0<a class="anchor" aria-label="anchor" href="#estabelecer-conex%C3%A3o-com-o-mozart-2-0"></a>
 </h2>
-<p>No bloco de código abaixo, criaremos um valor de usuário (definido
-como “acct_dev”) e, em seguida, passaremos esse valor de usuário para o
-segundo bloco de código que iniciará as ferramentas internas do RStudio
-para guardar credenciais no sistema operacional da máquina do usuário.
-Ao executar a função <code>set_account</code>, o usuário será solicitado
-a definir o host MozART 2.0, porta, nome de usuário, senha e dbname. Uma
-vez definidas, essas credenciais podem ser carregadas na sessão do
-RStudio sem serem visíveis no código do projeto. Esta abordagem minimiza
-a possibilidade de partilha não intencional.</p>
+<p>Como descrito no artigo <a href="https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html">Uso
+Seguro de Credenciais MozART 2.0</a> é possível carregar as suas
+credenciais previamente encriptadas sem as revelar no seu script. Isto
+evita a partilha não intencional desta informação sensível e o acesso
+não autorizado ao MozART 2.0.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Definir um valor de usuário</span></span>
-<span><span class="va">acct_dev</span> <span class="op">&lt;-</span> <span class="st">"mysql-example-user"</span></span>
-<span></span>
-<span><span class="co"># Definir credenciais no sistema operativo local</span></span>
-<span><span class="fu">set_account</span><span class="op">(</span>name <span class="op">=</span> <span class="va">acct_dev</span>, </span>
-<span>            keys <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"host"</span>, <span class="st">"port"</span>, <span class="st">"username"</span>, <span class="st">"password"</span>, <span class="st">"dbname"</span><span class="op">)</span>, </span>
-<span>            update <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Carregar credenciais</span></span>
-<span><span class="va">acct_db</span> <span class="op">&lt;-</span> <span class="fu">get_account</span><span class="op">(</span>name <span class="op">=</span> <span class="va">acct_dev</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="carregar-credenciais-e-criar-uma-ligação-mozart-2-0">Carregar credenciais e criar uma ligação MozART 2.0<a class="anchor" aria-label="anchor" href="#carregar-credenciais-e-criar-uma-liga%C3%A7%C3%A3o-mozart-2-0"></a>
-</h2>
-<p>Tendo as nossas credenciais encriptadas e guardadas na máquina local,
-iremos chamá-las de forma segura para o nosso ambiente R usando a função
-<code>get_account</code>. De daí, utilizá-los-emos para estabelecer a
-nossa conexão ao MozART 2.0.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Definir valor do usuário</span></span>
 <span><span class="va">acct_dev</span> <span class="op">&lt;-</span> <span class="st">"mysql-example-user"</span></span>
 <span></span>
@@ -135,8 +100,55 @@ nossa conexão ao MozART 2.0.</p>
 <span>  db_host <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">host</span>, </span>
 <span>  db_port <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">port</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p>Parabéns! Você acaba de estebelecer um sistema seguro e eficiente
-para guardar e usar credenciais de MozART 2.0!</p>
+</div>
+<div class="section level2">
+<h2 id="chamar-indicador-activos-em-tarv-de-mozart-2-0">Chamar indicador “Activos em TARV” de MozART 2.0<a class="anchor" aria-label="anchor" href="#chamar-indicador-activos-em-tarv-de-mozart-2-0"></a>
+</h2>
+<p>A base de dados MozART 2.0 é composta por uma série de tabelas de
+dados ligadas entre si por chaves variáveis. Esta organização de dados,
+embora óptima para a eficiência do armazenamento, torna mais complexa a
+tarefa de criar conjuntos de dados analíticos. O pacote
+<code>sonata</code> foi concebido para fornecer aos analistas um
+conjunto de funções fáceis de utilizar que reduzem a necessidade de
+escrever ou adaptar chamadas R e SQL. <code>calc_tx_active</code>, que
+calcula e extrai uma lista de pacientes activos em TARV, é um
+exemplo.</p>
+<p><code>calc_tx_active</code> traz 5 argumentos. 2 destes argumentos
+vêm sem valores predefinidos e requerem definição pelo utilizador,
+enquanto 3 têm valores pré-defindo que são modificáveis de acordo com as
+necessidades da analista.</p>
+<p>O primeiro argumento requerido, “con”, é a ligação activa ao MozART
+2.0 no ambiente R (no exemplo abaixo também definido como “con”). O
+segundo argumento obrigatório, “enddate”, exige que o utilizador
+especifique o fecho do período de avaliação, que será utilizado como
+referência para calcular os activos em TARV. O terceiro argumento,
+“defaulter_tolerance”, dá ao utilizador a opção de definir um valor
+personalizado para o número de dias antes de um faltoso ser
+reclassificado como inactivo (ou “abandono”). O valor predefinido para
+este argumento é “28”, tal como recomendado nas diretrizes da OMS.</p>
+<p>O quarto e o quinto argumentos (“filter_by_location” e
+“location_uuid”) são argumentos concebidos para permitir ao utilizador
+consultar um conjunto de dados de uma unidade sanitária individual em
+vez de todo o conjunto de mais de 600 unidades sanitárias que contribuem
+com dados para o MozART 2.0. Na prática, uso destes argumentos são úteis
+para testar o código numa ligação em tempo real, uma vez que os
+resultados do query são devolvidos mais rápido do que se forem
+executados sobre toda a base de dados. Quando filter_by_location é
+definido como “TRUE”, a consulta será personalizada para ser executada
+numa única base de dados definida pelo utilizador no argumento
+“location_uuid”. Observe abaixo que o location_uuid está definido como
+“e5f01eee-2392-49b4-a5bf-5cf593fc8f21”, que é o ID de local para o CS
+Merripo.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">location_meripo</span> <span class="op">&lt;-</span> <span class="st">"e5f01eee-2392-49b4-a5bf-5cf593fc8f21"</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calc_tx_active.html">calc_tx_active</a></span><span class="op">(</span></span>
+<span>  con <span class="op">=</span> <span class="va">con</span>,</span>
+<span>  enddate <span class="op">=</span> <span class="st">'2024-09-20'</span>,</span>
+<span>  defaulter_tolerance <span class="op">=</span> <span class="fl">28</span>, <span class="co"># valor por defeito</span></span>
+<span>  filter_by_location <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co"># valor por defeito</span></span>
+<span>  location_uuid <span class="op">=</span> <span class="va">location_meripo</span>  <span class="co"># valor por defeito</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

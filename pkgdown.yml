@@ -2,8 +2,9 @@ pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
+  chamar-activos-e-recodificar: chamar-activos-e-recodificar.html
   definir-credenciais: definir-credenciais.html
-last_built: 2025-02-17T07:32Z
+last_built: 2025-02-17T09:49Z
 urls:
   reference: https://usaid-mozambique.github.io/sonata/reference
   article: https://usaid-mozambique.github.io/sonata/articles
