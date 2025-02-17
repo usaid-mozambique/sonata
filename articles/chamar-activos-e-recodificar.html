@@ -111,34 +111,32 @@ tarefa de criar conjuntos de dados analíticos. O pacote
 <code>sonata</code> foi concebido para fornecer aos analistas um
 conjunto de funções fáceis de utilizar que reduzem a necessidade de
 escrever ou adaptar chamadas R e SQL. <code>calc_tx_active</code>, que
-calcula e extrai uma lista de pacientes activos em TARV, é um
-exemplo.</p>
+calcula e extrai uma lista de pacientes activos em TARV, é um exemplo de
+uma função deste tipo. Um caso de uso típico é demonstrado como parte
+deste artigo.</p>
 <p><code>calc_tx_active</code> traz 5 argumentos. 2 destes argumentos
 vêm sem valores predefinidos e requerem definição pelo utilizador,
 enquanto 3 têm valores pré-defindo que são modificáveis de acordo com as
 necessidades da analista.</p>
-<p>O primeiro argumento requerido, “con”, é a ligação activa ao MozART
-2.0 no ambiente R (no exemplo abaixo também definido como “con”). O
-segundo argumento obrigatório, “enddate”, exige que o utilizador
-especifique o fecho do período de avaliação, que será utilizado como
-referência para calcular os activos em TARV. O terceiro argumento,
-“defaulter_tolerance”, dá ao utilizador a opção de definir um valor
-personalizado para o número de dias antes de um faltoso ser
-reclassificado como inactivo (ou “abandono”). O valor predefinido para
-este argumento é “28”, tal como recomendado nas diretrizes da OMS.</p>
+<p>O primeiro argumento requerido, “con”, é a ligação ao MozART 2.0
+aberto no ambiente R (no exemplo abaixo também definido como “con”). O
+segundo argumento obrigatório, “enddate”, exige o fecho do período de
+avaliação, que será utilizado como referência para calcular os activos
+em TARV. O terceiro argumento, “defaulter_tolerance”, dá a opção de
+definir um valor custimizado para o número de dias antes de um faltoso
+ser reclassificado como inactivo (ou “abandono”). O valor predefinido
+para este argumento é “28” de acordo com as diretrizes da OMS.</p>
 <p>O quarto e o quinto argumentos (“filter_by_location” e
-“location_uuid”) são argumentos concebidos para permitir ao utilizador
-consultar um conjunto de dados de uma unidade sanitária individual em
-vez de todo o conjunto de mais de 600 unidades sanitárias que contribuem
-com dados para o MozART 2.0. Na prática, uso destes argumentos são úteis
-para testar o código numa ligação em tempo real, uma vez que os
-resultados do query são devolvidos mais rápido do que se forem
-executados sobre toda a base de dados. Quando filter_by_location é
-definido como “TRUE”, a consulta será personalizada para ser executada
-numa única base de dados definida pelo utilizador no argumento
-“location_uuid”. Observe abaixo que o location_uuid está definido como
-“e5f01eee-2392-49b4-a5bf-5cf593fc8f21”, que é o ID de local para o CS
-Merripo.</p>
+“location_uuid”) são argumentos que permitem que o query seja executado
+sobre dados de uma unidade sanitária individual em vez de todas as mais
+de 600 unidades sanitárias que contribuem com dados para o MozART 2.0.
+Na prática, estes argumentos são úteis para testar código numa conexão
+activa, uma vez que os resultados serão devolvidos mais rápido. Quando
+filter_by_location é definido como “TRUE”, a consulta será personalizada
+para ser executada numa única base de dados definida pelo utilizador no
+argumento “location_uuid”. Observe abaixo que o location_uuid está
+definido como “e5f01eee-2392-49b4-a5bf-5cf593fc8f21”, que é o ID de
+local para o CS Merripo.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">location_meripo</span> <span class="op">&lt;-</span> <span class="st">"e5f01eee-2392-49b4-a5bf-5cf593fc8f21"</span></span>
 <span></span>
