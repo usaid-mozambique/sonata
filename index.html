@@ -66,17 +66,18 @@
 <h2 id="instalação">Instalação<a class="anchor" aria-label="anchor" href="#instala%C3%A7%C3%A3o"></a>
 </h2>
 <p><code>sonata</code> não está no CRAN, então você terá que instalá-lo diretamente do rOpenSci usando o código abaixo.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>    <span class="co"># instalar via rOpenSci</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>      <span class="fu">install.packages</span>(<span class="st">"sonata"</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>                        <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">'https://usaid-mozambique.r-universe.dev'</span>, </span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>                        https<span class="sc">:</span><span class="er">//</span>cloud.r<span class="sc">-</span>project.org<span class="st">'))</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="st">    # Anexar pacote</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="st">      library(sonata)</span></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="st">      </span></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="st">    # Listar funções do pacote</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="st">      ls("package::sonata")</span></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="st">    </span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>    <span class="co"># instalar via rOpenSci</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"sonata"</span>, </span>
+<span>                        repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'https://usaid-mozambique.r-universe.dev'</span>, </span>
+<span>                        <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="co"># Anexar pacote</span></span>
+<span>      <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://usaid-mozambique.github.io/sonata/">sonata</a></span><span class="op">)</span></span>
+<span>      </span>
+<span>    <span class="co"># Listar funções do pacote</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/ls.html" class="external-link">ls</a></span><span class="op">(</span><span class="st">"package::sonata"</span><span class="op">)</span></span>
+<span>    </span></code></pre></div>
 <hr>
 <p><em>Disclaimer: The findings, interpretation, and conclusions expressed herein are those of the authors and do not necessarily reflect the views of United States Agency for International Development. All errors remain our own.</em></p>
 </div>
