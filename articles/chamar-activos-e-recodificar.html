@@ -159,23 +159,22 @@ identificador da CS Merripo.</p>
 função <code>view</code> do <code>tidyverse</code>. Observe que os
 valores retornados para várias colunas são codificados numericamente e
 não fornecem explicitamente ao analista informações suficientes para a
-interpretação. Podemos usar a função <code>process_recode</code> com
-seus argumentos correspondentes para recodificar esses valores.</p>
-<p>O <code>process_recode</code> utiliza as tabelas de pesquisa MozART
-2.0 armazenadas internamente no <code>sonata</code> para mapear os
-valores colunares descodificados para um conjunto de variáveis definido
-pelo utilizador. No exemplo abaixo, chamamos <code>process_recode</code>
-e o argumento columns_to_recode para descodificar os valores
-apresentados em 5 colunas no objecto df que geramos com
-<code>calc_tx_active</code>. Estas são: “mode_dispensation_id”,
-“regimen_id”, “location_uuid”, “age”, “form_id” e “gender”. O argumento
-columns_to_recode pode ser adaptado de acordo com as colunas presentes
-no objeto de dados de entrada. Por exemplo, se só estiverem presentes
-“idade” e “sexo”, o utilizador só forneceria estes dois valores no
-argumento.</p>
+interpretação. Podemos usar a função <code>recode_cols</code> com seus
+argumentos correspondentes para recodificar esses valores.</p>
+<p>O <code>recode_cols</code> utiliza as tabelas de pesquisa MozART 2.0
+armazenadas internamente no <code>sonata</code> para mapear os valores
+colunares descodificados para um conjunto de variáveis definido pelo
+utilizador. No exemplo abaixo, chamamos <code>recode_cols</code> e o
+argumento columns_to_recode para descodificar os valores apresentados em
+5 colunas no objecto df que geramos com <code>calc_tx_active</code>.
+Estas são: “mode_dispensation_id”, “regimen_id”, “location_uuid”, “age”,
+“form_id” e “gender”. O argumento columns_to_recode pode ser adaptado de
+acordo com as colunas presentes no objeto de dados de entrada. Por
+exemplo, se só estiverem presentes “idade” e “sexo”, o utilizador só
+forneceria estes dois valores no argumento.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_recode</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="../reference/process_recoding.html">process_recoding</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/recode_cols.html">recode_cols</a></span><span class="op">(</span></span>
 <span>    columns_to_recode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mode_dispensation_id"</span>, </span>
 <span>                          <span class="st">"regimen_id"</span>, </span>
 <span>                          <span class="st">"location_uuid"</span>, </span>

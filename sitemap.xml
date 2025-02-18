@@ -16,14 +16,11 @@
 <url><loc>https://usaid-mozambique.github.io/sonata/reference/data_location_lookup.html</loc></url>
 <url><loc>https://usaid-mozambique.github.io/sonata/reference/data_observation_lookup.html</loc></url>
 <url><loc>https://usaid-mozambique.github.io/sonata/reference/data_type_id_lookup.html</loc></url>
-<url><loc>https://usaid-mozambique.github.io/sonata/reference/duck_connection.html</loc></url>
-<url><loc>https://usaid-mozambique.github.io/sonata/reference/duck_stop.html</loc></url>
-<url><loc>https://usaid-mozambique.github.io/sonata/reference/duck_tables.html</loc></url>
-<url><loc>https://usaid-mozambique.github.io/sonata/reference/fetch_active_uuid.html</loc></url>
 <url><loc>https://usaid-mozambique.github.io/sonata/reference/index.html</loc></url>
 <url><loc>https://usaid-mozambique.github.io/sonata/reference/mysql_connection.html</loc></url>
-<url><loc>https://usaid-mozambique.github.io/sonata/reference/process_recoding.html</loc></url>
+<url><loc>https://usaid-mozambique.github.io/sonata/reference/pull_active_uuid.html</loc></url>
 <url><loc>https://usaid-mozambique.github.io/sonata/reference/recode_age.html</loc></url>
+<url><loc>https://usaid-mozambique.github.io/sonata/reference/recode_cols.html</loc></url>
 <url><loc>https://usaid-mozambique.github.io/sonata/reference/recode_disp_mode.html</loc></url>
 <url><loc>https://usaid-mozambique.github.io/sonata/reference/recode_form.html</loc></url>
 <url><loc>https://usaid-mozambique.github.io/sonata/reference/recode_location.html</loc></url>
