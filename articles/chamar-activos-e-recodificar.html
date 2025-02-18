@@ -81,10 +81,12 @@ manipulação dos dados de MozART 2.0.</p>
 <h2 id="estabelecer-conexão-com-o-mozart-2-0">Estabelecer conexão com o MozART 2.0<a class="anchor" aria-label="anchor" href="#estabelecer-conex%C3%A3o-com-o-mozart-2-0"></a>
 </h2>
 <p>Como descrito no artigo <a href="https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html">Uso
-Seguro de Credenciais MozART 2.0</a> é possível carregar as suas
-credenciais previamente encriptadas sem as revelar no seu script. Isto
-evita a partilha não intencional desta informação sensível e o acesso
-não autorizado ao MozART 2.0.</p>
+Seguro de Credenciais MozART 2.0</a> é recomendado carregar no ambiente
+R as suas credenciais a partir do sistema operativo. Isto evita elas
+estarem no seu script e por sua vez a partilha não intencional desta
+informação sensível. O código abaixo mostra como carregar as credenciais
+do MozART 2.0 seguramente e estabelecer uma conexão com a base de
+dados.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Definir valor do usuário</span></span>
 <span><span class="va">acct_dev</span> <span class="op">&lt;-</span> <span class="st">"mysql-example-user"</span></span>
@@ -104,19 +106,19 @@ não autorizado ao MozART 2.0.</p>
 <div class="section level2">
 <h2 id="chamar-indicador-activos-em-tarv-de-mozart-2-0">Chamar indicador “Activos em TARV” de MozART 2.0<a class="anchor" aria-label="anchor" href="#chamar-indicador-activos-em-tarv-de-mozart-2-0"></a>
 </h2>
-<p>A base de dados MozART 2.0 é composta por uma série de tabelas de
-dados ligadas entre si por chaves variáveis. Esta organização de dados,
-embora óptima para a eficiência do armazenamento, torna mais complexa a
-tarefa de criar conjuntos de dados analíticos. O pacote
-<code>sonata</code> foi concebido para fornecer aos analistas um
-conjunto de funções fáceis de utilizar que reduzem a necessidade de
-escrever ou adaptar chamadas R e SQL. <code>calc_tx_active</code>, que
-calcula e extrai uma lista de pacientes activos em TARV, é um exemplo de
-uma função deste tipo. Um caso de uso típico é demonstrado como parte
+<p>MozART 2.0 é composta por uma série de tabelas de dados ligadas entre
+si por chaves variáveis. Esta organização de dados, embora óptima para a
+eficiência do armazenamento, torna mais complexa a tarefa de criar
+conjuntos de dados analíticos. O pacote <code>sonata</code> foi
+concebido para fornecer aos analistas um conjunto de funções fáceis de
+utilizar que reduzem a necessidade de escrever ou adaptar chamadas R e
+SQL. <code>calc_tx_active</code>, que calcula e extrai uma lista de
+pacientes activos em TARV, é um exemplo de uma função oferecido no
+<code>sonata</code>. Um caso de uso típico é demonstrado como parte
 deste artigo.</p>
 <p><code>calc_tx_active</code> traz 5 argumentos. 2 destes argumentos
-vêm sem valores predefinidos e requerem definição pelo utilizador,
-enquanto 3 têm valores pré-defindo que são modificáveis de acordo com as
+vêm sem valores predefinidos e requerem definição pelo utilizador, 3
+argumentos têm valores pré-defindo que são modificáveis de acordo com as
 necessidades da analista.</p>
 <p>O primeiro argumento requerido, “con”, é a ligação ao MozART 2.0
 aberto no ambiente R (no exemplo abaixo também definido como “con”). O
@@ -130,13 +132,13 @@ para este argumento é “28” de acordo com as diretrizes da OMS.</p>
 “location_uuid”) são argumentos que permitem que o query seja executado
 sobre dados de uma unidade sanitária individual em vez de todas as mais
 de 600 unidades sanitárias que contribuem com dados para o MozART 2.0.
-Na prática, estes argumentos são úteis para testar código numa conexão
-activa, uma vez que os resultados serão devolvidos mais rápido. Quando
-filter_by_location é definido como “TRUE”, a consulta será personalizada
-para ser executada numa única base de dados definida pelo utilizador no
+Na prática, estes argumentos são usados para testar código numa conexão
+activa, uma vez que os resultados são devolvidos mais rápido. Quando
+filter_by_location é definido como “TRUE”, o query será adequado para
+ser executada numa única base de dados definida pelo utilizador no
 argumento “location_uuid”. Observe abaixo que o location_uuid está
-definido como “e5f01eee-2392-49b4-a5bf-5cf593fc8f21”, que é o ID de
-local para o CS Merripo.</p>
+definido como “e5f01eee-2392-49b4-a5bf-5cf593fc8f21”, que é o
+identificador da CS Merripo.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">location_meripo</span> <span class="op">&lt;-</span> <span class="st">"e5f01eee-2392-49b4-a5bf-5cf593fc8f21"</span></span>
 <span></span>
@@ -147,6 +149,44 @@ local para o CS Merripo.</p>
 <span>  filter_by_location <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co"># valor por defeito</span></span>
 <span>  location_uuid <span class="op">=</span> <span class="va">location_meripo</span>  <span class="co"># valor por defeito</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="recodificar-variáveis">Recodificar variáveis<a class="anchor" aria-label="anchor" href="#recodificar-vari%C3%A1veis"></a>
+</h2>
+<p>Quando devolvido, pode inspecionar os resultados da sua consulta com
+função <code>view</code> do <code>tidyverse</code>. Observe que os
+valores retornados para várias colunas são codificados numericamente e
+não fornecem explicitamente ao analista informações suficientes para a
+interpretação. Podemos usar a função <code>process_recode</code> com
+seus argumentos correspondentes para recodificar esses valores.</p>
+<p>O <code>process_recode</code> utiliza as tabelas de pesquisa MozART
+2.0 armazenadas internamente no <code>sonata</code> para mapear os
+valores colunares descodificados para um conjunto de variáveis definido
+pelo utilizador. No exemplo abaixo, chamamos <code>process_recode</code>
+e o argumento columns_to_recode para descodificar os valores
+apresentados em 5 colunas no objecto df que geramos com
+<code>calc_tx_active</code>. Estas são: “mode_dispensation_id”,
+“regimen_id”, “location_uuid”, “age”, “form_id” e “gender”. O argumento
+columns_to_recode pode ser adaptado de acordo com as colunas presentes
+no objeto de dados de entrada. Por exemplo, se só estiverem presentes
+“idade” e “sexo”, o utilizador só forneceria estes dois valores no
+argumento.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>df_recode <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="fu">process_recoding</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>    <span class="at">columns_to_recode =</span> <span class="fu">c</span>(<span class="st">"mode_dispensation_id"</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>                          <span class="st">"regimen_id"</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>                          <span class="st">"location_uuid"</span>, </span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>                          <span class="st">"age"</span>, </span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>                          <span class="st">"form_id"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>                          <span class="st">"gender"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>  )</span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="er">)</span></span></code></pre></div>
+<p>Utilizando apenas algumas funções <code>sonata</code>, criámos um
+conjunto de dados que pode ser utilizado para responder à nossa questão
+analítica, seja ela qual for. Finalmente, lembre-se de nunca salvar
+conjuntos de dados de nível individual no seu disco local! Em vez disso,
+agrupe os valores por todas as caraterísticas de dados relevantes e
+guarde-os como um conjunto de dados agregado. Boa análise!</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
