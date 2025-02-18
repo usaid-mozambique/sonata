@@ -17,7 +17,7 @@ Interagir com dados do MozART 2.0
     # instalar via rOpenSci
       install.packages("sonata", 
                         repos = c('https://usaid-mozambique.r-universe.dev', 
-                        https://cloud.r-project.org'))
+                        'https://cloud.r-project.org'))
     
     # Anexar pacote
       library(sonata)
