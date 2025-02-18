@@ -62,15 +62,15 @@ df <- calc_tx_active(
 )
 ```
 ## Recodificar variáveis
-Quando devolvido, pode inspecionar os resultados da sua consulta com função `view` do `tidyverse`.   Observe que os valores retornados para várias colunas são codificados numericamente e não fornecem explicitamente ao analista informações suficientes para a interpretação.  Podemos usar a função `process_recode` com seus argumentos correspondentes para recodificar esses valores.  
+Quando devolvido, pode inspecionar os resultados da sua consulta com função `view` do `tidyverse`.   Observe que os valores retornados para várias colunas são codificados numericamente e não fornecem explicitamente ao analista informações suficientes para a interpretação.  Podemos usar a função `recode_cols` com seus argumentos correspondentes para recodificar esses valores.  
 
-O `process_recode` utiliza as tabelas de pesquisa MozART 2.0 armazenadas internamente no `sonata` para mapear os valores colunares descodificados para um conjunto de variáveis definido pelo utilizador. No exemplo abaixo, chamamos `process_recode` e o argumento columns_to_recode para descodificar os valores apresentados em 5 colunas no objecto df que geramos com `calc_tx_active`.  Estas são: “mode_dispensation_id”, “regimen_id”, “location_uuid”, “age”, “form_id” e “gender”. O argumento columns_to_recode pode ser adaptado de acordo com as colunas presentes no objeto de dados de entrada.  Por exemplo, se só estiverem presentes “idade” e “sexo”, o utilizador só forneceria estes dois valores no argumento.
+O `recode_cols` utiliza as tabelas de pesquisa MozART 2.0 armazenadas internamente no `sonata` para mapear os valores colunares descodificados para um conjunto de variáveis definido pelo utilizador. No exemplo abaixo, chamamos `recode_cols` e o argumento columns_to_recode para descodificar os valores apresentados em 5 colunas no objecto df que geramos com `calc_tx_active`.  Estas são: “mode_dispensation_id”, “regimen_id”, “location_uuid”, “age”, “form_id” e “gender”. O argumento columns_to_recode pode ser adaptado de acordo com as colunas presentes no objeto de dados de entrada.  Por exemplo, se só estiverem presentes “idade” e “sexo”, o utilizador só forneceria estes dois valores no argumento.
 
 
 ```{r, eval = FALSE}
 
 df_recode <- df |> 
-  process_recoding(
+  recode_cols(
     columns_to_recode = c("mode_dispensation_id", 
                           "regimen_id", 
                           "location_uuid", 
