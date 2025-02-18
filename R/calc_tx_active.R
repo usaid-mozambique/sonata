@@ -72,9 +72,8 @@ calc_tx_active <- function(con, enddate, defaulter_tolerance = 28, filter_by_loc
     dplyr::mutate(
       enddate = lubridate::as_date(lubridate::ymd(enddate)),
       dplyr::across(c(medication_pickup_date, next_pickup_date), ~ lubridate::as_date(lubridate::ymd_hms(.))),
-      dplyr::across(c(birthdate, enddate), ~ lubridate::as_date(lubridate::ymd(.))),
-      age = calc_client_age(birth_date = birthdate, ref_date = enddate)
-    ) |>
+      dplyr::across(c(birthdate, enddate), ~ lubridate::as_date(lubridate::ymd(.)))) |>
+    calc_age_var(ref_date = enddate) |>
     dplyr::select(!row_num) |>
     dplyr::relocate(age, .after = birthdate)
 
