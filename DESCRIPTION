@@ -1,5 +1,5 @@
 Package: sonata
-Title: Extrair e Interagir com Dados do MozART 2.0
+Title: Interagir com Dados do MozART 2.0
 Version: 1.0.0
 Authors@R: c(
     person("Joe", "Lara", email = "jlara@usaid.gov", role = c("aut", "cre")),
@@ -18,12 +18,10 @@ Imports:
     RMySQL,
     DBI,
     lifecycle,
-    duckdb,
     glue,
     readr,
     stringr,
     tibble,
-    usethis,
     testthat,
     tidyselect
 URL: https://usaid-mozambique.github.io/sonata/

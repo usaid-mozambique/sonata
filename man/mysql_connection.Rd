@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{mysql_connection}
 \alias{mysql_connection}
-\title{MozART 2.0 Utilities}
+\title{Ligar ao MozART 2.0}
 \usage{
 mysql_connection(
   db_name,
@@ -13,21 +13,21 @@ mysql_connection(
 )
 }
 \arguments{
-\item{db_name}{Database name}
+\item{db_name}{Nome da base de dados}
 
-\item{db_user}{Database user}
+\item{db_user}{Utilizador da base de dados}
 
-\item{db_pass}{Database password}
+\item{db_pass}{Senha da base de dados}
 
-\item{db_host}{Database host}
+\item{db_host}{Host da base de dados}
 
-\item{db_port}{Database port}
+\item{db_port}{Porta da base de dados}
 }
 \value{
-A connection to the database
+Uma conexão à base de dados
 }
 \description{
-MozART 2.0 Utilities
+Ligar ao MozART 2.0
 }
 \examples{
 \dontrun{

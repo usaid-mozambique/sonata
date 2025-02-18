@@ -9,7 +9,7 @@ calc_active_consults(con, patient_uuids)
 \arguments{
 \item{con}{Ligação à base de dados MozART 2.0}
 
-\item{patient_uuids}{Mm vector contendo os patient_uuid unicos dos pacientes activos em TARV}
+\item{patient_uuids}{Um vector contendo os patient_uuid unicos dos pacientes activos em TARV}
 }
 \value{
 \code{calc_active_consults} devolve um quadro de dados com consultas clínicas para pacientes activos em TARV

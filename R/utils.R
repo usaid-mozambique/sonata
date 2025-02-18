@@ -1,12 +1,12 @@
-#' MozART 2.0 Utilities
+#' Ligar ao MozART 2.0
 #'
-#' @param db_name Database name
-#' @param db_user Database user
-#' @param db_pass Database password
-#' @param db_host Database host
-#' @param db_port Database port
+#' @param db_name Nome da base de dados
+#' @param db_user Utilizador da base de dados
+#' @param db_pass Senha da base de dados
+#' @param db_host Host da base de dados
+#' @param db_port Porta da base de dados
 #'
-#' @return A connection to the database
+#' @return Uma conexão à base de dados
 #' @export
 #'
 #' @examples

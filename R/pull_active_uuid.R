@@ -6,20 +6,20 @@
 #' @param filter_by_location Lógico. Se `TRUE`, o query corre sobre uma unidade sanitária específica.  Se `FALSE`,  o query corre sobre todas as unidade sanitária contidas na base de dados
 #' @param location_uuid location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como `TRUE`
 #'
-#' @return `fetch_active_uuid` devolve um vector contendo os patient_uuid unicos dos pacientes activos em TARV
+#' @return `pull_active_uuid` devolve um vector contendo os patient_uuid unicos dos pacientes activos em TARV
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #'
-#'  df <- fetch_active_uuid(
+#'  df <- pull_active_uuid(
 #'           con,
 #'           enddate = '2024-09-20',
 #'           defaulter_tolerance = 28,
 #'           filter_by_location = TRUE,
 #'           location_uuid = location_meripo)}
 
-fetch_active_uuid <- function(con, enddate, defaulter_tolerance = 28, filter_by_location = FALSE, location_uuid = '4be5f1a9-832c-4717-be41-ef4b6311c0ef') {
+pull_active_uuid <- function(con, enddate, defaulter_tolerance = 28, filter_by_location = FALSE, location_uuid = '4be5f1a9-832c-4717-be41-ef4b6311c0ef') {
 
   # ARV pickup cutoff definitions and ceilings.
   next_pickup_date_cutoff <- as.character(as.Date(enddate) - lubridate::days(defaulter_tolerance))

@@ -1,7 +1,7 @@
 #' Query um quadro de dados com consultas clínicas para pacientes activos em TARV
 #'
 #' @param con Ligação à base de dados MozART 2.0
-#' @param patient_uuids Mm vector contendo os patient_uuid unicos dos pacientes activos em TARV
+#' @param patient_uuids Um vector contendo os patient_uuid unicos dos pacientes activos em TARV
 #'
 #' @return `calc_active_consults` devolve um quadro de dados com consultas clínicas para pacientes activos em TARV
 #' @export

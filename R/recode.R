@@ -261,27 +261,27 @@ recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
 #' @param columns_to_recode Vector de strings contendo os nomes das colunas a recodificar
 #' @param options Lista de parâmetros opcionais para personalizar a recodificação
 #'
-#' @return `process_recoding` devolve um quadro de dados com colunas recodificadas
+#' @return `recode_cols` devolve um quadro de dados com colunas recodificadas
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #'
-#'  df <- process_recoding(
+#'  df <- recode_cols(
 #'           df = tx_active,
 #'           columns_to_recode = c("mode_dispensation_id",
 #'                                 "regimen_id",
 #'                                 "location_uuid"))}
 
-process_recoding <- function(df,
-                             columns_to_recode,
-                             options = list(
-                               df_disp_mode = data_type_id_lookup,
-                               df_regimen = data_type_id_lookup,
-                               df_form = data_type_id_lookup,
-                               df_location = data_location_lookup,
-                               age_column = "age",
-                               sex_column = "gender")
+recode_cols <- function(df,
+                        columns_to_recode,
+                        options = list(
+                          df_disp_mode = data_type_id_lookup,
+                          df_regimen = data_type_id_lookup,
+                          df_form = data_type_id_lookup,
+                          df_location = data_location_lookup,
+                          age_column = "age",
+                          sex_column = "gender")
 )
 
 {
