@@ -65,7 +65,7 @@
     
     
 <div class="section level2">
-<h2 id="anexar-pacotes-necessários">Anexar pacotes necessários<a class="anchor" aria-label="anchor" href="#anexar-pacotes-necess%C3%A1rios"></a>
+<h2 id="anexar-pacotes">Anexar pacotes<a class="anchor" aria-label="anchor" href="#anexar-pacotes"></a>
 </h2>
 <p>Primeiro, anexaremos os pacotes requiridos para a chamada e
 manipulação dos dados de MozART 2.0.</p>
@@ -74,11 +74,11 @@ manipulação dos dados de MozART 2.0.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">glamr</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Se necessário, instale o `glamr` a partir do código abaixo</span></span>
+<span><span class="co"># Se preciso, instale o `glamr` com código abaixo</span></span>
 <span><span class="co"># install.packages('glamr', repos = c('https://usaid-oha-si.r-universe.dev', 'https://cloud.r-project.org'))</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="estabelecer-conexão-com-o-mozart-2-0">Estabelecer conexão com o MozART 2.0<a class="anchor" aria-label="anchor" href="#estabelecer-conex%C3%A3o-com-o-mozart-2-0"></a>
+<h2 id="estabelecer-conexão">Estabelecer conexão<a class="anchor" aria-label="anchor" href="#estabelecer-conex%C3%A3o"></a>
 </h2>
 <p>Como descrito no artigo <a href="https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html">Uso
 Seguro de Credenciais MozART 2.0</a> é recomendado carregar no ambiente
@@ -104,7 +104,7 @@ dados.</p>
 <span>  <span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="chamar-indicador-activos-em-tarv-de-mozart-2-0">Chamar indicador “Activos em TARV” de MozART 2.0<a class="anchor" aria-label="anchor" href="#chamar-indicador-activos-em-tarv-de-mozart-2-0"></a>
+<h2 id="chamar-activos-em-tarv">Chamar “Activos em TARV”<a class="anchor" aria-label="anchor" href="#chamar-activos-em-tarv"></a>
 </h2>
 <p>MozART 2.0 é composta por uma série de tabelas de dados ligadas entre
 si por chaves variáveis. Esta organização de dados, embora óptima para a
@@ -140,8 +140,10 @@ argumento “location_uuid”. Observe abaixo que o location_uuid está
 definido como “e5f01eee-2392-49b4-a5bf-5cf593fc8f21”, que é o
 identificador da CS Merripo.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">location_meripo</span> <span class="op">&lt;-</span> <span class="st">"e5f01eee-2392-49b4-a5bf-5cf593fc8f21"</span></span>
+<code class="sourceCode R"><span><span class="co"># Definir location_uuid para a CS Merripo</span></span>
+<span><span class="va">location_meripo</span> <span class="op">&lt;-</span> <span class="st">"e5f01eee-2392-49b4-a5bf-5cf593fc8f21"</span></span>
 <span></span>
+<span><span class="co"># Chamar `calc_tx_active`</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calc_tx_active.html">calc_tx_active</a></span><span class="op">(</span></span>
 <span>  con <span class="op">=</span> <span class="va">con</span>,</span>
 <span>  enddate <span class="op">=</span> <span class="st">'2024-09-20'</span>,</span>
@@ -171,16 +173,16 @@ columns_to_recode pode ser adaptado de acordo com as colunas presentes
 no objeto de dados de entrada. Por exemplo, se só estiverem presentes
 “idade” e “sexo”, o utilizador só forneceria estes dois valores no
 argumento.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>df_recode <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="fu">process_recoding</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>    <span class="at">columns_to_recode =</span> <span class="fu">c</span>(<span class="st">"mode_dispensation_id"</span>, </span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>                          <span class="st">"regimen_id"</span>, </span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>                          <span class="st">"location_uuid"</span>, </span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>                          <span class="st">"age"</span>, </span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>                          <span class="st">"form_id"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>                          <span class="st">"gender"</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>  )</span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="er">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_recode</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/process_recoding.html">process_recoding</a></span><span class="op">(</span></span>
+<span>    columns_to_recode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mode_dispensation_id"</span>, </span>
+<span>                          <span class="st">"regimen_id"</span>, </span>
+<span>                          <span class="st">"location_uuid"</span>, </span>
+<span>                          <span class="st">"age"</span>, </span>
+<span>                          <span class="st">"form_id"</span>,</span>
+<span>                          <span class="st">"gender"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p>Utilizando apenas algumas funções <code>sonata</code>, criámos um
 conjunto de dados que pode ser utilizado para responder à nossa questão
 analítica, seja ela qual for. Finalmente, lembre-se de nunca salvar
