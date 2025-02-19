@@ -62,11 +62,11 @@ calc_tx_new <- function(con, opendate, enddate, filter_by_location = FALSE, loca
     dplyr::ungroup() |>
     dplyr::filter(art_start_date > opendate & art_start_date < enddate) |>
     dplyr::mutate(
-      dplyr::across(c(observation_date, value_datetime, art_start_date), ~lubridate::as_date(lubridate::ymd_hms(.))),
-      age = calc_client_age(birth_date = birthdate, ref_date = enddate)
-    ) |>
-    dplyr::relocate(age, .after = birthdate) |>
-    dplyr::select(!c(encounter_date, observation_date, value_datetime))
+      enddate = lubridate::as_date(lubridate::ymd(enddate)),
+      dplyr::across(c(observation_date, value_datetime, art_start_date), ~lubridate::as_date(lubridate::ymd_hms(.)))) |>
+    calc_age_var(ref_date = enddate) |>
+    dplyr::select(!c(encounter_date, observation_date, value_datetime)) |>
+    dplyr::relocate(age, .after = birthdate)
 
   return(df)
 
