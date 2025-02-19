@@ -4,12 +4,14 @@
 \alias{recode_age}
 \title{Recodificar idade}
 \usage{
-recode_age(df, age_column = "age")
+recode_age(df, age_column = "age", variable_name = "age_band")
 }
 \arguments{
 \item{df}{Quadro de dados contendo a variável a recodificar}
 
 \item{age_column}{Variável no quadro de dados introduzido contendo a idade do cliente}
+
+\item{variable_name}{Nome da variável que será criada no quadro de dados com a faixa etária do client (default = 'age_band')}
 }
 \value{
 \code{recode_age} devolve um quadro de dados com a coluna idade recodificada

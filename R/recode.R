@@ -46,6 +46,7 @@ recode_location  <- function(df, df_location = data_location_lookup) {
 #'
 #' @param df Quadro de dados contendo a variável a recodificar
 #' @param age_column Variável no quadro de dados introduzido contendo a idade do cliente
+#' @param variable_name Nome da variável que será criada no quadro de dados com a faixa etária do client (default = 'age_band')
 #'
 #' @return `recode_age` devolve um quadro de dados com a coluna idade recodificada
 #' @export
@@ -57,11 +58,11 @@ recode_location  <- function(df, df_location = data_location_lookup) {
 #'           df = df,
 #'           age_column = "age"))}
 
-recode_age <- function(df, age_column = "age") {
+recode_age <- function(df, age_column = "age", variable_name = "age_band") {
 
-  df <- df %>%
+  df <- df |>
     dplyr::mutate(
-      age_band = dplyr::case_when(
+      !!dplyr::sym(variable_name) := dplyr::case_when(
         !!dplyr::sym(age_column) < 1 ~ "<01",
         !!dplyr::sym(age_column) >= 1 & !!dplyr::sym(age_column) <= 4 ~ "01-04",
         !!dplyr::sym(age_column) >= 5 & !!dplyr::sym(age_column) <= 9 ~ "05-09",
@@ -79,15 +80,13 @@ recode_age <- function(df, age_column = "age") {
         !!dplyr::sym(age_column) >= 65 ~ "65+",
         TRUE ~ NA_character_
       )
-    )
+    ) |>
 
-  df <- df %>%
-    dplyr::relocate(age_band, .after = age_column)
+    dplyr::relocate(!!dplyr::sym(variable_name), .after = age_column)
 
   return(df)
 
 }
-
 
 #' Recodificar sexo
 #'
