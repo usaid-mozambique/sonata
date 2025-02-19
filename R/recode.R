@@ -273,7 +273,12 @@ recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
 #'                                 "location_uuid"))}
 
 recode_cols <- function(df,
-                        columns_to_recode,
+                        columns_to_recode = c("mode_dispensation_id",
+                                              "regimen_id",
+                                              "location_uuid",
+                                              "age",
+                                              "form_id",
+                                              "gender"),
                         options = list(
                           df_disp_mode = data_type_id_lookup,
                           df_regimen = data_type_id_lookup,
