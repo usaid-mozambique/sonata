@@ -1,0 +1,42 @@
+---
+title: "Analisar Transição Etária dos Clients"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{analisar-transição-etária}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+## Anexar pacotes
+Primeiro, anexaremos os pacotes requiridos para a chamada e manipulação dos dados de MozART 2.0.
+
+```{r setup, eval = FALSE, warning = FALSE, message = FALSE}
+library(sonata)
+library(glamr)
+library(tidyverse)
+
+# Se preciso, instale o `glamr` com código abaixo
+# install.packages('glamr', repos = c('https://usaid-oha-si.r-universe.dev', 'https://cloud.r-project.org'))
+
+```
+## Estabelecer conexão
+O código abaixo mostra como carregar as credenciais do MozART 2.0 seguramente e estabelecer uma conexão com a base de dados. Para uma descrição completa do armazenamento e chamada de credenciais encriptadas, veja [Uso Seguro de Credenciais MozART 2.0](https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html)
+
+```{r, eval = FALSE}
+# Definir valor do usuário
+acct_dev <- "mysql-example-user"
+
+# Carregar credenciais
+acct_db <- get_account(name = acct_dev)
+
+# Criar uma ligação MozART 2.0
+con <- mysql_connection(
+  db_name = acct_db$dbname, 
+  db_user = acct_db$username,
+  db_pass = acct_db$password, 
+  db_host = acct_db$host, 
+  db_port = acct_db$port
+  )
+```
+
+## Chamar população de base
+Depois de estabelecer a nossa ligação à base de dados, vamos consultar o MozART 2.0 para obter um conjunto de dados a utilizar na nossa análise.  Neste exemplo, vamos executar a função `calc_tx_new` para ter os clientes que iniciaram TARV durante .
