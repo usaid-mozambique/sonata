@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 ## Anexar pacotes
-Primeiro, anexaremos os pacotes requiridos para a chamada e manipulação dos dados de MozART 2.0.
+Como sempre, iniciaremos o trabalho carregando os pacotes requiridos no ambiente R.
 
 ```{r setup, eval = FALSE, warning = FALSE, message = FALSE}
 library(sonata)
@@ -19,7 +19,7 @@ library(tidyverse)
 
 ```
 ## Estabelecer conexão
-O código abaixo mostra como carregar as credenciais do MozART 2.0 seguramente e estabelecer uma conexão com a base de dados. Para uma descrição completa do armazenamento e chamada de credenciais encriptadas, veja [Uso Seguro de Credenciais MozART 2.0](https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html)
+O código abaixo carrega as credenciais do MozART 2.0 seguramente no ambiente R e, por outro lado, estabelece uma conexão com a base de dados. Para uma descrição completa do armazenamento e chamada de credenciais encriptadas, veja [Uso Seguro de Credenciais MozART 2.0](https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html)
 
 ```{r, eval = FALSE}
 # Definir valor do usuário
@@ -39,4 +39,28 @@ con <- mysql_connection(
 ```
 
 ## Chamar população de base
-Depois de estabelecer a nossa ligação à base de dados, vamos consultar o MozART 2.0 para obter um conjunto de dados a utilizar na nossa análise.  Neste exemplo, vamos executar a função `calc_tx_new` para ter os clientes que iniciaram TARV durante .
+Depois de estabelecer a nossa ligação à base de dados, vamos consultar o MozART 2.0 para obter dados a utilizar na nossa análise.  Neste exemplo, vamos executar a função `calc_tx_new` para ter os clientes que iniciaram TARV entre Julho e Setembro de 2024 em uma unidade sanitária.
+
+```{r, eval = FALSE}
+
+# Executar `calc_tx_new` com os seus argumentos
+df <- calc_tx_new(con,
+                  opendate = "2024-06-21",
+                  enddate = "2024-09-20",
+                  filter_by_location = TRUE,
+                  location_uuid = location_meripo
+                  )
+```
+
+## Projectar idade individual
+Podemos agora utilizar a função `project_age_out` para projetar as idades dos nossos clientes até uma data final definida. É necessário que os dados em que esta função é executada tenham a “data de nascimento” do cliente.
+
+```{r, eval = FALSE}
+
+# Executar `project_age_out` utilizando o argumento `ref_date` para indicar a data para a qual a idade será projectada.
+df <- df |>
+  project_age_out(ref_date = "2026-09-20")
+```
+
+## Analisar transição etária
+Os dados retornados por `project_client_age` estão prontos para serem analisados. Note-se que foram incluídas duas colunas para assinalar os indivíduos que transitam de - 1) categorias de idade pediátrica para adulta; e 2) entre faixas etárias de 5 anos.
