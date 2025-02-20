@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_age_var.R
 \name{calc_age_var}
 \alias{calc_age_var}
-\title{Calcular a idade do cliente em anos}
+\title{Calcular a idade do cliente}
 \usage{
 calc_age_var(
   df,
@@ -24,7 +24,7 @@ calc_age_var(
 Quadro de dados com a idade do cliente em anos
 }
 \description{
-Calcular a idade do cliente em anos
+Calcular a idade do cliente
 }
 \examples{
 \dontrun{

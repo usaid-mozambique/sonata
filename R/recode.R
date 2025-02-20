@@ -209,7 +209,7 @@ recode_disp_mode  <- function(df, df_disp_mode = data_type_id_lookup, keep_id = 
 }
 
 
-#' Recodificar formulario primario usado
+#' Recodificar formulario primario
 #'
 #' @param df Quadro de dados contendo a variável a recodificar
 #' @param df_form  Objecto de tabela de pesquisa usado para recodificação
@@ -254,7 +254,7 @@ recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
 }
 
 
-#' Recodificar múltiplas variáveis definidas pelo utilizador
+#' Recodificar múltiplas variáveis
 #'
 #' @param df Quadro de dados contendo a variável a recodificar
 #' @param columns_to_recode Vector de strings contendo os nomes das colunas a recodificar

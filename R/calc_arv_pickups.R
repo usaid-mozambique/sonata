@@ -1,4 +1,4 @@
-#' Query estatísticas anónimas para levantamentos TARV
+#' Query levantamentos TARV realizados
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)

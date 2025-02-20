@@ -1,4 +1,4 @@
-#' Query estatísticas anónimas para clientes iniciados em TARV
+#' Query clientes iniciados em TARV
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param opendate Data de abertura do período (introduzir como “AAAA-MM-DD”)

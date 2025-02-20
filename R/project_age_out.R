@@ -1,4 +1,4 @@
-#' Detectar casos de transição etária de clients
+#' Detectar clients com transição etária
 #'
 #' @param df Quadro de dados contendo a data de nasicmento do cliente
 #' @param ref_date Data de referência para calcular a idade projectada do cliente

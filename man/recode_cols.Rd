@@ -2,7 +2,7 @@
 % Please edit documentation in R/recode.R
 \name{recode_cols}
 \alias{recode_cols}
-\title{Recodificar múltiplas variáveis definidas pelo utilizador}
+\title{Recodificar múltiplas variáveis}
 \usage{
 recode_cols(
   df,
@@ -24,7 +24,7 @@ recode_cols(
 \code{recode_cols} devolve um quadro de dados com colunas recodificadas
 }
 \description{
-Recodificar múltiplas variáveis definidas pelo utilizador
+Recodificar múltiplas variáveis
 }
 \examples{
 \dontrun{

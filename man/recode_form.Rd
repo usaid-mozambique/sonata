@@ -2,7 +2,7 @@
 % Please edit documentation in R/recode.R
 \name{recode_form}
 \alias{recode_form}
-\title{Recodificar formulario primario usado}
+\title{Recodificar formulario primario}
 \usage{
 recode_form(df, df_form = data_type_id_lookup, keep_id = FALSE)
 }
@@ -17,7 +17,7 @@ recode_form(df, df_form = data_type_id_lookup, keep_id = FALSE)
 \code{recode_form} devolve um quadro de dados com a coluna regimen recodificada
 }
 \description{
-Recodificar formulario primario usado
+Recodificar formulario primario
 }
 \examples{
 \dontrun{

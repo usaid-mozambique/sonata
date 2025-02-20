@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_arv_pickups.R
 \name{calc_arv_pickups}
 \alias{calc_arv_pickups}
-\title{Query estatísticas anónimas para levantamentos TARV}
+\title{Query levantamentos TARV realizados}
 \usage{
 calc_arv_pickups(
   con,
@@ -30,7 +30,7 @@ calc_arv_pickups(
 Um quadro de dados contendo uma listagem individual dos levantamentos TARV
 }
 \description{
-Query estatísticas anónimas para levantamentos TARV
+Query levantamentos TARV realizados
 }
 \examples{
 \dontrun{

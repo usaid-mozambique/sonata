@@ -1,4 +1,4 @@
-#' Query estatísticas anónimas para clientes activos em TARV
+#' Query clientes activos em TARV
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)

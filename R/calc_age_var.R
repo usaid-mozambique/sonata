@@ -1,4 +1,4 @@
-#' Calcular a idade do cliente em anos
+#' Calcular a idade do cliente
 #'
 #' @param df Quadro de dados contendo a data de nasicmento do cliente
 #' @param birth_date Coluna do quadro de dados utilizada para introduzir a data de nascimento do cliente (default = birthdate)

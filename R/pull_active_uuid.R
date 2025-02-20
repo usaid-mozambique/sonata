@@ -1,4 +1,4 @@
-#' Query um vector de patient_uuid deduplicado para pacientes activos no TARV
+#' Query vector de patient_uuids de activos no TARV
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)

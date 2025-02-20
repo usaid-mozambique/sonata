@@ -2,7 +2,7 @@
 % Please edit documentation in R/project_age_out.R
 \name{project_age_out}
 \alias{project_age_out}
-\title{Detectar casos de transição etária de clients}
+\title{Detectar clients com transição etária}
 \usage{
 project_age_out(df, ref_date)
 }
@@ -15,7 +15,7 @@ project_age_out(df, ref_date)
 Quadro de dados com variáveis idade, idade projectada, faixa etária, faixa etária projectada, e colunas que indicam casos de transição etária
 }
 \description{
-Detectar casos de transição etária de clients
+Detectar clients com transição etária
 }
 \examples{
 \dontrun{
