@@ -68,8 +68,8 @@
 <div class="section level2">
 <h2 id="anexar-pacotes">Anexar pacotes<a class="anchor" aria-label="anchor" href="#anexar-pacotes"></a>
 </h2>
-<p>Primeiro, anexaremos os pacotes requiridos para a chamada e
-manipulação dos dados de MozART 2.0.</p>
+<p>Como sempre, iniciaremos o trabalho carregando os pacotes requiridos
+no ambiente R.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://usaid-mozambique.github.io/sonata/">sonata</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">glamr</span><span class="op">)</span></span>
@@ -81,10 +81,10 @@ manipulação dos dados de MozART 2.0.</p>
 <div class="section level2">
 <h2 id="estabelecer-conexão">Estabelecer conexão<a class="anchor" aria-label="anchor" href="#estabelecer-conex%C3%A3o"></a>
 </h2>
-<p>O código abaixo mostra como carregar as credenciais do MozART 2.0
-seguramente e estabelecer uma conexão com a base de dados. Para uma
-descrição completa do armazenamento e chamada de credenciais
-encriptadas, veja <a href="https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html">Uso
+<p>O código abaixo carrega as credenciais do MozART 2.0 seguramente no
+ambiente R e, por outro lado, estabelece uma conexão com a base de
+dados. Para uma descrição completa do armazenamento e chamada de
+credenciais encriptadas, veja <a href="https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html">Uso
 Seguro de Credenciais MozART 2.0</a></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Definir valor do usuário</span></span>
@@ -106,10 +106,38 @@ Seguro de Credenciais MozART 2.0</a></p>
 <h2 id="chamar-população-de-base">Chamar população de base<a class="anchor" aria-label="anchor" href="#chamar-popula%C3%A7%C3%A3o-de-base"></a>
 </h2>
 <p>Depois de estabelecer a nossa ligação à base de dados, vamos
-consultar o MozART 2.0 para obter um conjunto de dados a utilizar na
-nossa análise. Neste exemplo, vamos executar a função
-<code>calc_tx_new</code> para ter os clientes que iniciaram TARV durante
-.</p>
+consultar o MozART 2.0 para obter dados a utilizar na nossa análise.
+Neste exemplo, vamos executar a função <code>calc_tx_new</code> para ter
+os clientes que iniciaram TARV entre Julho e Setembro de 2024 em uma
+unidade sanitária.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Executar `calc_tx_new` com os seus argumentos</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calc_tx_new.html">calc_tx_new</a></span><span class="op">(</span><span class="va">con</span>,</span>
+<span>                  opendate <span class="op">=</span> <span class="st">"2024-06-21"</span>,</span>
+<span>                  enddate <span class="op">=</span> <span class="st">"2024-09-20"</span>,</span>
+<span>                  filter_by_location <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                  location_uuid <span class="op">=</span> <span class="va">location_meripo</span></span>
+<span>                  <span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="projectar-idade-individual">Projectar idade individual<a class="anchor" aria-label="anchor" href="#projectar-idade-individual"></a>
+</h2>
+<p>Podemos agora utilizar a função <code>project_age_out</code> para
+projetar as idades dos nossos clientes até uma data final definida. É
+necessário que os dados em que esta função é executada tenham a “data de
+nascimento” do cliente.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Executar `project_age_out` utilizando o argumento `ref_date` para indicar a data para a qual a idade será projectada.</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/project_age_out.html">project_age_out</a></span><span class="op">(</span>ref_date <span class="op">=</span> <span class="st">"2026-09-20"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="analisar-transição-etária">Analisar transição etária<a class="anchor" aria-label="anchor" href="#analisar-transi%C3%A7%C3%A3o-et%C3%A1ria"></a>
+</h2>
+<p>Os dados retornados por <code>project_client_age</code> estão prontos
+para serem analisados. Note-se que foram incluídas duas colunas para
+assinalar os indivíduos que transitam de - 1) categorias de idade
+pediátrica para adulta; e 2) entre faixas etárias de 5 anos.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
