@@ -2,21 +2,21 @@
 % Please edit documentation in R/recode.R
 \name{recode_cols}
 \alias{recode_cols}
-\title{Recodificar múltiplas variáveis}
+\title{Recodificar colunas}
 \usage{
 recode_cols(
   df,
-  columns_to_recode = c("mode_dispensation_id", "regimen_id", "location_uuid", "age",
-    "form_id", "gender"),
+  cols = c("mode_dispensation_id", "regimen_id", "location_uuid", "age", "form_id",
+    "gender"),
   options = list(df_disp_mode = data_type_id_lookup, df_regimen = data_type_id_lookup,
     df_form = data_type_id_lookup, df_location = data_location_lookup, age_column =
     "age", sex_column = "gender")
 )
 }
 \arguments{
-\item{df}{Quadro de dados contendo a variável a recodificar}
+\item{df}{Quadro de dados contendo colunas a serem recodificadas}
 
-\item{columns_to_recode}{Vector de strings contendo os nomes das colunas a recodificar}
+\item{cols}{Vector de strings contendo os nomes das colunas a recodificar}
 
 \item{options}{Lista de parâmetros opcionais para personalizar a recodificação}
 }
@@ -24,14 +24,14 @@ recode_cols(
 \code{recode_cols} devolve um quadro de dados com colunas recodificadas
 }
 \description{
-Recodificar múltiplas variáveis
+\code{recode_cols} reatribui valores para colunas codificadas em quadros de dados MozART 2.0 comuns
 }
 \examples{
 \dontrun{
-
+ # Caso de uso para recodificar dispensation_id, regimen_id e location_uuid
  df <- recode_cols(
-          df = tx_active,
-          columns_to_recode = c("mode_dispensation_id",
-                                "regimen_id",
-                                "location_uuid"))}
+          df = df,
+          cols = c("mode_dispensation_id",
+                   "regimen_id",
+                   "location_uuid"))}
 }

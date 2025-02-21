@@ -1,6 +1,7 @@
 # sonata 1.0.0
 * actualização do ciclo de vida para “stable”
-* adição de função query para consultas clinicas
+* adição de função query calc_consultas
+* renomeação do argumento 'columns_to_recode' na função 'recode_cols'
 * adição de função query para levantamentos ARV
 * adição de funções de recodificação de variáveis
 * adição de artigos

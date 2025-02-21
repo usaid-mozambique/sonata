@@ -254,10 +254,13 @@ recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
 }
 
 
-#' Recodificar múltiplas variáveis
+#' Recodificar colunas
 #'
-#' @param df Quadro de dados contendo a variável a recodificar
-#' @param columns_to_recode Vector de strings contendo os nomes das colunas a recodificar
+#' @description
+#' `recode_cols` reatribui valores para colunas codificadas em quadros de dados MozART 2.0 comuns
+#'
+#' @param df Quadro de dados contendo colunas a serem recodificadas
+#' @param cols Vector de strings contendo os nomes das colunas a recodificar
 #' @param options Lista de parâmetros opcionais para personalizar a recodificação
 #'
 #' @return `recode_cols` devolve um quadro de dados com colunas recodificadas
@@ -265,20 +268,20 @@ recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
 #'
 #' @examples
 #' \dontrun{
-#'
+#'  # Caso de uso para recodificar dispensation_id, regimen_id e location_uuid
 #'  df <- recode_cols(
-#'           df = tx_active,
-#'           columns_to_recode = c("mode_dispensation_id",
-#'                                 "regimen_id",
-#'                                 "location_uuid"))}
+#'           df = df,
+#'           cols = c("mode_dispensation_id",
+#'                    "regimen_id",
+#'                    "location_uuid"))}
 
 recode_cols <- function(df,
-                        columns_to_recode = c("mode_dispensation_id",
-                                              "regimen_id",
-                                              "location_uuid",
-                                              "age",
-                                              "form_id",
-                                              "gender"),
+                        cols = c("mode_dispensation_id",
+                                 "regimen_id",
+                                 "location_uuid",
+                                 "age",
+                                 "form_id",
+                                 "gender"),
                         options = list(
                           df_disp_mode = data_type_id_lookup,
                           df_regimen = data_type_id_lookup,
@@ -291,7 +294,7 @@ recode_cols <- function(df,
 {
 
   # Loop through the specified columns
-  for (col in columns_to_recode) {
+  for (col in cols) {
     # Call the corresponding subfunction based on the column name
     if (col == "age" && !is.null(options$age_column)) {
       df <- recode_age(df, options$age_column)
