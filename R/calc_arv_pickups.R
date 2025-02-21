@@ -1,11 +1,19 @@
-#' Query levantamentos TARV realizados
+#' Query levantamentos TARV
+#'
+#' @description
+#' `calc_arv_pickups()` devolve uma listagem dos levantamentos ARV feito during um período especificado pelo utilizador
 #'
 #' @param con Ligação à base de dados MozART 2.0
-#' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)
-#' @param arv_pickup_source Fonte de levantamento de ARV. Opções são "FILA", "Reception", "Any". Default é "FILA"
-#' @param n_months Número de meses para retroceder a partir da data de fecho do período (enddate). Default é 12 meses
-#' @param filter_by_location Lógico. Se `TRUE`, o query corre sobre uma unidade sanitária específica.  Se `FALSE`,  o query corre sobre todas as unidade sanitária contidas na base de dados
-#' @param location_uuid location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como `TRUE`
+#' @param opendate Data da abertura do período (introduzir como “AAAA-MM-DD”)
+#' @param enddate Data do fecho do período (introduzir como “AAAA-MM-DD”)
+#' @param arv_pickup_source Fonte de levantamento de ARV. Opções são "FILA", "Reception", "Any". Default é "FILA
+#' * `"FILA"` por defeito, devolve levantamentos documentados na FILA ou fonte alternativa da farmácia
+#' * `"Reception"` devolve levantamentos documentados na Ficha de Seguimento, Mapa dos Levantamentos
+#' * `"Any"` devolve todos levantamentos
+#' @param filter_by_location `FALSE` por defeito
+#' * `TRUE` executa sobre uma US específica
+#' * `FALSE` executa sobre todas as US contidas no MozART 2.0
+#' @param location_uuid location_uuid da US a filtrar quando filter_by_location é definido como `TRUE`
 #'
 #' @return Um quadro de dados contendo uma listagem individual dos levantamentos TARV
 #' @export
@@ -23,16 +31,14 @@
 
 calc_arv_pickups <- function(con,
                              enddate,
+                             opendate,  # New argument for start date
                              arv_pickup_source = "FILA",
-                             n_months = 12,
                              filter_by_location = FALSE,
                              location_uuid = '4be5f1a9-832c-4717-be41-ef4b6311c0ef') {
 
-  # Convert enddate to Date if not already
+  # Convert enddate and opendate to Date format
   enddate <- as.Date(enddate)
-
-  # ARV pickup start date based on n_months
-  start_date <- seq.Date(from = enddate, by = paste0("-", n_months, " months"), length.out = 2)[2]
+  opendate <- as.Date(opendate)
 
   # Partitioning based on calendar year
   partition_current <- as.character(lubridate::year(enddate))
@@ -73,7 +79,7 @@ calc_arv_pickups <- function(con,
     LEFT JOIN patient p ON m.patient_uuid = p.patient_uuid
     WHERE
     ", location_condition, "
-    m.medication_pickup_date BETWEEN '", start_date, " 00:00:00' AND '", enddate, " 00:00:00'
+    m.medication_pickup_date BETWEEN '", opendate, " 00:00:00' AND '", enddate, " 00:00:00'
     AND ", form_id_condition, ")
 
     SELECT * FROM med_dispensations;",
@@ -85,9 +91,8 @@ calc_arv_pickups <- function(con,
     dplyr::mutate(
       enddate = lubridate::as_date(lubridate::ymd(enddate)),
       dplyr::across(c(medication_pickup_date, next_pickup_date), ~ lubridate::as_date(lubridate::ymd_hms(.))),
-      dplyr::across(c(birthdate, enddate), ~ lubridate::as_date(lubridate::ymd(.))),
-      age = calc_client_age(birth_date = birthdate, ref_date = enddate)
-    ) |>
+      dplyr::across(c(birthdate, enddate), ~ lubridate::as_date(lubridate::ymd(.)))) |>
+    calc_age_var(ref_date = enddate) |>
     dplyr::select(!row_num) |>
     dplyr::relocate(age, .after = birthdate)
 

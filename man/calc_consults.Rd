@@ -45,7 +45,7 @@ calc_consults(
 Um quadro de dados contendo uma listagem das consultas clínicas HIV realizadas
 }
 \description{
-\code{calc_consults()} executa um query que devolve uma listagem das consultas clínicas do HIV realizadas por um grupo de clientes definido pelo utilizador (activos em TARV ou todos clientes)
+\code{calc_consults()} devolve uma listagem das consultas clínicas do HIV realizadas por um grupo de clientes definido pelo utilizador (activos em TARV ou todos clientes)
 }
 \examples{
 \dontrun{

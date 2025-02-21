@@ -1,7 +1,7 @@
 #' Query consultas clínicas HIV
 #'
 #' @description
-#' `calc_consults()` executa um query que devolve uma listagem das consultas clínicas do HIV realizadas por um grupo de clientes definido pelo utilizador (activos em TARV ou todos clientes)
+#' `calc_consults()` devolve uma listagem das consultas clínicas do HIV realizadas por um grupo de clientes definido pelo utilizador (activos em TARV ou todos clientes)
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param client_status Estado do cliente em TARV

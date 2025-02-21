@@ -2,13 +2,13 @@
 % Please edit documentation in R/calc_arv_pickups.R
 \name{calc_arv_pickups}
 \alias{calc_arv_pickups}
-\title{Query levantamentos TARV realizados}
+\title{Query levantamentos TARV}
 \usage{
 calc_arv_pickups(
   con,
   enddate,
+  opendate,
   arv_pickup_source = "FILA",
-  n_months = 12,
   filter_by_location = FALSE,
   location_uuid = "4be5f1a9-832c-4717-be41-ef4b6311c0ef"
 )
@@ -16,21 +16,30 @@ calc_arv_pickups(
 \arguments{
 \item{con}{Ligação à base de dados MozART 2.0}
 
-\item{enddate}{Data de fecho do período (introduzir como “AAAA-MM-DD”)}
+\item{enddate}{Data do fecho do período (introduzir como “AAAA-MM-DD”)}
 
-\item{arv_pickup_source}{Fonte de levantamento de ARV. Opções são "FILA", "Reception", "Any". Default é "FILA"}
+\item{opendate}{Data da abertura do período (introduzir como “AAAA-MM-DD”)}
 
-\item{n_months}{Número de meses para retroceder a partir da data de fecho do período (enddate). Default é 12 meses}
+\item{arv_pickup_source}{Fonte de levantamento de ARV. Opções são "FILA", "Reception", "Any". Default é "FILA
+\itemize{
+\item \code{"FILA"} por defeito, devolve levantamentos documentados na FILA ou fonte alternativa da farmácia
+\item \code{"Reception"} devolve levantamentos documentados na Ficha de Seguimento, Mapa dos Levantamentos
+\item \code{"Any"} devolve todos levantamentos
+}}
 
-\item{filter_by_location}{Lógico. Se \code{TRUE}, o query corre sobre uma unidade sanitária específica.  Se \code{FALSE},  o query corre sobre todas as unidade sanitária contidas na base de dados}
+\item{filter_by_location}{\code{FALSE} por defeito
+\itemize{
+\item \code{TRUE} executa sobre uma US específica
+\item \code{FALSE} executa sobre todas as US contidas no MozART 2.0
+}}
 
-\item{location_uuid}{location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como \code{TRUE}}
+\item{location_uuid}{location_uuid da US a filtrar quando filter_by_location é definido como \code{TRUE}}
 }
 \value{
 Um quadro de dados contendo uma listagem individual dos levantamentos TARV
 }
 \description{
-Query levantamentos TARV realizados
+\code{calc_arv_pickups()} devolve uma listagem dos levantamentos ARV feito during um período especificado pelo utilizador
 }
 \examples{
 \dontrun{
