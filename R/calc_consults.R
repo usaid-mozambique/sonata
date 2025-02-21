@@ -8,7 +8,7 @@
 #' * `"All"`, por defeito, devolve todos clientes tendo realizado consultas clínicas
 #' * `"Active"`, devolve apenas os clientes activos em TARV
 #' @param enddate Data do fecho do período usado para avialar o estado activo do client
-#' * `"Sys.Date"` Por defito
+#' * `"Sys.Date"` Por defeito
 #' * Data customizada em formato (introduzir como “AAAA-MM-DD”)
 #' @param opendate Data da abertura do período (introduzir como “AAAA-MM-DD”)
 #' @param defaulter_tolerance Número de dias de tolerância antes dos faltosos serem considerados inactivos (abandonos)
