@@ -2,14 +2,14 @@
 % Please edit documentation in R/calc_consults.R
 \name{calc_consults}
 \alias{calc_consults}
-\title{Query consultas clínicas do HIV}
+\title{Query consultas clínicas HIV}
 \usage{
 calc_consults(
   con,
   client_status = "All",
-  enddate = Sys.Date(),
-  opendate = NULL,
   defaulter_tolerance = 28,
+  opendate = NULL,
+  enddate = Sys.Date(),
   filter_by_location = FALSE,
   location_uuid = NULL
 )
@@ -23,17 +23,17 @@ calc_consults(
 \item \code{"Active"}, devolve apenas os clientes activos em TARV
 }}
 
-\item{enddate}{Data do fecho do período usado para avialar o estado activo do client
+\item{defaulter_tolerance}{Número de dias de tolerância antes dos faltosos serem considerados inactivos (abandonos)
 \itemize{
-\item \code{"Sys.Date"} Por defito
-\item Data customizada em formato (introduzir como “AAAA-MM-DD”)
+\item \code{"28"} por defeito
 }}
 
 \item{opendate}{Data da abertura do período (introduzir como “AAAA-MM-DD”)}
 
-\item{defaulter_tolerance}{Número de dias de tolerância antes dos faltosos serem considerados inactivos (abandonos)
+\item{enddate}{Data do fecho do período usado para avialar o estado activo do client
 \itemize{
-\item \code{"28"} por defeito
+\item \code{"Sys.Date"} Por defeito
+\item Data customizada em formato (introduzir como “AAAA-MM-DD”)
 \item Número customizado (por exemplo \code{"59"} na definição de MISAU)
 }}
 
@@ -45,15 +45,15 @@ calc_consults(
 Um quadro de dados contendo uma listagem das consultas clínicas HIV realizadas
 }
 \description{
-\code{calc_consults()} executa um query para devolver uma listagem das consultas clínicas do HIV realizadas por um grupo de clientes definido pelo utilizador (activos em TARV ou todos clientes)
+\code{calc_consults()} executa um query que devolve uma listagem das consultas clínicas do HIV realizadas por um grupo de clientes definido pelo utilizador (activos em TARV ou todos clientes)
 }
 \examples{
 \dontrun{
 
- # Caso de uso simples executado para todas US
+ # Caso de uso simples executado sobre todas US
  df <- calc_consults(con)
 
- # Caso de uso de activos, tolerância de 59 dias, executado para uma US
+ # Caso de uso de activos, tolerância 59 dias, executado sobre uma US
  df <- calc_consults(
           con,
           enddate = '2024-09-20',
@@ -61,7 +61,6 @@ Um quadro de dados contendo uma listagem das consultas clínicas HIV realizadas
           defaulter_tolerance = 59,
           filter_by_location = TRUE,
           location_uuid = 'e3eb1a1b-be07-4af2-9360-5d7046910576')
-
 
  # Caso de uso de activos, limitando as consultas a 2022 para frente
  df <- calc_consults(
