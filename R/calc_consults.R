@@ -1,27 +1,52 @@
-#' Query consultas clínicas realizadas
+#' Query consultas clínicas do HIV
+#'
+#' @description
+#' `calc_consults()` executa um query para devolver uma listagem das consultas clínicas do HIV realizadas por um grupo de clientes definido pelo utilizador (activos em TARV ou todos clientes)
 #'
 #' @param con Ligação à base de dados MozART 2.0
-#' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)
-#' @param opendate Data de abertura do período (introduzir como “AAAA-MM-DD”)
-#' @param client_status XXX
+#' @param client_status Estado do cliente em TARV
+#' * `"All"`, por defeito, devolve todos clientes tendo realizado consultas clínicas
+#' * `"Active"`, devolve apenas os clientes activos em TARV
+#' @param enddate Data do fecho do período usado para avialar o estado activo do client
+#' * `"Sys.Date"` Por defito
+#' * Data customizada em formato (introduzir como “AAAA-MM-DD”)
+#' @param opendate Data da abertura do período (introduzir como “AAAA-MM-DD”)
 #' @param defaulter_tolerance Número de dias de tolerância antes dos faltosos serem considerados inactivos (abandonos)
-#' @param filter_by_location Lógico. Se `TRUE`, o query corre sobre uma unidade sanitária específica.  Se `FALSE`,  o query corre sobre todas as unidade sanitária contidas na base de dados
+#' * `"28"` por defeito
+#' * Número customizado (por exemplo `"59"` na definição de MISAU)
+#' @param filter_by_location Se `TRUE`, o query corre sobre uma unidade sanitária específica.  Se `FALSE`, o query corre sobre todas as unidade sanitária contidas no MozART 2.0
 #' @param location_uuid location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como `TRUE`
 #'
-#' @return Um quadro de dados contendo uma listagem das consultas clínicas realizadas
+#' @return Um quadro de dados contendo uma listagem das consultas clínicas HIV realizadas
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #'
+#'  # Caso de uso simples executado para todas US
+#'  df <- calc_consults(con)
+#'
+#'  # Caso de uso de activos, tolerância de 59 dias, executado para uma US
 #'  df <- calc_consults(
 #'           con,
-#'           patient_uuids = tx_uuids)}
+#'           enddate = '2024-09-20',
+#'           client_status = "Active",
+#'           defaulter_tolerance = 59,
+#'           filter_by_location = TRUE,
+#'           location_uuid = 'e3eb1a1b-be07-4af2-9360-5d7046910576')
+#'
+#'
+#'  # Caso de uso de activos, limitando as consultas a 2022 para frente
+#'  df <- calc_consults(
+#'           con,
+#'           client_status = "Active",
+#'           enddate = '2024-09-20',
+#'           opendate = '2022-01-10')}
 
 calc_consults <- function(con,
+                          client_status = "All",
                           enddate = Sys.Date(),
                           opendate = NULL,
-                          client_status = "All",
                           defaulter_tolerance = 28,
                           filter_by_location = FALSE,
                           location_uuid = NULL
