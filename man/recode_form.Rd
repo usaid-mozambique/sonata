@@ -25,5 +25,5 @@ Recodificar formulario primario
  df <- recode_form(
           df = df,
           df_form = data_type_id_lookup,
-          keep_id = FALSE))}
+          keep_id = FALSE)}
 }

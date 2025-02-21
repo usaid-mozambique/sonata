@@ -49,7 +49,6 @@ Um quadro de dados contendo uma listagem das consultas clínicas HIV realizadas
 }
 \examples{
 \dontrun{
-
  # Caso de uso simples executado sobre todas US
  df <- calc_consults(con)
 

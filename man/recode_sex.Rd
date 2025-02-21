@@ -22,5 +22,5 @@ Recodificar sexo
 
  df <- recode_sex(
           df = df,
-          sex_column = "sex"))}
+          sex_column = "sex")}
 }

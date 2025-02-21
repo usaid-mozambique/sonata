@@ -11,7 +11,7 @@
 #'
 #'  df <- recode_location(
 #'           df = df,
-#'           df_location = data_location_lookup))}
+#'           df_location = data_location_lookup)}
 
 recode_location  <- function(df, df_location = data_location_lookup) {
 
@@ -56,7 +56,7 @@ recode_location  <- function(df, df_location = data_location_lookup) {
 #'
 #'  df <- recode_age(
 #'           df = df,
-#'           age_column = "age"))}
+#'           age_column = "age")}
 
 recode_age <- function(df, age_column = "age", variable_name = "age_band") {
 
@@ -101,7 +101,7 @@ recode_age <- function(df, age_column = "age", variable_name = "age_band") {
 #'
 #'  df <- recode_sex(
 #'           df = df,
-#'           sex_column = "sex"))}
+#'           sex_column = "sex")}
 
 recode_sex <- function(df, sex_column = "gender") {
   df <- df %>%
@@ -133,7 +133,7 @@ recode_sex <- function(df, sex_column = "gender") {
 #'  df <- recode_regimen(
 #'           df = df,
 #'           df_regimen = data_type_id_lookup,
-#'           keep_id = FALSE))}
+#'           keep_id = FALSE)}
 
 recode_regimen  <- function(df, df_regimen = data_type_id_lookup, keep_id = FALSE) {
 
@@ -178,7 +178,7 @@ recode_regimen  <- function(df, df_regimen = data_type_id_lookup, keep_id = FALS
 #'  df <- recode_disp_mode(
 #'           df = df,
 #'           df_disp_mode = data_type_id_lookup,
-#'           keep_id = FALSE))}
+#'           keep_id = FALSE)}
 
 recode_disp_mode  <- function(df, df_disp_mode = data_type_id_lookup, keep_id = FALSE) {
 
@@ -224,7 +224,7 @@ recode_disp_mode  <- function(df, df_disp_mode = data_type_id_lookup, keep_id = 
 #'  df <- recode_form(
 #'           df = df,
 #'           df_form = data_type_id_lookup,
-#'           keep_id = FALSE))}
+#'           keep_id = FALSE)}
 
 recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
 

@@ -45,9 +45,9 @@ Um quadro de dados contendo uma listagem individual dos levantamentos TARV
 \dontrun{
 
  df <- calc_arv_pickups(
-          con,
+          con
+          opendate = '2024-06-20',
           enddate = '2024-09-20',
-          n_months = 6,
           arv_pickup_source = "FILA",
           filter_by_location = TRUE,
           location_uuid = location_meripo)}

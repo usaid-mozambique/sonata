@@ -25,5 +25,5 @@ Recodificar regimen TARV
  df <- recode_regimen(
           df = df,
           df_regimen = data_type_id_lookup,
-          keep_id = FALSE))}
+          keep_id = FALSE)}
 }

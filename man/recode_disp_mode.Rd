@@ -25,5 +25,5 @@ Recodificar modo de dispensa TARV
  df <- recode_disp_mode(
           df = df,
           df_disp_mode = data_type_id_lookup,
-          keep_id = FALSE))}
+          keep_id = FALSE)}
 }

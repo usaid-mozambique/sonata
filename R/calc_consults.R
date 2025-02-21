@@ -22,7 +22,6 @@
 #'
 #' @examples
 #' \dontrun{
-#'
 #'  # Caso de uso simples executado sobre todas US
 #'  df <- calc_consults(con)
 #'

@@ -1,5 +1,5 @@
 ---
-title: "Analisar Transição Etária dos Clients"
+title: "Detectar Transição Etária"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{analisar-transição-etária}
