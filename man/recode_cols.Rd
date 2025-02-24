@@ -24,6 +24,8 @@ recode_cols(
 \code{recode_cols} devolve um quadro de dados com colunas recodificadas
 }
 \description{
+\code{recode_cols()} devolve várias colunas recodificadas, tal como especificado pela entrada “cols” fornecida pelo utilizador
+
 \code{recode_cols} reatribui valores para colunas codificadas em quadros de dados MozART 2.0 comuns
 }
 \examples{

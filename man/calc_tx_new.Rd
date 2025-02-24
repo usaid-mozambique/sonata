@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_tx_new.R
 \name{calc_tx_new}
 \alias{calc_tx_new}
-\title{Query clientes iniciados em TARV}
+\title{Query novos inícios ao TARV}
 \usage{
 calc_tx_new(
   con,
@@ -19,7 +19,7 @@ calc_tx_new(
 
 \item{enddate}{Data de fecho do período (introduzir como “AAAA-MM-DD”)}
 
-\item{filter_by_location}{Lógico. Se \code{TRUE}, o query corre sobre uma unidade sanitária específica.  Se \code{FALSE},  o query corre sobre todas as unidade sanitária contidas na base de dados}
+\item{filter_by_location}{Se \code{TRUE}, o query corre sobre uma unidade sanitária específica.  Se \code{FALSE}, o query corre sobre todas as unidade sanitária contidas no MozART 2.0}
 
 \item{location_uuid}{location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como \code{TRUE}}
 }
@@ -27,15 +27,21 @@ calc_tx_new(
 Um quadro de dados contendo uma listagem individual dos pacientes iniciados em TARV
 }
 \description{
-Query clientes iniciados em TARV
+\code{calc_tx_new()} devolve uma listagem dos clientes que iniciaram o TARV durante um período de tempo especificado pelo utilizador
 }
 \examples{
 \dontrun{
 
- df <- calc_tx_new(
-          con,
-          opendate = "2024-06-21",
-          enddate = "2024-09-20",
-          filter_by_location = TRUE,
-          location_uuid = location_meripo)}
+ # Caso de uso simples executado sobre todas US
+ df <- calc_tx_new(con,
+                   opendate = "2024-06-21",
+                    enddate = "2024-09-20")
+
+ # Caso de uso simples executado sobre todas US
+df <- calc_tx_new(con,
+                  opendate = "2024-06-21",
+                  enddate = "2024-09-20",
+                  filter_by_location = TRUE,
+                  location_uuid = 'e3eb1a1b-be07-4af2-9360-5d7046910576')
+          }
 }

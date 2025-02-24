@@ -1,5 +1,8 @@
 #' Recodificar location_uuid's
 #'
+#' @description
+#' `recode_location()` devolve um conjunto de informações mais facilmente compreensíveis sobre a localização
+#'
 #' @param df Quadro de dados contendo a variável a recodificar
 #' @param df_location Objecto de tabela de pesquisa usado para recodificação
 #'
@@ -43,6 +46,9 @@ recode_location  <- function(df, df_location = data_location_lookup) {
 
 
 #' Recodificar idade
+#'
+#' @description
+#' `recode_age()` devolve a idade e a faixa etária do cliente
 #'
 #' @param df Quadro de dados contendo a variável a recodificar
 #' @param age_column Variável no quadro de dados introduzido contendo a idade do cliente
@@ -90,6 +96,9 @@ recode_age <- function(df, age_column = "age", variable_name = "age_band") {
 
 #' Recodificar sexo
 #'
+#' @description
+#' `recode_sex()` devolve o sexo do cliente escrito por extenso
+#'
 #' @param df Quadro de dados contendo a variável a recodificar
 #' @param sex_column Variável no quadro de dados introduzido contendo o sexo do cliente
 #'
@@ -119,6 +128,9 @@ recode_sex <- function(df, sex_column = "gender") {
 
 
 #' Recodificar regimen TARV
+#'
+#' @description
+#' `recode_regimen()` devolve uma apresentação mais compreensível do regime ART do cliente
 #'
 #' @param df Quadro de dados contendo a variável a recodificar
 #' @param df_regimen  Objecto de tabela de pesquisa usado para recodificação
@@ -164,6 +176,9 @@ recode_regimen  <- function(df, df_regimen = data_type_id_lookup, keep_id = FALS
 
 
 #' Recodificar modo de dispensa TARV
+#'
+#' @description
+#' `recode_disp_mode()` retorna uma apresentação mais compreensível do modo de dispensa do ARV
 #'
 #' @param df Quadro de dados contendo a variável a recodificar
 #' @param df_disp_mode  Objecto de tabela de pesquisa usado para recodificação
@@ -211,6 +226,9 @@ recode_disp_mode  <- function(df, df_disp_mode = data_type_id_lookup, keep_id = 
 
 #' Recodificar formulario primario
 #'
+#' @description
+#' `recode_form()` devolve uma apresentação mais compreensível do documento de fonte primária
+#'
 #' @param df Quadro de dados contendo a variável a recodificar
 #' @param df_form  Objecto de tabela de pesquisa usado para recodificação
 #' @param keep_id Manter a coluna regimen_id após a recodificação (Logical T/F)
@@ -255,6 +273,9 @@ recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
 
 
 #' Recodificar colunas
+#'
+#' @description
+#' `recode_cols()` devolve várias colunas recodificadas, tal como especificado pela entrada “cols” fornecida pelo utilizador
 #'
 #' @description
 #' `recode_cols` reatribui valores para colunas codificadas em quadros de dados MozART 2.0 comuns

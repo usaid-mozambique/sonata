@@ -17,7 +17,7 @@ recode_age(df, age_column = "age", variable_name = "age_band")
 \code{recode_age} devolve um quadro de dados com a coluna idade recodificada
 }
 \description{
-Recodificar idade
+\code{recode_age()} devolve a idade e a faixa etária do cliente
 }
 \examples{
 \dontrun{

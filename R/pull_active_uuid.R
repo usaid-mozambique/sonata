@@ -1,4 +1,7 @@
-#' Query vector de patient_uuids de activos no TARV
+#' Query uuids dos activos no TARV
+#'
+#' @description
+#' `pull_active_uuid()` devolve um vector dos uuid's dos clientes activos em TARV a partir de uma data definida pelo utilizador
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)
@@ -12,6 +15,7 @@
 #' @examples
 #' \dontrun{
 #'
+#' #' Caso de uso simples executado sobre uma US, tolerância de 28 dias
 #'  df <- pull_active_uuid(
 #'           con,
 #'           enddate = '2024-09-20',

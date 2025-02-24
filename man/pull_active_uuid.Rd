@@ -2,7 +2,7 @@
 % Please edit documentation in R/pull_active_uuid.R
 \name{pull_active_uuid}
 \alias{pull_active_uuid}
-\title{Query vector de patient_uuids de activos no TARV}
+\title{Query uuids dos activos no TARV}
 \usage{
 pull_active_uuid(
   con,
@@ -27,11 +27,12 @@ pull_active_uuid(
 \code{pull_active_uuid} devolve um vector contendo os patient_uuid unicos dos pacientes activos em TARV
 }
 \description{
-Query vector de patient_uuids de activos no TARV
+\code{pull_active_uuid()} devolve um vector dos uuid's dos clientes activos em TARV a partir de uma data definida pelo utilizador
 }
 \examples{
 \dontrun{
 
+#' Caso de uso simples executado sobre uma US, tolerância de 28 dias
  df <- pull_active_uuid(
           con,
           enddate = '2024-09-20',

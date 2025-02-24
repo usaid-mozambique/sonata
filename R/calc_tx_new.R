@@ -1,9 +1,12 @@
-#' Query clientes iniciados em TARV
+#' Query novos inícios ao TARV
+#'
+#' @description
+#' `calc_tx_new()` devolve uma listagem dos clientes que iniciaram o TARV durante um período de tempo especificado pelo utilizador
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param opendate Data de abertura do período (introduzir como “AAAA-MM-DD”)
 #' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)
-#' @param filter_by_location Lógico. Se `TRUE`, o query corre sobre uma unidade sanitária específica.  Se `FALSE`,  o query corre sobre todas as unidade sanitária contidas na base de dados
+#' @param filter_by_location Se `TRUE`, o query corre sobre uma unidade sanitária específica.  Se `FALSE`, o query corre sobre todas as unidade sanitária contidas no MozART 2.0
 #' @param location_uuid location_uuid da unidade sanitária a filtrar quando filter_by_location é definido como `TRUE`
 #'
 #' @return Um quadro de dados contendo uma listagem individual dos pacientes iniciados em TARV
@@ -12,12 +15,18 @@
 #' @examples
 #' \dontrun{
 #'
-#'  df <- calc_tx_new(
-#'           con,
-#'           opendate = "2024-06-21",
-#'           enddate = "2024-09-20",
-#'           filter_by_location = TRUE,
-#'           location_uuid = location_meripo)}
+#'  # Caso de uso simples executado sobre todas US
+#'  df <- calc_tx_new(con,
+#'                    opendate = "2024-06-21",
+#'                     enddate = "2024-09-20")
+#'
+#'  # Caso de uso simples executado sobre todas US
+#' df <- calc_tx_new(con,
+#'                   opendate = "2024-06-21",
+#'                   enddate = "2024-09-20",
+#'                   filter_by_location = TRUE,
+#'                   location_uuid = 'e3eb1a1b-be07-4af2-9360-5d7046910576')
+#'           }
 
 calc_tx_new <- function(con, opendate, enddate, filter_by_location = FALSE, location_uuid = '4be5f1a9-832c-4717-be41-ef4b6311c0ef') {
 

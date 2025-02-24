@@ -15,7 +15,7 @@ recode_sex(df, sex_column = "gender")
 \code{recode_sex} devolve um quadro de dados com a coluna sexo recodificada
 }
 \description{
-Recodificar sexo
+\code{recode_sex()} devolve o sexo do cliente escrito por extenso
 }
 \examples{
 \dontrun{

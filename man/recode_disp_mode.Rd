@@ -17,7 +17,7 @@ recode_disp_mode(df, df_disp_mode = data_type_id_lookup, keep_id = FALSE)
 \code{recode_disp_mode} devolve um quadro de dados com a coluna regimen recodificada
 }
 \description{
-Recodificar modo de dispensa TARV
+\code{recode_disp_mode()} retorna uma apresentação mais compreensível do modo de dispensa do ARV
 }
 \examples{
 \dontrun{

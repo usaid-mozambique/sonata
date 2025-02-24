@@ -17,7 +17,7 @@ recode_regimen(df, df_regimen = data_type_id_lookup, keep_id = FALSE)
 \code{recode_regimen} devolve um quadro de dados com a coluna regimen recodificada
 }
 \description{
-Recodificar regimen TARV
+\code{recode_regimen()} devolve uma apresentação mais compreensível do regime ART do cliente
 }
 \examples{
 \dontrun{

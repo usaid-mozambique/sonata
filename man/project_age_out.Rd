@@ -2,7 +2,7 @@
 % Please edit documentation in R/project_age_out.R
 \name{project_age_out}
 \alias{project_age_out}
-\title{Detectar clients com transição etária}
+\title{Detectar transição etária}
 \usage{
 project_age_out(df, ref_date)
 }
@@ -15,10 +15,12 @@ project_age_out(df, ref_date)
 Quadro de dados com variáveis idade, idade projectada, faixa etária, faixa etária projectada, e colunas que indicam casos de transição etária
 }
 \description{
-Detectar clients com transição etária
+\code{project_age_out()} devolve uma listagem dos clientes clientes com idades projectadas para uma data definida pelo utilizador, bem como colunas para indicar se fizeram a transição da idade pediátrica para a idade adulta e se a sua faixa etária de 5 anos mudou
 }
 \examples{
 \dontrun{
 
- df <- project_age_out(df)}
+#' Caso de uso simples projectando idades ate o início do ano 2026
+ df <- project_age_out(df
+                       ref_date = "2026-01-01")}
 }

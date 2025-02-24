@@ -27,15 +27,21 @@ calc_tx_active(
 Um quadro de dados contendo uma listagem individual dos pacientes activos em TARV
 }
 \description{
-Query clientes activos em TARV
+\code{calc_tx_active()} devolve uma listagem dos clientes activos em TARV a partir de uma data definida pelo utilizador
 }
 \examples{
 \dontrun{
 
- df <- calc_tx_active(
-          con,
-          enddate = '2024-09-20',
-          defaulter_tolerance = 28,
-          filter_by_location = TRUE,
-          location_uuid = location_meripo)}
+#' Caso de uso simples executado sobre uma US, tolerância de 28 dias
+df <- calc_tx_active(con,
+                     enddate = '2024-09-20',
+                     defaulter_tolerance = 28,
+                     filter_by_location = TRUE,
+                     location_uuid = 'e3eb1a1b-be07-4af2-9360-5d7046910576')
+
+#' Caso de uso simples executado paras todas US, tolerância de 59 dias
+df <- calc_tx_active(con,
+                     enddate = '2024-09-20',
+                     defaulter_tolerance = 59,
+                     filter_by_location = FALSE)}
 }

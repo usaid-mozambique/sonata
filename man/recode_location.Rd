@@ -15,7 +15,7 @@ recode_location(df, df_location = data_location_lookup)
 \code{recode_location} devolve um quadro de dados com a coluna location_uuid recodificada
 }
 \description{
-Recodificar location_uuid's
+\code{recode_location()} devolve um conjunto de informações mais facilmente compreensíveis sobre a localização
 }
 \examples{
 \dontrun{

@@ -1,5 +1,8 @@
 #' Query clientes activos em TARV
 #'
+#' @description
+#' `calc_tx_active()` devolve uma listagem dos clientes activos em TARV a partir de uma data definida pelo utilizador
+#'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)
 #' @param defaulter_tolerance Número de dias de tolerância antes dos faltosos serem considerados inactivos (abandonos)
@@ -12,12 +15,18 @@
 #' @examples
 #' \dontrun{
 #'
-#'  df <- calc_tx_active(
-#'           con,
-#'           enddate = '2024-09-20',
-#'           defaulter_tolerance = 28,
-#'           filter_by_location = TRUE,
-#'           location_uuid = location_meripo)}
+#' #' Caso de uso simples executado sobre uma US, tolerância de 28 dias
+#' df <- calc_tx_active(con,
+#'                      enddate = '2024-09-20',
+#'                      defaulter_tolerance = 28,
+#'                      filter_by_location = TRUE,
+#'                      location_uuid = 'e3eb1a1b-be07-4af2-9360-5d7046910576')
+#'
+#' #' Caso de uso simples executado paras todas US, tolerância de 59 dias
+#' df <- calc_tx_active(con,
+#'                      enddate = '2024-09-20',
+#'                      defaulter_tolerance = 59,
+#'                      filter_by_location = FALSE)}
 
 calc_tx_active <- function(con, enddate, defaulter_tolerance = 28, filter_by_location = FALSE, location_uuid = '4be5f1a9-832c-4717-be41-ef4b6311c0ef') {
 

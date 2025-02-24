@@ -17,7 +17,7 @@ recode_form(df, df_form = data_type_id_lookup, keep_id = FALSE)
 \code{recode_form} devolve um quadro de dados com a coluna regimen recodificada
 }
 \description{
-Recodificar formulario primario
+\code{recode_form()} devolve uma apresentação mais compreensível do documento de fonte primária
 }
 \examples{
 \dontrun{

@@ -16,8 +16,3 @@ reference:
   - mysql_connection
   - starts_with("recode_")
   - starts_with("pull_")
-
-  footer:
-  structure:
-    left: developed_by
-    right: built_with
