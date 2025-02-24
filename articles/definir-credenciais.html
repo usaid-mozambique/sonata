@@ -125,10 +125,9 @@ projeto.</p>
 <div class="section level2">
 <h2 id="carregar-credenciais-e-conectar">Carregar credenciais e conectar<a class="anchor" aria-label="anchor" href="#carregar-credenciais-e-conectar"></a>
 </h2>
-<p>Tendo as nossas credenciais encriptadas e guardadas, iremos chamá-las
-de forma segura para o nosso ambiente R usando a função
-<code>get_account</code>. De daí, utilizá-los-emos para estabelecer a
-nossa conexão ao MozART 2.0.</p>
+<p>Tendo credenciais encriptadas e guardadas, iremos chamá-las para o
+ambiente R usando <code>get_account</code>. De daí, estabeleceremos a
+conexão ao MozART 2.0.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Definir valor do usuário</span></span>
 <span><span class="va">acct_dev</span> <span class="op">&lt;-</span> <span class="st">"mysql-example-user"</span></span>
@@ -137,15 +136,13 @@ nossa conexão ao MozART 2.0.</p>
 <span><span class="va">acct_db</span> <span class="op">&lt;-</span> <span class="fu">get_account</span><span class="op">(</span>name <span class="op">=</span> <span class="va">acct_dev</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Criar uma ligação MozART 2.0</span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mysql_connection.html">mysql_connection</a></span><span class="op">(</span></span>
-<span>  db_name <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">dbname</span>, </span>
-<span>  db_user <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">username</span>,</span>
-<span>  db_pass <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">password</span>, </span>
-<span>  db_host <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">host</span>, </span>
-<span>  db_port <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">port</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<p>Parabéns! Você acaba de estebelecer um sistema seguro e eficiente
-para guardar e usar credenciais de MozART 2.0!</p>
+<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mysql_connection.html">mysql_connection</a></span><span class="op">(</span>db_name <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">dbname</span>, </span>
+<span>                        db_user <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">username</span>,</span>
+<span>                        db_pass <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">password</span>,</span>
+<span>                        db_host <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">host</span>,</span>
+<span>                        db_port <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">port</span><span class="op">)</span></span></code></pre></div>
+<p>Parabéns! Já temos uma abordagem segura e eficiente para guardar e
+usar credenciais de MozART 2.0!</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

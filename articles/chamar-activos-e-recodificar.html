@@ -79,8 +79,8 @@
 <div class="section level2">
 <h2 id="anexar-pacotes">Anexar pacotes<a class="anchor" aria-label="anchor" href="#anexar-pacotes"></a>
 </h2>
-<p>Primeiro, anexaremos os pacotes requiridos para a chamada e
-manipulação dos dados de MozART 2.0.</p>
+<p>Primeiro, anexaremos os pacotes requiridos para extrair e manipular
+dos dados de MozART 2.0.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://usaid-mozambique.github.io/sonata/">sonata</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">glamr</span><span class="op">)</span></span>
@@ -93,11 +93,10 @@ manipulação dos dados de MozART 2.0.</p>
 <h2 id="estabelecer-conexão">Estabelecer conexão<a class="anchor" aria-label="anchor" href="#estabelecer-conex%C3%A3o"></a>
 </h2>
 <p>Como descrito no artigo <a href="https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html">Uso
-Seguro de Credenciais MozART 2.0</a> é recomendado carregar no ambiente
-R as suas credenciais a partir do sistema operativo. Isto evita elas
-estarem no seu script e por sua vez a partilha não intencional desta
-informação sensível. O código abaixo mostra como carregar as credenciais
-do MozART 2.0 seguramente e estabelecer uma conexão com a base de
+de Credenciais MozART 2.0</a> é recomendado carregar no ambiente R as
+suas credenciais a partir do sistema operativo. Isto evita elas estarem
+no script e a partilha não intencional. O código abaixo mostra como
+carregar credenciais seguramente e estabelecer uma conexão com a base de
 dados.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Definir valor do usuário</span></span>
@@ -107,50 +106,42 @@ dados.</p>
 <span><span class="va">acct_db</span> <span class="op">&lt;-</span> <span class="fu">get_account</span><span class="op">(</span>name <span class="op">=</span> <span class="va">acct_dev</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Criar uma ligação MozART 2.0</span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mysql_connection.html">mysql_connection</a></span><span class="op">(</span></span>
-<span>  db_name <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">dbname</span>, </span>
-<span>  db_user <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">username</span>,</span>
-<span>  db_pass <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">password</span>, </span>
-<span>  db_host <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">host</span>, </span>
-<span>  db_port <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">port</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
+<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mysql_connection.html">mysql_connection</a></span><span class="op">(</span>db_name <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">dbname</span>, </span>
+<span>                        db_user <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">username</span>,</span>
+<span>                        db_pass <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">password</span>,</span>
+<span>                        db_host <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">host</span>,</span>
+<span>                        db_port <span class="op">=</span> <span class="va">acct_db</span><span class="op">$</span><span class="va">port</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="chamar-activos-em-tarv">Chamar “Activos em TARV”<a class="anchor" aria-label="anchor" href="#chamar-activos-em-tarv"></a>
 </h2>
-<p>MozART 2.0 é composta por uma série de tabelas de dados ligadas entre
-si por chaves variáveis. Esta organização de dados, embora óptima para a
+<p>MozART 2.0 é composta por tabelas de dados ligadas entre si por
+chaves variáveis. Esta organização de dados, embora óptima para a
 eficiência do armazenamento, torna mais complexa a tarefa de criar
-conjuntos de dados analíticos. O pacote <code>sonata</code> foi
-concebido para fornecer aos analistas um conjunto de funções fáceis de
-utilizar que reduzem a necessidade de escrever ou adaptar chamadas R e
-SQL. <code>calc_tx_active</code>, que calcula e extrai uma lista de
-pacientes activos em TARV, é um exemplo de uma função oferecido no
-<code>sonata</code>. Um caso de uso típico é demonstrado como parte
+tabelas analíticas. <code>sonata</code> foi concebido para fornecer
+funções fáceis de utilizar que reduzem a necessidade de escrever código
+complexo em R ou SQL. <code>calc_tx_active</code>, que extrai uma lista
+de clientes activos em TARV, é um exemplo deste tipo de função oferecido
+no <code>sonata</code>. Um caso de uso típico é demonstrado como parte
 deste artigo.</p>
-<p><code>calc_tx_active</code> traz 5 argumentos. 2 destes argumentos
-vêm sem valores predefinidos e requerem definição pelo utilizador, 3
-argumentos têm valores pré-defindo que são modificáveis de acordo com as
-necessidades da analista.</p>
-<p>O primeiro argumento requerido, “con”, é a ligação ao MozART 2.0
-aberto no ambiente R (no exemplo abaixo também definido como “con”). O
-segundo argumento obrigatório, “enddate”, exige o fecho do período de
-avaliação, que será utilizado como referência para calcular os activos
-em TARV. O terceiro argumento, “defaulter_tolerance”, dá a opção de
-definir um valor custimizado para o número de dias antes de um faltoso
-ser reclassificado como inactivo (ou “abandono”). O valor predefinido
-para este argumento é “28” de acordo com as diretrizes da OMS.</p>
+<p><code>calc_tx_active</code> traz 5 argumentos. 2 argumentos vêm sem
+valores predefinidos e requerem definição pelo utilizador. 3 argumentos
+têm valores pré-defindo que são modificáveis de acordo com as
+necessidades da analista. O primeiro argumento, “con”, é a ligação ao
+MozART 2.0 aberto no ambiente R (no exemplo abaixo também definido como
+“con”). O segundo argumento obrigatório, “enddate”, exige o fecho do
+período de avaliação, que será utilizado como referência para determinar
+o estado dos clientes avaliados. O terceiro argumento,
+“defaulter_tolerance”, posibilita a custumização do número de dias antes
+de um faltoso ser reclassificado como inactivo (ou “abandono”).</p>
 <p>O quarto e o quinto argumentos (“filter_by_location” e
 “location_uuid”) são argumentos que permitem que o query seja executado
-sobre dados de uma unidade sanitária individual em vez de todas as mais
-de 600 unidades sanitárias que contribuem com dados para o MozART 2.0.
-Na prática, estes argumentos são usados para testar código numa conexão
-activa, uma vez que os resultados são devolvidos mais rápido. Quando
-filter_by_location é definido como “TRUE”, o query será adequado para
-ser executada numa única base de dados definida pelo utilizador no
-argumento “location_uuid”. Observe abaixo que o location_uuid está
-definido como “e5f01eee-2392-49b4-a5bf-5cf593fc8f21”, que é o
-identificador da CS Merripo.</p>
+sobre uma unidade sanitária individual em vez de todas as mais de 600
+unidades sanitárias contidas no MozART 2.0. Isso traz uma forma mais
+ágil de testar código numa conexão activa. Quando filter_by_location é
+definido como “TRUE”, o query será adequado para ser executada numa
+única base de dados definida pelo utilizador no argumento
+“location_uuid”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Definir location_uuid para a CS Merripo</span></span>
 <span><span class="va">location_meripo</span> <span class="op">&lt;-</span> <span class="st">"e5f01eee-2392-49b4-a5bf-5cf593fc8f21"</span></span>
@@ -167,36 +158,29 @@ identificador da CS Merripo.</p>
 <div class="section level2">
 <h2 id="recodificar-variáveis">Recodificar variáveis<a class="anchor" aria-label="anchor" href="#recodificar-vari%C3%A1veis"></a>
 </h2>
-<p>Quando devolvido, pode inspecionar os resultados da sua consulta com
-função <code>view</code> do <code>tidyverse</code>. Observe que os
-valores retornados para várias colunas são codificados numericamente e
-não fornecem explicitamente ao analista informações suficientes para a
-interpretação. Podemos usar a função <code>recode_cols</code> com seus
-argumentos correspondentes para recodificar esses valores.</p>
-<p>O <code>recode_cols</code> utiliza as tabelas de pesquisa MozART 2.0
-armazenadas internamente no <code>sonata</code> para mapear os valores
-colunares descodificados para um conjunto de variáveis definido pelo
-utilizador. No exemplo abaixo, chamamos <code>recode_cols</code> e o
-argumento columns_to_recode para descodificar os valores apresentados em
-5 colunas no objecto df que geramos com <code>calc_tx_active</code>.
-Estas são: “mode_dispensation_id”, “regimen_id”, “location_uuid”, “age”,
-“form_id” e “gender”. O argumento columns_to_recode pode ser adaptado de
-acordo com as colunas presentes no objeto de dados de entrada. Por
-exemplo, se só estiverem presentes “idade” e “sexo”, o utilizador só
-forneceria estes dois valores no argumento.</p>
+<p>Inspecionando os variáveis contidos no objecto criado pela
+<code>calc_tx_activo</code> repara-se que varias colunas são codificados
+numericamente e não fornecem informação suficiente para interpretar.
+<code>recode_cols</code> oferece uma forma simples de recodificar esses
+valores usando as tabelas de referência armazenadas internamente no
+<code>sonata</code>. No exemplo abaixo, chamamos
+<code>recode_cols</code> e definimos o argumento <code>cols</code> para
+descodificar os valores apresentados em 5 colunas -
+“mode_dispensation_id”, “regimen_id”, “location_uuid”, “age”, “form_id”
+e “gender”. O argumento <code>cols</code> pode ser adaptado de acordo
+com as colunas presentes no objeto de dados.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_recode</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="../reference/recode_cols.html">recode_cols</a></span><span class="op">(</span></span>
-<span>    columns_to_recode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mode_dispensation_id"</span>, </span>
-<span>                          <span class="st">"regimen_id"</span>, </span>
-<span>                          <span class="st">"location_uuid"</span>, </span>
-<span>                          <span class="st">"age"</span>, </span>
-<span>                          <span class="st">"form_id"</span>,</span>
-<span>                          <span class="st">"gender"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/recode_cols.html">recode_cols</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mode_dispensation_id"</span>, </span>
+<span>                       <span class="st">"regimen_id"</span>, </span>
+<span>                       <span class="st">"location_uuid"</span>, </span>
+<span>                       <span class="st">"age"</span>,</span>
+<span>                       <span class="st">"form_id"</span>,</span>
+<span>                       <span class="st">"gender"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p>Utilizando apenas algumas funções <code>sonata</code>, criámos um
+<p>Utilizando apenas algumas funções da <code>sonata</code>, criámos um
 conjunto de dados que pode ser utilizado para responder à nossa questão
-analítica, seja ela qual for. Finalmente, lembre-se de nunca salvar
+analítica, seja ela qual for. Finalmente, lembre-se de nunca gravar
 conjuntos de dados de nível individual no seu disco local! Em vez disso,
 agrupe os valores por todas as caraterísticas de dados relevantes e
 guarde-os como um conjunto de dados agregado. Boa análise!</p>
