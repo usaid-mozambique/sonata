@@ -3,18 +3,18 @@
 \docType{data}
 \name{data_observation_lookup}
 \alias{data_observation_lookup}
-\title{data_observation_lookup}
+\title{Referência: data_observation_lookup}
 \format{
 Quadro de dados com variáveis:
 \describe{
-\item{data_observation_lookup}{concept_id}
-\item{data_observation_lookup}{concept_name}
+\item{concept_id}{Identificador do conceito}
+\item{concept_name}{Nome do conceito}
 }
 }
 \usage{
 data(data_observation_lookup)
 }
 \description{
-List of indicators
+Source: \href{https://github.com/usaid-mozambique/sonata/blob/main/R/data.R}{\code{R/data.R}}.
 }
 \keyword{datasets}

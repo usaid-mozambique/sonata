@@ -3,17 +3,17 @@
 \docType{data}
 \name{data_location_lookup}
 \alias{data_location_lookup}
-\title{Tabela de referência: location_uuid}
+\title{Referência: location_uuid}
 \format{
 Quadro de dados com variáveis:
 \describe{
 \item{location_uuid}{código único de identificação do local}
-\item{data_location_lookup}{datim_id}
-\item{data_location_lookup}{sisma_id}
-\item{data_location_lookup}{province}
-\item{data_location_lookup}{district}
-\item{data_location_lookup}{datim_name}
-\item{data_location_lookup}{mozart_name}
+\item{datim_id}{Código único de identificação do Datim do local}
+\item{sisma_id}{Código único de identificação do SISMA do local}
+\item{province}{Província onde se situa o local}
+\item{district}{Distrito em que o local está situado}
+\item{datim_name}{Nome do local no Datim}
+\item{mozart_name}{Nome do local no MozART}
 }
 }
 \usage{

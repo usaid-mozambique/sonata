@@ -3,23 +3,23 @@
 \docType{data}
 \name{data_type_id_lookup}
 \alias{data_type_id_lookup}
-\title{data_type_id_lookup}
+\title{Referência: data_type_id_lookup}
 \format{
 Quadro de dados com variáveis:
 \describe{
-\item{data_type_id_lookup}{id}
-\item{data_type_id_lookup}{table_name}
-\item{data_type_id_lookup}{column_name}
-\item{data_type_id_lookup}{id_type_lookup}
-\item{data_type_id_lookup}{id_type_desc}
-\item{data_type_id_lookup}{id_type_lookup_pt}
-\item{data_type_id_lookup}{notes}
+\item{id}{id}
+\item{table_name}{Nome do formulário específico (por exemplo, form)}
+\item{column_name}{Código único do formulário específico (por exemplo, form_id)}
+\item{id_type_lookup}{Código numérico do formulário específico (por exemplo, 60)}
+\item{id_type_desc}{Descrição do formulário específico - inglês}
+\item{id_type_lookup_pt}{Descrição do formulário específico - português}
+\item{notes}{Notas}
 }
 }
 \usage{
 data(data_type_id_lookup)
 }
 \description{
-List of indicators
+Source: \href{https://github.com/usaid-mozambique/sonata/blob/main/R/data.R}{\code{R/data.R}}.
 }
 \keyword{datasets}
