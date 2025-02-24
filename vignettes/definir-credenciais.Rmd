@@ -49,7 +49,7 @@ acct_db <- get_account(name = acct_dev)
 
 ## Carregar credenciais e conectar
 
-Tendo as nossas credenciais encriptadas e guardadas, iremos chamá-las de forma segura para o nosso ambiente R usando a função `get_account`.  De daí, utilizá-los-emos para estabelecer a nossa conexão ao MozART 2.0.
+Tendo credenciais encriptadas e guardadas, iremos chamá-las para o ambiente R usando `get_account`.  De daí, estabeleceremos a conexão ao MozART 2.0.
 
 ```{r, eval = FALSE}
 # Definir valor do usuário
@@ -59,12 +59,10 @@ acct_dev <- "mysql-example-user"
 acct_db <- get_account(name = acct_dev)
 
 # Criar uma ligação MozART 2.0
-con <- mysql_connection(
-  db_name = acct_db$dbname, 
-  db_user = acct_db$username,
-  db_pass = acct_db$password, 
-  db_host = acct_db$host, 
-  db_port = acct_db$port
-  )
+con <- mysql_connection(db_name = acct_db$dbname, 
+                        db_user = acct_db$username,
+                        db_pass = acct_db$password,
+                        db_host = acct_db$host,
+                        db_port = acct_db$port)
 ```
-Parabéns! Você acaba de estebelecer um sistema seguro e eficiente para guardar e usar credenciais de MozART 2.0!
+Parabéns! Já temos uma abordagem segura e eficiente para guardar e usar credenciais de MozART 2.0!

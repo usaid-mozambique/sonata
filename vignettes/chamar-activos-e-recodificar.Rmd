@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 ## Anexar pacotes
-Primeiro, anexaremos os pacotes requiridos para a chamada e manipulação dos dados de MozART 2.0.
+Primeiro, anexaremos os pacotes requiridos para extrair e manipular dos dados de MozART 2.0.
 
 ```{r setup, eval = FALSE, warning = FALSE, message = FALSE}
 library(sonata)
@@ -20,7 +20,7 @@ library(tidyverse)
 ```
 
 ## Estabelecer conexão
-Como descrito no artigo [Uso Seguro de Credenciais MozART 2.0](https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html) é recomendado carregar no ambiente R as suas credenciais a partir do sistema operativo.  Isto evita elas estarem no seu script e por sua vez a partilha não intencional desta informação sensível. O código abaixo mostra como carregar as credenciais do MozART 2.0 seguramente e estabelecer uma conexão com a base de dados.
+Como descrito no artigo [Uso de Credenciais MozART 2.0](https://usaid-mozambique.github.io/sonata/articles/definir-credenciais.html) é recomendado carregar no ambiente R as suas credenciais a partir do sistema operativo.  Isto evita elas estarem no script e a partilha não intencional. O código abaixo mostra como carregar credenciais seguramente e estabelecer uma conexão com a base de dados.
 
 ```{r, eval = FALSE}
 # Definir valor do usuário
@@ -30,22 +30,19 @@ acct_dev <- "mysql-example-user"
 acct_db <- get_account(name = acct_dev)
 
 # Criar uma ligação MozART 2.0
-con <- mysql_connection(
-  db_name = acct_db$dbname, 
-  db_user = acct_db$username,
-  db_pass = acct_db$password, 
-  db_host = acct_db$host, 
-  db_port = acct_db$port
-  )
+con <- mysql_connection(db_name = acct_db$dbname, 
+                        db_user = acct_db$username,
+                        db_pass = acct_db$password,
+                        db_host = acct_db$host,
+                        db_port = acct_db$port)
 ```
+
 ## Chamar "Activos em TARV"
-MozART 2.0 é composta por uma série de tabelas de dados ligadas entre si por chaves variáveis.  Esta organização de dados, embora óptima para a eficiência do armazenamento, torna mais complexa a tarefa de criar conjuntos de dados analíticos.  O pacote `sonata` foi concebido para fornecer aos analistas um conjunto de funções fáceis de utilizar que reduzem a necessidade de escrever ou adaptar chamadas R e SQL. `calc_tx_active`, que calcula e extrai uma lista de pacientes activos em TARV, é um exemplo de uma função oferecido no `sonata`.  Um caso de uso típico é demonstrado como parte deste artigo. 
+MozART 2.0 é composta por tabelas de dados ligadas entre si por chaves variáveis.  Esta organização de dados, embora óptima para a eficiência do armazenamento, torna mais complexa a tarefa de criar tabelas analíticas.  `sonata` foi concebido para fornecer funções fáceis de utilizar que reduzem a necessidade de escrever código complexo em R ou SQL. `calc_tx_active`, que extrai uma lista de clientes activos em TARV, é um exemplo deste tipo de função oferecido no `sonata`.  Um caso de uso típico é demonstrado como parte deste artigo. 
 
-`calc_tx_active` traz 5 argumentos. 2 destes argumentos vêm sem valores predefinidos e requerem definição pelo utilizador, 3 argumentos têm valores pré-defindo que são modificáveis de acordo com as necessidades da analista. 
+`calc_tx_active` traz 5 argumentos. 2 argumentos vêm sem valores predefinidos e requerem definição pelo utilizador. 3 argumentos têm valores pré-defindo que são modificáveis de acordo com as necessidades da analista. O primeiro argumento, “con”, é a ligação ao MozART 2.0 aberto no ambiente R (no exemplo abaixo também definido como “con”). O segundo argumento obrigatório, “enddate”, exige o fecho do período de avaliação, que será utilizado como referência para determinar o estado dos clientes avaliados. O terceiro argumento, “defaulter_tolerance”, posibilita a custumização do número de dias antes de um faltoso ser reclassificado como inactivo (ou "abandono").
 
-O primeiro argumento requerido, “con”, é a ligação ao MozART 2.0 aberto no ambiente R (no exemplo abaixo também definido como “con”). O segundo argumento obrigatório, “enddate”, exige o fecho do período de avaliação, que será utilizado como referência para calcular os activos em TARV. O terceiro argumento, “defaulter_tolerance”, dá a opção de definir um valor custimizado para o número de dias antes de um faltoso ser reclassificado como inactivo (ou "abandono").  O valor predefinido para este argumento é “28” de acordo com as diretrizes da OMS. 
-
-O quarto e o quinto argumentos (“filter_by_location” e “location_uuid”) são argumentos que permitem que o query seja executado sobre dados de uma unidade sanitária individual em vez de todas as mais de 600 unidades sanitárias que contribuem com dados para o MozART 2.0.  Na prática, estes argumentos são usados para testar código numa conexão activa, uma vez que os resultados são devolvidos mais rápido. Quando filter_by_location é definido como “TRUE”, o query será adequado para ser executada numa única base de dados definida pelo utilizador no argumento “location_uuid”.  Observe abaixo que o location_uuid está definido como “e5f01eee-2392-49b4-a5bf-5cf593fc8f21”, que é o identificador da CS Merripo.  
+O quarto e o quinto argumentos (“filter_by_location” e “location_uuid”) são argumentos que permitem que o query seja executado sobre uma unidade sanitária individual em vez de todas as mais de 600 unidades sanitárias contidas no MozART 2.0.  Isso traz uma forma mais ágil de testar código numa conexão activa. Quando filter_by_location é definido como “TRUE”, o query será adequado para ser executada numa única base de dados definida pelo utilizador no argumento “location_uuid”.
 
 ```{r, eval = FALSE}
 
@@ -61,22 +58,21 @@ df <- calc_tx_active(
   location_uuid = location_meripo  # valor por defeito
 )
 ```
-## Recodificar variáveis
-Quando devolvido, pode inspecionar os resultados da sua consulta com função `view` do `tidyverse`.   Observe que os valores retornados para várias colunas são codificados numericamente e não fornecem explicitamente ao analista informações suficientes para a interpretação.  Podemos usar a função `recode_cols` com seus argumentos correspondentes para recodificar esses valores.  
 
-O `recode_cols` utiliza as tabelas de pesquisa MozART 2.0 armazenadas internamente no `sonata` para mapear os valores colunares descodificados para um conjunto de variáveis definido pelo utilizador. No exemplo abaixo, chamamos `recode_cols` e o argumento columns_to_recode para descodificar os valores apresentados em 5 colunas no objecto df que geramos com `calc_tx_active`.  Estas são: “mode_dispensation_id”, “regimen_id”, “location_uuid”, “age”, “form_id” e “gender”. O argumento columns_to_recode pode ser adaptado de acordo com as colunas presentes no objeto de dados de entrada.  Por exemplo, se só estiverem presentes “idade” e “sexo”, o utilizador só forneceria estes dois valores no argumento.
+## Recodificar variáveis
+Inspecionando os variáveis contidos no objecto criado pela `calc_tx_activo` repara-se que varias colunas são codificados numericamente e não fornecem informação suficiente para interpretar. `recode_cols` oferece uma forma simples de recodificar esses valores usando as tabelas de referência armazenadas internamente no `sonata`. No exemplo abaixo, chamamos `recode_cols` e definimos o argumento `cols` para descodificar os valores apresentados em 5 colunas - “mode_dispensation_id”, “regimen_id”, “location_uuid”, “age”, “form_id” e “gender”. O argumento `cols` pode ser adaptado de acordo com as colunas presentes no objeto de dados.
 
 
 ```{r, eval = FALSE}
 
 df_recode <- df |> 
-  recode_cols(
-    columns_to_recode = c("mode_dispensation_id", 
-                          "regimen_id", 
-                          "location_uuid", 
-                          "age", 
-                          "form_id",
-                          "gender")
+  recode_cols(cols = c("mode_dispensation_id", 
+                       "regimen_id", 
+                       "location_uuid", 
+                       "age",
+                       "form_id",
+                       "gender")
   )
 ```
-Utilizando apenas algumas funções `sonata`, criámos um conjunto de dados que pode ser utilizado para responder à nossa questão analítica, seja ela qual for.  Finalmente, lembre-se de nunca salvar conjuntos de dados de nível individual no seu disco local!  Em vez disso, agrupe os valores por todas as caraterísticas de dados relevantes e guarde-os como um conjunto de dados agregado.  Boa análise!
+
+Utilizando apenas algumas funções da `sonata`, criámos um conjunto de dados que pode ser utilizado para responder à nossa questão analítica, seja ela qual for.  Finalmente, lembre-se de nunca gravar conjuntos de dados de nível individual no seu disco local!  Em vez disso, agrupe os valores por todas as caraterísticas de dados relevantes e guarde-os como um conjunto de dados agregado.  Boa análise!
