@@ -1,4 +1,4 @@
-# sonata <a href="https://usaid-mozambique.github.io/sonata/"><a href="https://usaid-mozambique.github.io/sonata/"><img src="man/figures/logo.png" align="right" height="120" alt="sonata website" /></a>
+# sonata <a href="https://usaid-mozambique.github.io/sonata/"><a href="https://usaid-mozambique.github.io/sonata/"><img src="man/figures/logo.png" align="right" height="200" alt="sonata website" /></a>
 
 Interagir com dados do MozART 2.0
 

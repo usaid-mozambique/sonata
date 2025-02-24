@@ -2,14 +2,66 @@ url: https://usaid-mozambique.github.io/sonata/
 
 template:
   bootstrap: 5
+  bslib:
+    base_font: {google: "Roboto"}
+    heading_font: {google: "Roboto Slab"}
+    code_font: {google: "JetBrains Mono"}
+
+lang: pt
+
+navbar:
+  structure:
+    left:
+    - home
+    - reference
+    - articles
+    - news
+    right:
+    - search
+    - github
+  components:
+    home:
+      icon: fas fa-home fa-lg
+      href: index.html
+    reference:
+      text: Referência
+      href: reference/index.html
+    articles:
+      text: Artigos
+      menu:
+      - text: Uso de Credenciais MozART 2.0
+        href: articles/definir-credenciais.html
+      - text: Cálculo dos Activos em TARV
+        href: articles/chamar-activos-e-recodificar.html
+      - text: Detectar Transição Etária
+        href: articles/analisar-transicao-etaria.html
+    news:
+      text: Versões
+      href: news/index.html
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/usaid-mozambique/sonata
+
+home:
+  links:
+    - text: Manual MozART 2.0
+      href: https://helpdeskmoz.sis.org.mz/portal/pt/kb/mozart/manuais-materiais-de-forma%C3%A7%C3%A3o-e-pop/dicion%C3%A1rio-de-dados
+
+articles:
+- title: Artigos
+  navbar: ~
+  contents:
+  - definir-credenciais
+  - chamar-activos-e-recodificar
+  - analisar-transicao-etaria
 
 reference:
-- title: Referência de dados
+- title: Dados
 - contents:
   - data_location_lookup
   - data_type_id_lookup
   - data_observation_lookup
-- title: Referência de funções
+- title: Funções
 - contents:
   - starts_with("calc_")
   - project_age_out
