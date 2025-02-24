@@ -1,13 +1,12 @@
-
-#' data_location_lookup
+#' Tabela de referência: location_uuid
 #'
-#' List of indicators
+#' Source: \href{https://github.com/usaid-mozambique/sonata/blob/main/R/data.R}{`R/data.R`}.
 #'
 #' @usage data(data_location_lookup)
 #'
-#' @format A list of the variables included in the site list
+#' @format Quadro de dados com variáveis:
 #' \describe{
-#'   \item{data_location_lookup}{location_uuid}
+#'   \item{location_uuid}{código único de identificação do local}
 #'   \item{data_location_lookup}{datim_id}
 #'   \item{data_location_lookup}{sisma_id}
 #'   \item{data_location_lookup}{province}
@@ -24,7 +23,7 @@
 #'
 #' @usage data(data_type_id_lookup)
 #'
-#' @format A list of the variables included in the site list
+#' @format Quadro de dados com variáveis:
 #' \describe{
 #'   \item{data_type_id_lookup}{id}
 #'   \item{data_type_id_lookup}{table_name}
@@ -43,7 +42,7 @@
 #'
 #' @usage data(data_observation_lookup)
 #'
-#' @format A list of the variables included in the site list
+#' @format Quadro de dados com variáveis:
 #' \describe{
 #'   \item{data_observation_lookup}{concept_id}
 #'   \item{data_observation_lookup}{concept_name}

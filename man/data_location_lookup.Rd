@@ -3,11 +3,11 @@
 \docType{data}
 \name{data_location_lookup}
 \alias{data_location_lookup}
-\title{data_location_lookup}
+\title{Tabela de referência: location_uuid}
 \format{
-A list of the variables included in the site list
+Quadro de dados com variáveis:
 \describe{
-\item{data_location_lookup}{location_uuid}
+\item{location_uuid}{código único de identificação do local}
 \item{data_location_lookup}{datim_id}
 \item{data_location_lookup}{sisma_id}
 \item{data_location_lookup}{province}
@@ -20,6 +20,6 @@ A list of the variables included in the site list
 data(data_location_lookup)
 }
 \description{
-List of indicators
+Source: \href{https://github.com/usaid-mozambique/sonata/blob/main/R/data.R}{\code{R/data.R}}.
 }
 \keyword{datasets}

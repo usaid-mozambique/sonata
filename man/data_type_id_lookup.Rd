@@ -5,7 +5,7 @@
 \alias{data_type_id_lookup}
 \title{data_type_id_lookup}
 \format{
-A list of the variables included in the site list
+Quadro de dados com variáveis:
 \describe{
 \item{data_type_id_lookup}{id}
 \item{data_type_id_lookup}{table_name}

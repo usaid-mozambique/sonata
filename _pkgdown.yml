@@ -2,3 +2,16 @@ url: https://usaid-mozambique.github.io/sonata/
 template:
   bootstrap: 5
 
+reference:
+- title: Referência de dados
+- contents:
+  - data_location_lookup
+  - data_type_id_lookup
+  - data_observation_lookup
+- title: Referência de funções
+- contents:
+  - starts_with("calc_")
+  - project_age_out
+  - mysql_connection
+  - starts_with("recode_")
+  - starts_with("pull_")

@@ -5,7 +5,7 @@
 \alias{data_observation_lookup}
 \title{data_observation_lookup}
 \format{
-A list of the variables included in the site list
+Quadro de dados com variáveis:
 \describe{
 \item{data_observation_lookup}{concept_id}
 \item{data_observation_lookup}{concept_name}
