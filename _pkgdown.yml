@@ -3,8 +3,8 @@ url: https://usaid-mozambique.github.io/sonata/
 template:
   bootstrap: 5
   bslib:
-    base_font: {google: "Bitter"}
-    heading_font: {google: "Bitter"}
+    base_font: {google: "Open Sans"}
+    heading_font: {google: "Open Sans"}
     code_font: {google: "Source Code Pro"}
     primary: "#306cc9"
 
@@ -43,7 +43,7 @@ navbar:
       - text: Dicionário de Dados (MozART 2.0)
         href: https://helpdeskmoz.sis.org.mz/portal/pt/kb/mozart/manuais-materiais-de-forma%C3%A7%C3%A3o-e-pop/dicion%C3%A1rio-de-dados
     news:
-      text: Versões
+      text: Changelog
       href: news/index.html
     github:
       icon: fab fa-github fa-lg
