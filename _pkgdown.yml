@@ -16,8 +16,8 @@ navbar:
     - home
     - reference
     - articles
-    - news
     - outro
+    - news
     right:
     - search
     - github
@@ -42,6 +42,8 @@ navbar:
       menu:
       - text: Dicionário de Dados (MozART 2.0)
         href: https://helpdeskmoz.sis.org.mz/portal/pt/kb/mozart/manuais-materiais-de-forma%C3%A7%C3%A3o-e-pop/dicion%C3%A1rio-de-dados
+      - text: Requisitos dos Query SESP
+        href: https://helpdeskmoz.sis.org.mz/portal/pt/kb/sesp-epts/documenta%C3%A7%C3%A3o-de-desenvolvimento/requisitos-do-sistema-especifica%C3%A7%C3%B5es
     news:
       text: Changelog
       href: news/index.html
@@ -55,8 +57,6 @@ home:
       href: https://github.com/usaid-mozambique/sonata
     - text: Report a bug
       href: https://github.com/usaid-mozambique/sonata/issues
-    - text: Dicionário de Dados
-      href: https://helpdeskmoz.sis.org.mz/portal/pt/kb/mozart/manuais-materiais-de-forma%C3%A7%C3%A3o-e-pop/dicion%C3%A1rio-de-dados
 
 articles:
 - title: Artigos

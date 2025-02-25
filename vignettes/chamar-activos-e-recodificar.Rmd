@@ -75,4 +75,4 @@ df_recode <- df |>
   )
 ```
 
-Utilizando apenas algumas funções da `sonata`, criámos um conjunto de dados que pode ser utilizado para responder à nossa questão analítica, seja ela qual for.  Finalmente, lembre-se de nunca gravar conjuntos de dados de nível individual no seu disco local!  Em vez disso, agrupe os valores por todas as caraterísticas de dados relevantes e guarde-os como um conjunto de dados agregado.  Boa análise!
+Utilizando poucas funções da `sonata`, criámos um conjunto de dados que pode ser utilizado para responder à nossa questão analítica, seja ela qual for.  Tente outras funções como `calc_tx_new`, `calc_arv_pickups`, e `calc_consultas` usando a sua [documentação](https://usaid-mozambique.github.io/sonata/reference/index.html) para entender a utilidade dos seus argumentos
