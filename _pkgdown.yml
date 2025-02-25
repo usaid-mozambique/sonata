@@ -3,9 +3,10 @@ url: https://usaid-mozambique.github.io/sonata/
 template:
   bootstrap: 5
   bslib:
-    base_font: {google: "Roboto"}
-    heading_font: {google: "Roboto Slab"}
-    code_font: {google: "JetBrains Mono"}
+    base_font: {google: "Bitter"}
+    heading_font: {google: "Bitter"}
+    code_font: {google: "Source Code Pro"}
+    primary: "#306cc9"
 
 lang: pt
 
@@ -16,6 +17,7 @@ navbar:
     - reference
     - articles
     - news
+    - outro
     right:
     - search
     - github
@@ -35,6 +37,11 @@ navbar:
         href: articles/chamar-activos-e-recodificar.html
       - text: Detectar Transição Etária
         href: articles/analisar-transicao-etaria.html
+    outro:
+      text: Outro
+      menu:
+      - text: Dicionário de Dados (MozART 2.0)
+        href: https://helpdeskmoz.sis.org.mz/portal/pt/kb/mozart/manuais-materiais-de-forma%C3%A7%C3%A3o-e-pop/dicion%C3%A1rio-de-dados
     news:
       text: Versões
       href: news/index.html
@@ -44,7 +51,11 @@ navbar:
 
 home:
   links:
-    - text: Manual MozART 2.0
+    - text: Source code
+      href: https://github.com/usaid-mozambique/sonata
+    - text: Report a bug
+      href: https://github.com/usaid-mozambique/sonata/issues
+    - text: Dicionário de Dados
       href: https://helpdeskmoz.sis.org.mz/portal/pt/kb/mozart/manuais-materiais-de-forma%C3%A7%C3%A3o-e-pop/dicion%C3%A1rio-de-dados
 
 articles:
