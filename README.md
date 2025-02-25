@@ -1,6 +1,6 @@
 # sonata <a href="https://usaid-mozambique.github.io/sonata/"><a href="https://usaid-mozambique.github.io/sonata/"><img src="man/figures/logo.png" align="right" height="200" alt="sonata website" /></a>
 
-Interagir com dados do MozART 2.0
+Interagir com MozART 2.0
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/usaid-mozambique/sonata/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/usaid-mozambique/sonata/actions/workflows/R-CMD-check.yaml)
@@ -16,8 +16,7 @@ Interagir com dados do MozART 2.0
 ``` r
     # instalar via rOpenSci
       install.packages("sonata", 
-                        repos = c('https://usaid-mozambique.r-universe.dev', 
-                        'https://cloud.r-project.org'))
+                        repos = c('https://usaid-mozambique.r-universe.dev', 'https://cloud.r-project.org'))
     
     # Anexar pacote
       library(sonata)
