@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-
+## Introdução
 O pacote `sonata` foi desenvolvido para facilitar a extração e a interação com dados do MozART 2.0. Para além das funções utilizadas para chamar dados específicos ao MozART 2.0, `sonata` fornece funções utilitárias para guardar e recuperar credenciais de forma segura. A utilização de tais ferramentas ajuda a automatizar o fluxo de trabalho analítico e evita a circulação não intencional de credenciais privadas.  O artigo abaixo fornece uma explicação passo-a-passo sobre como utilizar o `sonata` para guardar credenciais encriptadas no seu sistema operativo e usa-los para conectar ao MozART 2.0.
 
 ## Carregar pacotes
