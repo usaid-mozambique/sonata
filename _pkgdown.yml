@@ -55,7 +55,7 @@ home:
   links:
     - text: Source code
       href: https://github.com/usaid-mozambique/sonata
-    - text: Report a bug
+    - text: Report bug
       href: https://github.com/usaid-mozambique/sonata/issues
 
 articles:

@@ -9,16 +9,18 @@ Interagir com MozART 2.0
 [![:name status badge](https://usaid-mozambique.r-universe.dev/badges/:name)](https://usaid-mozambique.r-universe.dev/)
 <!-- badges: end -->
 
+## Resumo
+O MozART 2.0 é um recurso rico em informações sobre serviços de cuidados e tratamento do HIV prestados em Moçambique. O `sonata` foi criado para facilitar o trabalho dos analistas na resposta a questões analíticas e na geração de quadros de dados agregados para utilização fora do MozART 2.0.  
+
 ## Instalação
 
-`sonata` não está no CRAN, então você terá que instalá-lo diretamente do rOpenSci usando o código abaixo.
+`sonata` não está no CRAN e precisa ser instalado diretamente do rOpenSci usando o código abaixo.
 
 ``` r
     # instalar via rOpenSci
-      install.packages("sonata", 
-                        repos = c('https://usaid-mozambique.r-universe.dev', 'https://cloud.r-project.org'))
+      install.packages("sonata", repos = c('https://usaid-mozambique.r-universe.dev', 'https://cloud.r-project.org'))
     
-    # Anexar pacote
+    # carregar pacote
       library(sonata)
       
     # Listar funções do pacote
