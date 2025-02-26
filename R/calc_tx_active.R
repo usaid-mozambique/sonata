@@ -54,7 +54,7 @@ calc_tx_active <- function(con, enddate, defaulter_tolerance = 28, filter_by_loc
     m.encounter_uuid,
     m.patient_uuid,
     p.birthdate,
-    p.gender,
+    p.sex,
     m.form_id,
     m.regimen_id,
     m.mode_dispensation_id,
