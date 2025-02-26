@@ -3,8 +3,8 @@ url: https://usaid-mozambique.github.io/sonata/
 template:
   bootstrap: 5
   bslib:
-    base_font: {google: "Open Sans"}
-    heading_font: {google: "Open Sans"}
+    base_font: {google: "Montserrat"}
+    heading_font: {google: "Lato"}
     code_font: {google: "Source Code Pro"}
     primary: "#306cc9"
 
@@ -52,13 +52,6 @@ navbar:
       icon: fab fa-github fa-lg
       href: https://github.com/usaid-mozambique/sonata
 
-home:
-  links:
-    - text: Source code
-      href: https://github.com/usaid-mozambique/sonata
-    - text: Report bug
-      href: https://github.com/usaid-mozambique/sonata/issues
-
 articles:
 - title: Artigos
   navbar: ~
@@ -68,15 +61,23 @@ articles:
   - analisar-transicao-etaria
 
 reference:
-- title: Dados
+- title: Utilitários
+- contents:
+  - mysql_connection
+- title: Chamar indicadores
+- contents:
+  - starts_with("calc_")
+- title: Recodificar colunas
+- contents:
+  - starts_with("recode_")
+- title: Puxar vectores
+- contents:
+  - starts_with("pull_")
+- title: Outro
+- contents:
+  - project_age_out
+- title: Metadados
 - contents:
   - data_location_lookup
   - data_type_id_lookup
   - data_observation_lookup
-- title: Funções
-- contents:
-  - starts_with("calc_")
-  - project_age_out
-  - mysql_connection
-  - starts_with("recode_")
-  - starts_with("pull_")
