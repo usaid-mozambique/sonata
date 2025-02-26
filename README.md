@@ -18,7 +18,7 @@ O MozART 2.0 é um recurso rico em informações sobre serviços de cuidados e t
 `sonata` não está no CRAN e precisa ser instalado diretamente do rOpenSci usando o código abaixo.
 
 ``` r
-    # instalar via rOpenSci
+    # instalar a partir de rOpenSci
       install.packages("sonata", repos = c('https://usaid-mozambique.r-universe.dev', 'https://cloud.r-project.org'))
     
     # carregar pacote
