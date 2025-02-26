@@ -20,7 +20,7 @@
 #'                    opendate = "2024-06-21",
 #'                     enddate = "2024-09-20")
 #'
-#'  # Caso de uso simples executado sobre todas US
+#'  # Caso de uso simples executado sobre uma US
 #' df <- calc_tx_new(con,
 #'                   opendate = "2024-06-21",
 #'                   enddate = "2024-09-20",
