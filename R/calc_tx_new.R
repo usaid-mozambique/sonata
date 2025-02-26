@@ -44,7 +44,7 @@ calc_tx_new <- function(con, opendate, enddate, filter_by_location = FALSE, loca
     o.encounter_uuid,
     o.patient_uuid,
     p.birthdate,
-    p.gender,
+    p.sex,
     o.form_id,
     o.encounter_date,
     o.observation_date,

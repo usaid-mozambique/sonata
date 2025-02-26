@@ -7,10 +7,10 @@
 recode_cols(
   df,
   cols = c("mode_dispensation_id", "regimen_id", "location_uuid", "age", "form_id",
-    "gender"),
+    "sex"),
   options = list(df_disp_mode = data_type_id_lookup, df_regimen = data_type_id_lookup,
     df_form = data_type_id_lookup, df_location = data_location_lookup, age_column =
-    "age", sex_column = "gender")
+    "age", sex_column = "sex")
 )
 }
 \arguments{

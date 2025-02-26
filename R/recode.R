@@ -112,7 +112,7 @@ recode_age <- function(df, age_column = "age", variable_name = "age_band") {
 #'           df = df,
 #'           sex_column = "sex")}
 
-recode_sex <- function(df, sex_column = "gender") {
+recode_sex <- function(df, sex_column = "sex") {
   df <- df %>%
     dplyr::mutate(
       !!dplyr::sym(sex_column) := dplyr::case_when(
@@ -302,14 +302,14 @@ recode_cols <- function(df,
                                  "location_uuid",
                                  "age",
                                  "form_id",
-                                 "gender"),
+                                 "sex"),
                         options = list(
                           df_disp_mode = data_type_id_lookup,
                           df_regimen = data_type_id_lookup,
                           df_form = data_type_id_lookup,
                           df_location = data_location_lookup,
                           age_column = "age",
-                          sex_column = "gender")
+                          sex_column = "sex")
 )
 
 {
@@ -319,7 +319,7 @@ recode_cols <- function(df,
     # Call the corresponding subfunction based on the column name
     if (col == "age" && !is.null(options$age_column)) {
       df <- recode_age(df, options$age_column)
-    } else if (col == "gender" && !is.null(options$sex_column)) {
+    } else if (col == "sex" && !is.null(options$sex_column)) {
       df <- recode_sex(df, options$sex_column)
     } else if (col == "location_uuid" && !is.null(options$df_location)) {
       df <- recode_location(df, options$df_location)

@@ -4,7 +4,7 @@
 \alias{recode_sex}
 \title{Recodificar sexo}
 \usage{
-recode_sex(df, sex_column = "gender")
+recode_sex(df, sex_column = "sex")
 }
 \arguments{
 \item{df}{Quadro de dados contendo a variável a recodificar}
