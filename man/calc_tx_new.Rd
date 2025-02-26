@@ -8,8 +8,8 @@ calc_tx_new(
   con,
   opendate,
   enddate,
-  filter_by_location = FALSE,
-  location_uuid = "4be5f1a9-832c-4717-be41-ef4b6311c0ef"
+  filter_by_location = TRUE,
+  location_uuid = "e5f01eee-2392-49b4-a5bf-5cf593fc8f21"
 )
 }
 \arguments{

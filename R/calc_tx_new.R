@@ -28,7 +28,11 @@
 #'                   location_uuid = 'e3eb1a1b-be07-4af2-9360-5d7046910576')
 #'           }
 
-calc_tx_new <- function(con, opendate, enddate, filter_by_location = FALSE, location_uuid = '4be5f1a9-832c-4717-be41-ef4b6311c0ef') {
+calc_tx_new <- function(con,
+                        opendate,
+                        enddate,
+                        filter_by_location = TRUE,
+                        location_uuid = 'e5f01eee-2392-49b4-a5bf-5cf593fc8f21') {
 
   # conditionally include the location filter
   location_condition <- if (filter_by_location) {

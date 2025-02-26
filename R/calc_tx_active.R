@@ -28,7 +28,11 @@
 #'                      defaulter_tolerance = 59,
 #'                      filter_by_location = FALSE)}
 
-calc_tx_active <- function(con, enddate, defaulter_tolerance = 28, filter_by_location = FALSE, location_uuid = '4be5f1a9-832c-4717-be41-ef4b6311c0ef') {
+calc_tx_active <- function(con,
+                           enddate,
+                           defaulter_tolerance = 28,
+                           filter_by_location = TRUE,
+                           location_uuid = 'e5f01eee-2392-49b4-a5bf-5cf593fc8f21') {
 
   # ARV pickup cutoff definitions and ceilings.
   next_pickup_date_cutoff <- as.character(as.Date(enddate) - lubridate::days(defaulter_tolerance))

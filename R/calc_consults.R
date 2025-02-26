@@ -46,10 +46,8 @@ calc_consults <- function(con,
                           defaulter_tolerance = 28,
                           opendate = NULL,
                           enddate = Sys.Date(),
-                          filter_by_location = FALSE,
-                          location_uuid = NULL
-)
-{
+                          filter_by_location = TRUE,
+                          location_uuid = 'e5f01eee-2392-49b4-a5bf-5cf593fc8f21') {
 
   # Create base SQL query
   sql_query <- "SELECT * FROM clinical_consultation WHERE form_id = 163"
