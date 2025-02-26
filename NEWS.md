@@ -5,8 +5,12 @@
   * `calc_consultas`
   * `calc_arv_pickups`
   * `pull_new_uuid`
-  * recodificação de variáveis (e.g. `recode_age`)
+  * Família `recode`
 * adição de artigos
+* Actualização dos lookup_tables MozART 2.0
+  * `data_location_lookup`
+  * `data_observation_lookup`
+  * `data_type_id_lookup`
 
 # sonata 0.2.0
 * tradução do conteúdo da embalagem para português
