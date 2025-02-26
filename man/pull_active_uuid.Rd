@@ -36,7 +36,5 @@ pull_active_uuid(
  df <- pull_active_uuid(
           con,
           enddate = '2024-09-20',
-          defaulter_tolerance = 28,
-          filter_by_location = TRUE,
-          location_uuid = location_meripo)}
+          defaulter_tolerance = 28)}
 }

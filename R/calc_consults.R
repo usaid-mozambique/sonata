@@ -39,7 +39,8 @@
 #'           con,
 #'           client_status = "Active",
 #'           enddate = '2024-09-20',
-#'           opendate = '2022-01-10')}
+#'           opendate = '2022-01-10',
+#'           filter_by_location = FALSE)}
 
 calc_consults <- function(con,
                           client_status = "All",

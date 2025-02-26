@@ -66,5 +66,6 @@ Um quadro de dados contendo uma listagem das consultas clínicas HIV realizadas
           con,
           client_status = "Active",
           enddate = '2024-09-20',
-          opendate = '2022-01-10')}
+          opendate = '2022-01-10',
+          filter_by_location = FALSE)}
 }

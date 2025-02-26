@@ -1,7 +1,6 @@
 #' Query uuids dos novos inícios ao TARV
 #'
-#' @description
-#' `pull_new_uuid()` devolve um vector dos uuid's dos clientes activos em TARV a partir de uma data definida pelo utilizador
+#' @description `pull_new_uuid()` devolve um vector dos uuid's dos clientes activos em TARV a partir de uma data definida pelo utilizador
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param opendate Data de abertura do período (introduzir como “AAAA-MM-DD”)
@@ -16,7 +15,7 @@
 #' \dontrun{
 #'
 #' # Caso de uso simples executado sobre todas US
-#' uuids <- pull_new_uuid(con, opendate = "2024-06-21", enddate = "2024-09-20")
+#' uuids <- pull_new_uuid(con, opendate = "2024-06-21", enddate = "2024-09-20", filter_by_location = FALSE)
 #'
 #' # # Caso de uso simples executado sobre uma US
 #' uuids <- pull_new_uuid(con, opendate = "2024-06-21", enddate = "2024-09-20",

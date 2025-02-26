@@ -33,7 +33,7 @@ pull_new_uuid(
 \dontrun{
 
 # Caso de uso simples executado sobre todas US
-uuids <- pull_new_uuid(con, opendate = "2024-06-21", enddate = "2024-09-20")
+uuids <- pull_new_uuid(con, opendate = "2024-06-21", enddate = "2024-09-20", filter_by_location = FALSE)
 
 # # Caso de uso simples executado sobre uma US
 uuids <- pull_new_uuid(con, opendate = "2024-06-21", enddate = "2024-09-20",

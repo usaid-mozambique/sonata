@@ -1,7 +1,6 @@
 #' Query uuids dos activos no TARV
 #'
-#' @description
-#' `pull_active_uuid()` devolve um vector dos uuid's dos clientes activos em TARV a partir de uma data definida pelo utilizador
+#' @description `pull_active_uuid()` devolve um vector dos uuid's dos clientes activos em TARV a partir de uma data definida pelo utilizador
 #'
 #' @param con Ligação à base de dados MozART 2.0
 #' @param enddate Data de fecho do período (introduzir como “AAAA-MM-DD”)
@@ -19,9 +18,7 @@
 #'  df <- pull_active_uuid(
 #'           con,
 #'           enddate = '2024-09-20',
-#'           defaulter_tolerance = 28,
-#'           filter_by_location = TRUE,
-#'           location_uuid = location_meripo)}
+#'           defaulter_tolerance = 28)}
 
 pull_active_uuid <- function(con,
                              enddate,

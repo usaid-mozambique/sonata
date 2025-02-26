@@ -72,7 +72,9 @@ reference:
   - starts_with("recode_")
 - title: Puxar vectores
 - contents:
-  - starts_with("pull_")
+  - pull_client_uuid
+  - pull_active_uuid
+  - pull_new_uuid
 - title: Outro
 - contents:
   - project_age_out
