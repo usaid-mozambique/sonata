@@ -10,6 +10,7 @@ Interagir com MozART 2.0
 <!-- badges: end -->
 
 ## Resumo
+
 O MozART 2.0 é um recurso rico em informações sobre serviços de cuidados e tratamento do HIV prestados em Moçambique. O `sonata` foi criado para facilitar o trabalho dos analistas na resposta a questões analíticas e na geração de quadros de dados agregados para utilização fora do MozART 2.0.  
 
 ## Instalação

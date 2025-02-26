@@ -4,7 +4,7 @@
 \name{sonata-package}
 \alias{sonata}
 \alias{sonata-package}
-\title{sonata: Interagir com Dados do MozART 2.0}
+\title{sonata: Interagir com MozART 2.0}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
@@ -14,6 +14,7 @@ Provides a set of utilities and functions for connecting, querying, and analyzin
 Useful links:
 \itemize{
   \item \url{https://usaid-mozambique.github.io/sonata/}
+  \item Report bugs at \url{https://github.com/usaid-mozambique/sonata/issues}
 }
 
 }
