@@ -61,24 +61,22 @@ articles:
   - analisar-transicao-etaria
 
 reference:
-- title: Utilitários
+- title: Autenticação
 - contents:
   - mysql_connection
-- title: Chamar indicadores
+- title: Query e projectar dados
 - contents:
   - starts_with("calc_")
-- title: Recodificar colunas
+  - project_age_out
+- title: Recodificar
 - contents:
   - starts_with("recode_")
-- title: Puxar vectores
+- title: Puxar vectores UID
 - contents:
   - pull_client_uuid
   - pull_active_uuid
   - pull_new_uuid
-- title: Outro
-- contents:
-  - project_age_out
-- title: Metadados
+- title: Quadros Metadados
 - contents:
   - data_location_lookup
   - data_type_id_lookup
