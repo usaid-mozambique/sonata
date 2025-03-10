@@ -28,11 +28,13 @@ recode_cols <- function(df,
                                  "location_uuid",
                                  "age",
                                  "form_id",
+                                 "state_id",
                                  "sex"),
                         options = list(
                           df_disp_mode = data_type_id_lookup,
                           df_regimen = data_type_id_lookup,
                           df_form = data_type_id_lookup,
+                          df_state = data_type_id_lookup,
                           df_location = data_location_lookup,
                           age_column = "age",
                           sex_column = "sex")
@@ -55,6 +57,8 @@ recode_cols <- function(df,
       df <- recode_disp_mode(df, options$df_disp_mode)
     } else if (col == "form_id" && !is.null(options$df_form)) {
       df <- recode_form(df, options$df_form)
+    } else if (col == "state_id" && !is.null(options$df_state)) {
+      df <- recode_state(df, options$df_state)
     } else {
       message(paste("No recoding function or missing parameter for column:", col))
     }
@@ -88,9 +92,9 @@ recode_location  <- function(df, df_location = data_location_lookup) {
   # Unit test: Ensure both dataframes have "location_uuid" column
   testthat::test_that("Both input df and df_location must have the column 'location_uuid'", {
     testthat::expect_true("location_uuid" %in% colnames(df),
-                info = "The main dataset is missing 'location_uuid'")
+                          info = "The main dataset is missing 'location_uuid'")
     testthat::expect_true("location_uuid" %in% colnames(df_location),
-                info = "The location dataset is missing 'location_uuid'")
+                          info = "The location dataset is missing 'location_uuid'")
   })
 
   df_location = data_location_lookup |>
@@ -222,9 +226,9 @@ recode_regimen  <- function(df, df_regimen = data_type_id_lookup, keep_id = FALS
   # Unit test: Ensure both dataframes have "regimen_id" column
   testthat::test_that("Input df must have the column 'regimen_id' and df_regimen must have `id_type_lookup`", {
     testthat::expect_true("regimen_id" %in% colnames(df),
-                info = "The main dataset is missing 'regimen_id'")
+                          info = "The main dataset is missing 'regimen_id'")
     testthat::expect_true("id_type_lookup" %in% colnames(df_regimen),
-                info = "The location dataset is missing 'id_type_lookup'")
+                          info = "The location dataset is missing 'id_type_lookup'")
   })
 
   df <- df %>%
@@ -332,6 +336,53 @@ recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
     df <- df %>%
       dplyr::relocate(form_name, .after = form_id) %>%
       dplyr::select(-form_id)
+  }
+
+  return(df)
+
+}
+
+#' Recodificar estado do client
+#'
+#' @description
+#' `recode_state()` devolve uma apresentação mais compreensível do estado do cliente
+#'
+#' @param df Quadro de dados contendo a variável a recodificar
+#' @param df_state  Objecto de tabela de pesquisa usado para recodificação
+#' @param keep_id Manter a coluna state_id após a recodificação (Logical T/F)
+#'
+#' @return `recode_state` devolve um quadro de dados com a coluna state recodificada
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#'
+#'  df <- recode_state(
+#'           df = df,
+#'           df_state = data_type_id_lookup,
+#'           keep_id = FALSE)}
+
+recode_state  <- function(df, df_state = data_type_id_lookup, keep_id = FALSE) {
+
+  df_state <- data_type_id_lookup |>
+    dplyr::filter(table_name == "patient_state")
+
+  # Unit test: Ensure both dataframes have "state_id" column
+  testthat::test_that("Input df must have the column 'state_id' and df_state must have `id_type_lookup`", {
+    testthat::expect_true("state_id" %in% colnames(df),
+                          info = "The main dataset is missing 'state_id'")
+    testthat::expect_true("id_type_lookup" %in% colnames(df_state),
+                          info = "The type_id_lookup is missing 'id_type_lookup'")
+  })
+
+  df <- df %>%
+    dplyr::left_join(df_state %>% dplyr::select(id_type_lookup, id_type_desc), by = c("state_id" = "id_type_lookup")) %>%
+    dplyr::rename(state_desc = id_type_desc)
+
+  if (keep_id == FALSE) {
+    df <- df %>%
+      dplyr::relocate(state_desc, .after = state_id) %>%
+      dplyr::select(-state_id)
   }
 
   return(df)
