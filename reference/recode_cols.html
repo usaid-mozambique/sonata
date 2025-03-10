@@ -56,10 +56,10 @@ recode_cols reatribui valores para colunas codificadas em quadros de dados MozAR
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">recode_cols</span><span class="op">(</span></span>
 <span>  <span class="va">df</span>,</span>
 <span>  cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mode_dispensation_id"</span>, <span class="st">"regimen_id"</span>, <span class="st">"location_uuid"</span>, <span class="st">"age"</span>, <span class="st">"form_id"</span>,</span>
-<span>    <span class="st">"sex"</span><span class="op">)</span>,</span>
+<span>    <span class="st">"state_id"</span>, <span class="st">"sex"</span><span class="op">)</span>,</span>
 <span>  options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>df_disp_mode <span class="op">=</span> <span class="va">data_type_id_lookup</span>, df_regimen <span class="op">=</span> <span class="va">data_type_id_lookup</span>,</span>
-<span>    df_form <span class="op">=</span> <span class="va">data_type_id_lookup</span>, df_location <span class="op">=</span> <span class="va">data_location_lookup</span>, age_column <span class="op">=</span></span>
-<span>    <span class="st">"age"</span>, sex_column <span class="op">=</span> <span class="st">"sex"</span><span class="op">)</span></span>
+<span>    df_form <span class="op">=</span> <span class="va">data_type_id_lookup</span>, df_state <span class="op">=</span> <span class="va">data_type_id_lookup</span>, df_location <span class="op">=</span></span>
+<span>    <span class="va">data_location_lookup</span>, age_column <span class="op">=</span> <span class="st">"age"</span>, sex_column <span class="op">=</span> <span class="st">"sex"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
