@@ -1,3 +1,70 @@
+#' Recodificar colunas
+#'
+#' @description
+#' `recode_cols()` devolve várias colunas recodificadas, tal como especificado pela entrada “cols” fornecida pelo utilizador
+#'
+#' @description
+#' `recode_cols` reatribui valores para colunas codificadas em quadros de dados MozART 2.0 comuns
+#'
+#' @param df Quadro de dados contendo colunas a serem recodificadas
+#' @param cols Vector de strings contendo os nomes das colunas a recodificar
+#' @param options Lista de parâmetros opcionais para personalizar a recodificação
+#'
+#' @return `recode_cols` devolve um quadro de dados com colunas recodificadas
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#'  # Caso de uso para recodificar dispensation_id, regimen_id e location_uuid
+#'  df <- recode_cols(
+#'           df = df,
+#'           cols = c("mode_dispensation_id",
+#'                    "regimen_id",
+#'                    "location_uuid"))}
+
+recode_cols <- function(df,
+                        cols = c("mode_dispensation_id",
+                                 "regimen_id",
+                                 "location_uuid",
+                                 "age",
+                                 "form_id",
+                                 "sex"),
+                        options = list(
+                          df_disp_mode = data_type_id_lookup,
+                          df_regimen = data_type_id_lookup,
+                          df_form = data_type_id_lookup,
+                          df_location = data_location_lookup,
+                          age_column = "age",
+                          sex_column = "sex")
+)
+
+{
+
+  # Loop through the specified columns
+  for (col in cols) {
+    # Call the corresponding subfunction based on the column name
+    if (col == "age" && !is.null(options$age_column)) {
+      df <- recode_age(df, options$age_column)
+    } else if (col == "sex" && !is.null(options$sex_column)) {
+      df <- recode_sex(df, options$sex_column)
+    } else if (col == "location_uuid" && !is.null(options$df_location)) {
+      df <- recode_location(df, options$df_location)
+    } else if (col == "regimen_id" && !is.null(options$df_regimen)) {
+      df <- recode_regimen(df, options$df_regimen)
+    } else if (col == "mode_dispensation_id" && !is.null(options$df_disp_mode)) {
+      df <- recode_disp_mode(df, options$df_disp_mode)
+    } else if (col == "form_id" && !is.null(options$df_form)) {
+      df <- recode_form(df, options$df_form)
+    } else {
+      message(paste("No recoding function or missing parameter for column:", col))
+    }
+  }
+
+  return(df)
+
+}
+
+
 #' Recodificar location_uuid's
 #'
 #' @description
@@ -265,73 +332,6 @@ recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
     df <- df %>%
       dplyr::relocate(form_name, .after = form_id) %>%
       dplyr::select(-form_id)
-  }
-
-  return(df)
-
-}
-
-
-#' Recodificar colunas
-#'
-#' @description
-#' `recode_cols()` devolve várias colunas recodificadas, tal como especificado pela entrada “cols” fornecida pelo utilizador
-#'
-#' @description
-#' `recode_cols` reatribui valores para colunas codificadas em quadros de dados MozART 2.0 comuns
-#'
-#' @param df Quadro de dados contendo colunas a serem recodificadas
-#' @param cols Vector de strings contendo os nomes das colunas a recodificar
-#' @param options Lista de parâmetros opcionais para personalizar a recodificação
-#'
-#' @return `recode_cols` devolve um quadro de dados com colunas recodificadas
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#'  # Caso de uso para recodificar dispensation_id, regimen_id e location_uuid
-#'  df <- recode_cols(
-#'           df = df,
-#'           cols = c("mode_dispensation_id",
-#'                    "regimen_id",
-#'                    "location_uuid"))}
-
-recode_cols <- function(df,
-                        cols = c("mode_dispensation_id",
-                                 "regimen_id",
-                                 "location_uuid",
-                                 "age",
-                                 "form_id",
-                                 "sex"),
-                        options = list(
-                          df_disp_mode = data_type_id_lookup,
-                          df_regimen = data_type_id_lookup,
-                          df_form = data_type_id_lookup,
-                          df_location = data_location_lookup,
-                          age_column = "age",
-                          sex_column = "sex")
-)
-
-{
-
-  # Loop through the specified columns
-  for (col in cols) {
-    # Call the corresponding subfunction based on the column name
-    if (col == "age" && !is.null(options$age_column)) {
-      df <- recode_age(df, options$age_column)
-    } else if (col == "sex" && !is.null(options$sex_column)) {
-      df <- recode_sex(df, options$sex_column)
-    } else if (col == "location_uuid" && !is.null(options$df_location)) {
-      df <- recode_location(df, options$df_location)
-    } else if (col == "regimen_id" && !is.null(options$df_regimen)) {
-      df <- recode_regimen(df, options$df_regimen)
-    } else if (col == "mode_dispensation_id" && !is.null(options$df_disp_mode)) {
-      df <- recode_disp_mode(df, options$df_disp_mode)
-    } else if (col == "form_id" && !is.null(options$df_form)) {
-      df <- recode_form(df, options$df_form)
-    } else {
-      message(paste("No recoding function or missing parameter for column:", col))
-    }
   }
 
   return(df)
