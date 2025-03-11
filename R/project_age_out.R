@@ -1,7 +1,7 @@
 #' Detectar transição etária
 #'
 #' @description
-#' `project_age_out()` devolve uma listagem dos clientes com idades projectadas para uma data definida pelo utilizador, bem como colunas para indicar se fizeram a transição da idade pediátrica para a idade adulta e se a sua faixa etária de 5 anos mudou
+#' `project_age_out()` devolve idades projectadas bem como colunas para indicar transição da idade pediátrica para adulta e transição entre faixas etárias de 5 anos
 #'
 #' @param df Quadro de dados contendo a data de nasicmento do cliente
 #' @param ref_date Data de referência para calcular a idade projectada do cliente

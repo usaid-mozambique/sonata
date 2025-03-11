@@ -1,26 +1,27 @@
 #' Recodificar colunas
 #'
 #' @description
-#' `recode_cols()` devolve várias colunas recodificadas, tal como especificado pela entrada “cols” fornecida pelo utilizador
-#'
-#' @description
-#' `recode_cols` reatribui valores para colunas codificadas em quadros de dados MozART 2.0 comuns
+#' `recode_cols()` reatribui valores para colunas codificadas tal como especificado pela entrada “cols” fornecida pelo utilizador
 #'
 #' @param df Quadro de dados contendo colunas a serem recodificadas
 #' @param cols Vector de strings contendo os nomes das colunas a recodificar
 #' @param options Lista de parâmetros opcionais para personalizar a recodificação
 #'
-#' @return `recode_cols` devolve um quadro de dados com colunas recodificadas
+#' @return `recode_cols()` devolve um quadro de dados com colunas recodificadas
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#'  # Caso de uso para recodificar dispensation_id, regimen_id e location_uuid
+#'  # Caso de uso para recodificar dispensation_id, regimen_id, location_uuid, age, form_id, state_id, and sex
 #'  df <- recode_cols(
 #'           df = df,
 #'           cols = c("mode_dispensation_id",
 #'                    "regimen_id",
-#'                    "location_uuid"))}
+#'                    "location_uuid",
+#'                    "age",
+#'                    "form_id",
+#'                    "state_id",
+#'                    "sex"))}
 
 recode_cols <- function(df,
                         cols = c("mode_dispensation_id",

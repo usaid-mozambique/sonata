@@ -11,11 +11,11 @@ Interagir com MozART 2.0
 
 ## Resumo
 
-O MozART 2.0 é um recurso rico em informações sobre serviços de cuidados e tratamento do HIV prestados em Moçambique. O `sonata` foi criado para facilitar o trabalho dos analistas na resposta a questões analíticas e na geração de quadros de dados agregados para utilização fora do MozART 2.0.  
+O MozART 2.0 é uma base de dados contendo informações sobre os serviços de cuidados e tratamento do HIV prestados em Moçambique. O `sonata` é um pacote que fornece ferramentas úteis para conectar ao MozART 2.0 e para gerar quadros analíticos.  
 
 ## Instalação
 
-`sonata` não está no CRAN e precisa ser instalado diretamente do rOpenSci usando o código abaixo.
+`sonata` não está alojado no CRAN e precisa ser instalado diretamente do rOpenSci usando o código abaixo.
 
 ``` r
     # instalar a partir de rOpenSci

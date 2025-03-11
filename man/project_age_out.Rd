@@ -15,7 +15,7 @@ project_age_out(df, ref_date)
 Quadro de dados com variáveis idade, idade projectada, faixa etária, faixa etária projectada, e colunas que indicam casos de transição etária
 }
 \description{
-\code{project_age_out()} devolve uma listagem dos clientes com idades projectadas para uma data definida pelo utilizador, bem como colunas para indicar se fizeram a transição da idade pediátrica para a idade adulta e se a sua faixa etária de 5 anos mudou
+\code{project_age_out()} devolve idades projectadas bem como colunas para indicar transição da idade pediátrica para adulta e transição entre faixas etárias de 5 anos
 }
 \examples{
 \dontrun{

@@ -21,19 +21,21 @@ recode_cols(
 \item{options}{Lista de parâmetros opcionais para personalizar a recodificação}
 }
 \value{
-\code{recode_cols} devolve um quadro de dados com colunas recodificadas
+\code{recode_cols()} devolve um quadro de dados com colunas recodificadas
 }
 \description{
-\code{recode_cols()} devolve várias colunas recodificadas, tal como especificado pela entrada “cols” fornecida pelo utilizador
-
-\code{recode_cols} reatribui valores para colunas codificadas em quadros de dados MozART 2.0 comuns
+\code{recode_cols()} reatribui valores para colunas codificadas tal como especificado pela entrada “cols” fornecida pelo utilizador
 }
 \examples{
 \dontrun{
- # Caso de uso para recodificar dispensation_id, regimen_id e location_uuid
+ # Caso de uso para recodificar dispensation_id, regimen_id, location_uuid, age, form_id, state_id, and sex
  df <- recode_cols(
           df = df,
           cols = c("mode_dispensation_id",
                    "regimen_id",
-                   "location_uuid"))}
+                   "location_uuid",
+                   "age",
+                   "form_id",
+                   "state_id",
+                   "sex"))}
 }
