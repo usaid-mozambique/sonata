@@ -11,7 +11,7 @@ recode_age(df, age_column = "age", variable_name = "age_band")
 
 \item{age_column}{Variável no quadro de dados introduzido contendo a idade do cliente}
 
-\item{variable_name}{Nome da variável que será criada no quadro de dados com a faixa etária do client (default = 'age_band')}
+\item{variable_name}{Nome da variável que será criada no quadro de dados com a faixa etária do cliente (default = 'age_band')}
 }
 \value{
 \code{recode_age} devolve um quadro de dados com a coluna idade recodificada

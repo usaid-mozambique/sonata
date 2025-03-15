@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{mysql_connection}
 \alias{mysql_connection}
-\title{Ligar ao MozART 2.0}
+\title{Passar de forma segura credenciais e estabelecer coneção ao MozART 2.0}
 \usage{
 mysql_connection(
   db_name,

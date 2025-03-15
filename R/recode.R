@@ -1,4 +1,4 @@
-#' Recodificar colunas
+#' Recodificar várias colunas utilizando vectores custimizados
 #'
 #' @description
 #' `recode_cols()` reatribui valores para colunas codificadas tal como especificado pela entrada “cols” fornecida pelo utilizador
@@ -124,7 +124,7 @@ recode_location  <- function(df, df_location = data_location_lookup) {
 #'
 #' @param df Quadro de dados contendo a variável a recodificar
 #' @param age_column Variável no quadro de dados introduzido contendo a idade do cliente
-#' @param variable_name Nome da variável que será criada no quadro de dados com a faixa etária do client (default = 'age_band')
+#' @param variable_name Nome da variável que será criada no quadro de dados com a faixa etária do cliente (default = 'age_band')
 #'
 #' @return `recode_age` devolve um quadro de dados com a coluna idade recodificada
 #' @export
@@ -343,7 +343,7 @@ recode_form  <- function(df, df_form = data_type_id_lookup, keep_id = FALSE) {
 
 }
 
-#' Recodificar estado do client
+#' Recodificar estado do cliente
 #'
 #' @description
 #' `recode_state()` devolve uma apresentação mais compreensível do estado do cliente

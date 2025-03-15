@@ -1,4 +1,4 @@
-#' Ligar ao MozART 2.0
+#' Passar de forma segura credenciais e estabelecer coneção ao MozART 2.0
 #'
 #' @description
 #' `mysql_connection()` cria uma ligação com o MozART 2.0 com base num conjunto de credenciais armazenadas de forma segura e definidas pelo utilizador

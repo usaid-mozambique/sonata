@@ -2,7 +2,7 @@
 % Please edit documentation in R/recode.R
 \name{recode_cols}
 \alias{recode_cols}
-\title{Recodificar colunas}
+\title{Recodificar várias colunas utilizando vectores custimizados}
 \usage{
 recode_cols(
   df,

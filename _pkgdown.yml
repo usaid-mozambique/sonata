@@ -73,6 +73,7 @@ reference:
   - pull_new_uuid
 - title: Recodificar
 - contents:
+  - recode_cols
   - starts_with("recode_")
 - title: Metadados
 - contents:

@@ -2,7 +2,7 @@
 % Please edit documentation in R/recode.R
 \name{recode_state}
 \alias{recode_state}
-\title{Recodificar estado do client}
+\title{Recodificar estado do cliente}
 \usage{
 recode_state(df, df_state = data_type_id_lookup, keep_id = FALSE)
 }
